@@ -89,7 +89,7 @@ testdate = Date.new(2003,6,1)
     # Then unzip them
     system("unzip -o #{patentappfile}")
     system("unzip -o #{patentissuefile}")
-    # Clean up
+    # Clean up the zipfiles
     File.delete(patentappfile)
     File.delete(patentissuefile)
     i = -1
@@ -97,7 +97,7 @@ testdate = Date.new(2003,6,1)
    currdoc = Array.new
    currdocpats = Array.new
     # Use ruby to split the concatenated XML files into separate docs, each doc going into an array cell
-    f = File.open( patentappfile[0..-4] + "xml")
+    f = File.open(patentappfile[0..-4] + "xml")
     f.each do |line|
       data = line
       if data.include? "<?xml version="
@@ -107,7 +107,7 @@ testdate = Date.new(2003,6,1)
         currdoc[i] = currdoc[i] + data.to_s
       end
     end
-    f = File.open( patentissuefile[0..-4] + "xml")
+    f = File.open(patentissuefile[0..-4] + "xml")
     f.each do |line|
       data = line
       if data.include? "<?xml version="
@@ -117,7 +117,9 @@ testdate = Date.new(2003,6,1)
         currdocpats[j] = currdocpats[j] + data.to_s
       end
     end
-  
+    # Clean up the XML files
+    File.delete(patentappfile[0..-4] + "xml")
+    File.delete(patentissuefile[0..-4] + "xml")
   
   # In our Xpath query, we want to find where the federal research statement says "National Science Foundation" or says "NSF"
   currdoc.each do |appdoc|
