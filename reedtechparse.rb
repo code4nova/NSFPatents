@@ -25,17 +25,22 @@ require 'nokogiri'
 # http://patents.reedtech.com/downloads/GrantRedBookText/2002/pg021001.zip
 timecounter = Time.now
 todaysdate = Date.new(Time.now.year,Time.now.month,Time.now.day)
-datelooperapps = Date.new(2002,10,10)
+datelooperapps = Date.new(2003,01,02)
 # Set datelooper to whatever date you want to start parsing the bulk files from.
-datelooper = Date.new(2002,10,10)
+datelooper = Date.new(2003,01,02)
 datelooperissued = datelooperapps - 2
 # Set testdate to whatever date you want to stop parsing the bulk files from
-testdate = Date.new(2003,6,1)
+testdate = Date.new(2003,10,01)
 
 # Pull in one weeks worth of patent apps and issued patents
 # Comment out the loop code for now to just do proof of concept
   while datelooper < testdate
-    if datelooper.year < 2005
+    if datelooperapps.year < 2005
+      prefixapps = ""
+    else
+      prefixapps = "i"
+    end
+    if datelooperissued.year < 2005
       prefix = ""
     else
       prefix = "i"
@@ -56,14 +61,14 @@ testdate = Date.new(2003,6,1)
     if datelooperissued.day < 10
       daystrpat = "0" + datelooperissued.day.to_s
     end
-    patentappfile = prefix + "pa" + (datelooper.year).to_s[2..3] + monthstrapp + daystrapp + ".zip"
+    patentappfile = prefixapps + "pa" + (datelooper.year).to_s[2..3] + monthstrapp + daystrapp + ".zip"
     patentissuefile = prefix + "pg" + (datelooper.year).to_s[2..3] + monthstrpat + daystrpat + ".zip"
     
     Net::HTTP.start("patents.reedtech.com") do |http|
       begin
         
         file = open(patentappfile, 'wb')
-        http.request_get("/downloads/ApplicationFullText/" + datelooper.year.to_s + "/" + prefix + "pa" + (datelooper.year).to_s[2..3] + monthstrapp + daystrapp + ".zip") do |response|
+        http.request_get("/downloads/ApplicationFullText/" + datelooperapps.year.to_s + "/" + prefixapps + "pa" + (datelooperapps.year).to_s[2..3] + monthstrapp + daystrapp + ".zip") do |response|
           response.read_body do |segment|
             file.write(segment)
           end
@@ -76,7 +81,7 @@ testdate = Date.new(2003,6,1)
     Net::HTTP.start("patents.reedtech.com") do |http|
       begin
         file = open(patentissuefile, 'wb')
-        http.request_get("/downloads/GrantRedBookText/" + datelooper.year.to_s + "/" + prefix + "pg" + (datelooper.year).to_s[2..3] + monthstrpat + daystrpat + ".zip") do |response|
+        http.request_get("/downloads/GrantRedBookText/" + datelooperissued.year.to_s + "/" + prefix + "pg" + (datelooperissued.year).to_s[2..3] + monthstrpat + daystrpat + ".zip") do |response|
           response.read_body do |segment|
             file.write(segment)
           end
