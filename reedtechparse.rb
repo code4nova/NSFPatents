@@ -25,7 +25,7 @@ require 'nokogiri'
 # http://patents.reedtech.com/downloads/GrantRedBookText/2002/pg021001.zip
 timecounter = Time.now
 todaysdate = Date.new(Time.now.year,Time.now.month,Time.now.day)
-datelooperapps = Date.new(2002,10,3)
+datelooperapps = Date.new(2002,10,10)
 # Set datelooper to whatever date you want to start parsing the bulk files from.
 datelooper = Date.new(2002,10,10)
 datelooperissued = datelooperapps - 2
@@ -48,11 +48,11 @@ testdate = Date.new(2003,6,1)
     if datelooperissued.month < 10
       monthstrpat = "0" + datelooperissued.month.to_s
     end
-      daystrapp = datelooperapps.month.to_s
+      daystrapp = datelooperapps.day.to_s
     if datelooperapps.day < 10
       daystrapp = "0" + datelooperapps.day.to_s
     end
-    daystrpat = datelooperissued.month.to_s
+    daystrpat = datelooperissued.day.to_s
     if datelooperissued.day < 10
       daystrpat = "0" + datelooperissued.day.to_s
     end
