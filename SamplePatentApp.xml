@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE patent-application-publication SYSTEM "pap-v16-2002-01-01.dtd" [
+<!ENTITY US20020139753A1-20021003-C00001.CDX SYSTEM "US20020139753A1-20021003-C00001.CDX" NDATA CDX>
+<!ENTITY US20020139753A1-20021003-C00001.MOL SYSTEM "US20020139753A1-20021003-C00001.MOL" NDATA MOL>
+<!ENTITY US20020139753A1-20021003-C00001.TIF SYSTEM "US20020139753A1-20021003-C00001.TIF" NDATA TIF>
+<!ENTITY US20020139753A1-20021003-D00000.TIF SYSTEM "US20020139753A1-20021003-D00000.TIF" NDATA TIF>
+<!ENTITY US20020139753A1-20021003-D00001.TIF SYSTEM "US20020139753A1-20021003-D00001.TIF" NDATA TIF>
+<!ENTITY US20020139753A1-20021003-D00002.TIF SYSTEM "US20020139753A1-20021003-D00002.TIF" NDATA TIF>
+<!ENTITY US20020139753A1-20021003-D00003.TIF SYSTEM "US20020139753A1-20021003-D00003.TIF" NDATA TIF>
+<!ENTITY US20020139753A1-20021003-D00004.TIF SYSTEM "US20020139753A1-20021003-D00004.TIF" NDATA TIF>
+]>
+<patent-application-publication>
+<subdoc-bibliographic-information>
+<document-id>
+<doc-number>20020139753</doc-number>
+<kind-code>A1</kind-code>
+<document-date>20021003</document-date>
+</document-id>
+<publication-filing-type>new</publication-filing-type>
+<domestic-filing-data>
+<application-number>
+<doc-number>09776303</doc-number>
+</application-number>
+<application-number-series-code>09</application-number-series-code>
+<filing-date>20010201</filing-date>
+</domestic-filing-data>
+<technical-information>
+<classification-ipc>
+<classification-ipc-primary>
+<ipc>B01D015/00</ipc>
+</classification-ipc-primary>
+<classification-ipc-edition>07</classification-ipc-edition>
+</classification-ipc>
+<classification-us>
+<classification-us-primary>
+<uspc>
+<class>210</class>
+<subclass>670000</subclass>
+</uspc>
+</classification-us-primary>
+<classification-us-secondary>
+<uspc>
+<class>210</class>
+<subclass>688000</subclass>
+</uspc>
+</classification-us-secondary>
+<classification-us-secondary>
+<uspc>
+<class>428</class>
+<subclass>405000</subclass>
+</uspc>
+</classification-us-secondary>
+<classification-us-secondary>
+<uspc>
+<class>428</class>
+<subclass>447000</subclass>
+</uspc>
+</classification-us-secondary>
+<classification-us-secondary>
+<uspc>
+<class>502</class>
+<subclass>401000</subclass>
+</uspc>
+</classification-us-secondary>
+<classification-us-secondary>
+<uspc>
+<class>502</class>
+<subclass>407000</subclass>
+</uspc>
+</classification-us-secondary>
+</classification-us>
+<title-of-invention>Materials and methods for the separation of copper ions and ferric iron in liquid solutions</title-of-invention>
+</technical-information>
+<inventors>
+<first-named-inventor>
+<name>
+<given-name>Edward</given-name>
+<family-name>Rosenberg</family-name>
+</name>
+<residence>
+<residence-us>
+<city>Missoula</city>
+<state>MT</state>
+<country-code>US</country-code>
+</residence-us>
+</residence>
+<authority-applicant>INV</authority-applicant>
+</first-named-inventor>
+<inventor>
+<name>
+<given-name>Robert</given-name>
+<middle-name>J.</middle-name>
+<family-name>Fisher</family-name>
+</name>
+<residence>
+<residence-us>
+<city>Hamilton</city>
+<state>MT</state>
+<country-code>US</country-code>
+</residence-us>
+</residence>
+<authority-applicant>INV</authority-applicant>
+</inventor>
+</inventors>
+<correspondence-address>
+<name-1>Jean Kyle</name-1>
+<name-2>Saliwanchik, Lloyd &amp; Saliwanchik, P.C.</name-2>
+<address>
+<address-1>P.O. Box 2274</address-1>
+<city>Hamilton</city>
+<state>MT</state>
+<postalcode>59840-4274</postalcode>
+<country>
+<country-code>US</country-code>
+</country>
+</address>
+</correspondence-address>
+</subdoc-bibliographic-information>
+<subdoc-abstract>
+<paragraph id="A-0001" lvl="0">A silica-polyamine based extraction material removes selected transition metal ions from solution in the presence of iron ions. The silica-polyamine base is a reaction product of a polyamine and a covalently anchored trifunctional hydrocarbylsilyl that yields non-crosslinked amino groups to which pyridine function group is attached. The extraction material is particularly useful in selectively removing copper from low concentration, low pH leach solutions separating copper from ferric iron or chloride ions. The product is a durable, high capacity extraction material that selectively captures copper at high flow rates and releases that copper into highly concentrated solutions. </paragraph>
+</subdoc-abstract>
+<subdoc-description>
+<federal-research-statement>
+<paragraph-federal-research-statement id="P-0001"><number>&lsqb;0001&rsqb;</number> The subject invention was made with government support under a research project supported by the National Science Foundation Grant No. 9961006. The government has certain rights in this invention.</paragraph-federal-research-statement>
+</federal-research-statement>
+<summary-of-invention>
+<section>
+<heading lvl="1">BACKGROUND OF THE INVENTION </heading>
+<paragraph id="P-0002" lvl="0"><number>&lsqb;0002&rsqb;</number> In recent years, hydrometallurgical processes for the extraction of copper from ore have supplanted traditional pyrometallurgical methods. Pyrometallurgical methods involve the use of fire to extract pure metals from ore by smelting. Increased awareness of the environmental impact of these processes however have lead to an increase in environmental standards and the concomitant increase in the capital cost and operating cost of smelter equipment. Hydrometallurgical techniques have thus become a preferred method for the extraction of copper from copper ores. </paragraph>
+<paragraph id="P-0003" lvl="0"><number>&lsqb;0003&rsqb;</number> Hydrometallurgical techniques involve the extraction or leaching of copper from copper ores into aqueous leach solutions. Ore is treated with aqueous solutions which dissolve the copper from the ore. Pure copper is then recovered from the leach solutions by solvent extraction and then electrowinning. Electrowinning is a process in which copper is plated onto an electrode from an aqueous solution containing high concentrations of isolated copper ions. </paragraph>
+<paragraph id="P-0004" lvl="0"><number>&lsqb;0004&rsqb;</number> An efficient leaching system uses dilute solutions of sulfuric acid to extract copper from copper oxide and oxide/sulfide containing ores. Ferric (iron(III)) ions are often added to the acid solutions to improve the efficiency of the leaching process by oxidizing the copper (I) to its more soluble copper (II) form and sulfide to sulfur. The resulting leach solutions contain not only soluble copper and sulfate at low pH but they also contain a variety of metals including iron, manganese, aluminum, magnesium and molybdenum of which high concentrations of iron is the primary concern. Another efficient leaching system is chloride leaching. Chloride leaching is particularly effective at leaching copper from sulfide containing copper ores such as chalcopyrite. In this process ferric chloride is used as the source of chloride ions to complex the copper and to oxidize the copper (I) to copper (II) contributing to a high iron concentration in the leach solution. </paragraph>
+<paragraph id="P-0005" lvl="0"><number>&lsqb;0005&rsqb;</number> The copper concentrations in the leach solutions can range from about, 1 gram/liter (g/L) to about 50 g/L with typical concentrations falling between 1 g/L and 6 g/L. The pH of these solutions ranges between 1.2 and 2.2 pH units. Copper concentrations in a typical electrowinning tank however are between about 30 g/L and 35 g/L. It is therefore necessary to extract and concentrate the copper in these mixed acid leaches before purifying the copper by electrowinning. </paragraph>
+<paragraph id="P-0006" lvl="0"><number>&lsqb;0006&rsqb;</number> The technology most widely used to extract and concentrate the copper in these mixed acid leach solutions is solvent extraction. In the solvent extraction process water soluble heavy metal salts are complexed with organic ligands to produce low polarity or neutral charge complexes that have limited solubility in water but are highly soluble in an organic solvent (organic phase) which is immiscible with water. Ligands such as aryl-hydroxyoximes are used for this purpose. These ligands selectively bind to the copper ions in the mixed metal solutions to create a charge neutral copper complex. These complexes are soluble in an organic solvent. Inthis way copper is selectively transferred into the organic phase. Salts can also be added to the aqueous phase to force the metal complexes into the organic phase. Other variations of this process incorporate ligands which form micelles in the aqueous phase or ligands which stay in the organic phase and are polar on one end and so are drawn to the aqueous-organic interface where they react with the metals to form non-polar organic soluble complexes soluble in the organic phase. When the organic phase becomes saturated with relatively high concentration of complexed copper, the copper must be decomplexed and released into the clean aqueous phase for final electrowinning. Some of the problems associated with the solvent extraction process include the necessity to execute multiple wash steps of the organic phase when chloride leach solutions are being treated; the need to add equilibrium modifiers to facilitate the uptake into and release of copper from organic phase and the formation of &ldquo;crud&rdquo; that forms at the aqueous-organic phase interface causing equipment fouling. Organic solvent and ligand loss further complicates the process. The primary drawback with this technology however is the organic phase. The solvents used in the organic phase include benzene, toluene, chloroform, hexanes and octanes among others. Kerosene is the solvent of choice for most large scale production mining operations. These solvents are typically toxic, flammable, and have adverse environmental inpacts. Solvent loss during the extraction process extracts a negative economic toll. Ligand and equilibrium modifier loss is also an environmental and economic problem associated with the solvent extraction process. </paragraph>
+<paragraph id="P-0007" lvl="0"><number>&lsqb;0007&rsqb;</number> An alternative to the solvent extraction processing of hydrometallurgical solutions is the use of swellable resin beads as an extraction medium. Swellable resin beads have a long history as the matrix on which ion exchange and metal ion chelation technologies are built. These swellable resin beads are generally lightly crosslinked polystyrene which is modified to accommodate the addition of pendant ion exchange or chelating ligands and occasionally other groups to decrease the hydrophobicity of the polymer. Copper selective ligands have been chemically bonded to polystyrene beads for the processing of copper leaches. There are however problems associated with using swellable resin bead technology in high throughput operations. Lightly crosslinked polystyrenebeads are highly porous and the extractant ligands are bound throughout the polymer matrix. Many, if not most, of the ligands are buried deep within the polymer bead. The feed solution must diffuse through the bead to reach these sites for extraction to take place. The required process flow rates are often much faster than the rate of diffusion through the resin bead. For this reason a material that may have a high capacity in a batch application where the extractant and the feed solution have long contact times has greatly reduced capacity in flow applications. Because of the porous nature of the resin beads they also have a tendency to collapse when subjected to the pressures generated by the fast moving solution in a column application. The beads at the exit end of the column flatten and pack more tightly together which in turn causes an increase in the backpressure of the system. This causes a decrease in metal ion capacity and necessitates periodic backwashing of the column thereby limiting the useful lifetime of the material. In addition, chloride is often present in the leach solution and will contaminate the strip solution. This contamination is not compatible with electrowinning. This is a problem with both the solvent extraction process and currently employed resin technologies. </paragraph>
+<paragraph id="P-0008" lvl="0"><number>&lsqb;0008&rsqb;</number> From the foregoing it is apparent that the technical challenge posed in the recovery of high grade copper from low grade ore is to devise an efficient, environmentally safe method of selectively extracting copper from low concentration, low pH leach solutions to produce high concentration, high purity aqueous solutions suitable for electrowinning (i.e. free of ferric and chloride ions). </paragraph>
+</section>
+<section>
+<heading lvl="1">SUMMARY OF THE INVENTION </heading>
+<paragraph id="P-0009" lvl="0"><number>&lsqb;0009&rsqb;</number> The invention is a matrix-polyamine based material that extracts and separates selected transition metal ions from iron (III) ions from a solution containing a mixture of metal ions. In a preferred embodiment, the subject extraction material selectively extracts copper (II) from low pH solutions in the presence of iron (III) ions. The matrix-polyamine based material is rigid and durable in order to withstand high throughput conditions and requires the use of no organic solvents in its use and only a few in its manufacture. In a particularly preferred embodiment, the matrix is silica gel which is washed with acid to maximize surface hydroxyl groups. The gel is then dried and partially rehydrated. The hydrated surface of the silica gel is reacted with a short chain trifunctional silane having hydrocarbon substituents containing 1-6 carbon atoms, trifunctional leaving groups on the silicon atom that provide sites for covalently bonding the hydrocarbylsilyl to the silica gel surface through Si&mdash;O bonds, and a terminal leaving group that provides a site for covalently bonding a polyamine to the hydrocarbylsilyl through carbon-nitrogen bonds. A polyamine is then reacted with the hydrocarbylsilyl formed from the silanization of the hydrated gel surface to form an aminohydrocarbyl polymer covalently bound to the silica gel surface. The silica-polyamine is then reacted with picolylchloride (2-chloromethyl pyridine) or with pyridine 2-carboxaldehyde to create a highly selective extraction material. </paragraph>
+<paragraph id="P-0010" lvl="0"><number>&lsqb;0010&rsqb;</number> A three step high throughput system using the silica-polyamine extraction material of the subject invention is also described. The first step of the process selectively extracts copper from leach solutions containing high concentrations of ferric ions with no added solution modifiers. The second step purges the extracted copper of chloride ions using a saturated solution of sodium sulfate or a dilute sulfuric acid solution. Thirdly, the copper is stripped from the extraction material with sulfuric acid to yield a concentrated copper solution suitable for electrowinning. The column is ready to be reloaded after rinsing with water.</paragraph>
+</section>
+</summary-of-invention>
+<brief-description-of-drawings>
+<section>
+<heading lvl="1">BRIEF DESCRIPTION OF THE FIGURES </heading>
+<paragraph id="P-0011" lvl="0"><number>&lsqb;0011&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 1</cross-reference> shows the concentration of copper (II) and iron (III) remaining in the simulated mine leachate solution after being pumped through a column of silica-polyvinylamine/picolyl gel. &square; Fe(III), &squf; Cu(II) </paragraph>
+<paragraph id="P-0012" lvl="0"><number>&lsqb;0012&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 2</cross-reference> shows the concentration of copper (II) and iron (III) in the strip solution of the column used in <cross-reference target="DRAWINGS">FIG. 1</cross-reference>. &square; Fe(III), &squf; Cu(II) </paragraph>
+<paragraph id="P-0013" lvl="0"><number>&lsqb;0013&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 3</cross-reference> shows the molar fraction of metal ions adsorbed from solution by the extraction material of the subject invention against the original metal ion concentration of that solution compared with a polystyrene resin produced by Dow Chemical (XFS 43084). &Circlesolid; XFS Cu, &xcirc; XFS Fe, &squf; 250-500 &mgr;mD2P-PVACu, &square; 250-500 &mgr;mD2P-PVAFe, &diams; 90-105 &mgr;m D2P-PVA Cu, &diam; 90-105 &mgr;m D2P-PVA Fe </paragraph>
+<paragraph id="P-0014" lvl="0"><number>&lsqb;0014&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 4</cross-reference> shows the adsorptive profiles of the copper selective extraction material of the subject invention compared with Dow Chemical (XFS 43084) over a range of pHs. &diams; 90-105 &mgr;mD2P-PVA Cu, &diam; 90-150 &mgr;m S2P-PVAFe, &squf; 250-500 &mgr;m D2P-PVA Cu, &square; 250-500 &mgr;m D2P-PVA Fe, &Circlesolid; XFS Cu, &xcirc; XFS Fe </paragraph>
+<paragraph id="P-0015" lvl="0"><number>&lsqb;0015&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 5</cross-reference> shows copper (II) and iron (III) capacity (mmol/g) over an extended period of use in a column-type system. Capacities were tested at a flow rate of 2 bed volumes/min. &diams; D2P-PVA Cu, &diam; D2P-PVA-Fe, &Circlesolid; XFS Cu, &xcirc; XFS Fe </paragraph>
+</section>
+</brief-description-of-drawings>
+<detailed-description>
+<section>
+<heading lvl="1">DETAILED DESCRIPTION OF THE INVENTION </heading>
+<paragraph id="P-0016" lvl="0"><number>&lsqb;0016&rsqb;</number> The invention is a matrix-polyamine based material for the extraction of selected transition metals from iron (III) ions. In a particularly preferred embodiment, the matrix-polyamine based extraction material selectively extracts copper (II) ions from acidic solutions in the presence of iron (III) ions. Picolylchloride or pyridine 2-carboxaldehyde attached to a silica-polyamine base provides an extraction material that is highly selective for these copper ions. </paragraph>
+<paragraph id="P-0017" lvl="0"><number>&lsqb;0017&rsqb;</number> The matrix-polyamine base is known and has been described in U.S. Pat. Nos. 5,695,882 and 5,997,748. These patents are herein incorporated by reference. The surface of the matrix is chemically treated so as to covalently bind the reaction product of a polyamine with a hydrocarbylsilyl, such as the preferred haloalkylsilyl, to the matrix surface. This can be accomplished, for example, by first reacting a short chain trifunctional silane having a hydrocarbon substituent containing 1-6 carbon atoms and a terminal leaving group, such as a haloalkyl trifunctional silane, with the surface of the matrix in a manner such that the hydrocarbylsilyl is covalently bound with the matrix surface and then reacting a polyamine, such as polyethyleneimine, with the hydrocarbylsilyl to bind the polyamine to the hydrocarbylsilyl. The step of reacting the polyamine with the hydrocarbylsilyl must be such that it will yield multisite bound, but non-crosslinked, amino groups. </paragraph>
+<paragraph id="P-0018" lvl="0"><number>&lsqb;0018&rsqb;</number> Briefly, the matrix-polyamine base material is prepared by boiling the matrix in acid, drying and partially rehydrating the matrix surface. In the exemplified embodiment, the matrix is silica gel. The silica gel surface can be hydrated by applying a moisturized atmosphere, such as air passed through a saturated aqueous sodium bromide solution, to the surface in a controlled environment until a predetermined humidification has been attained as determined by the mass increase. </paragraph>
+<paragraph id="P-0019" lvl="0"><number>&lsqb;0019&rsqb;</number> The hydrated gel surface is then contacted with the above-defined short chain trifunctional silane, such as a haloalkyl trifunctional silane, in the presence of an inert organic solvent. The reaction between the hydrated surface of the silica gel and the silane produces a hydrocarbylsily that is covalently bonded to the gel surface by siloxanyl (Si&mdash;O) groups. After the reaction between the hydrated surface and the silane, the silanized gel is rinsed with an inert organic solvent and dried. </paragraph>
+<paragraph id="P-0020" lvl="0"><number>&lsqb;0020&rsqb;</number> The silanized and dried gel surface is then contacted with polyamine in the presence of an inert organic solvent or water to produce a multisite bound non-crosslinked polyamine coating on the matrix surface. </paragraph>
+<paragraph id="P-0021" lvl="0"><number>&lsqb;0021&rsqb;</number> Suitable trifunctional groups on the silica of the silanizing agent include trichloro, trimethoxy, and triethoxy groups; trichloro being preferred. Suitable groups for the silanizing agent on the hydrocarbyl fragment include bromine, chlorine and iodine, tosylate, mesylate, brosylate, and triflate; bromine and chlorine being preferred. Suitable hydrocarbyl groups include short chain aliphatic hydrocarbons having 1-6 carbon atoms; propyl being preferred, based on pricing of the trichlorosilyl halide. A preferred molecular weight (M.W.) range for the polyamine is 300-60,000; with polyvinylamine or polyalylamine in that range being most preferred. </paragraph>
+<paragraph id="P-0022" lvl="0"><number>&lsqb;0022&rsqb;</number> Any number of suitable support materials may be substituted in place of the silica gel for use as an extraction material; silica gel merely being preferred because of its availability in sizes particularly suitable for use in continuous-flow extraction processes. </paragraph>
+<paragraph id="P-0023" lvl="0"><number>&lsqb;0023&rsqb;</number> A particularly preferred matrix-polyamine base material comprises an alkylated silica gel where the silica gel surface is first reacted with a haloalkyltrichlorosilane and, then that reaction product is further reacted with polyvinylamine to yield a polyvinylaminoalkylsilyl activated surface. </paragraph>
+<paragraph id="P-0024" lvl="0"><number>&lsqb;0024&rsqb;</number> The sequence of formulating the matrix-polyamine base material has some critical components. First, the matrix surface is washed with an acid, for example, nitric acid, dried and rehydrated to insure that a monolayer of water overlays the surface. Second, the clean and hydrated surface must be silanized before the polyamine is brought into the reaction. Polyamine addition is commenced only after the silanization procedure has been completed. By silanizing the hydrated surface with a silane having a short chain hydrocarbyl substituent containing 1-6 carbon atoms and a terminal leaving group, the surface to the matrix material will be virtually completely covered by Srf-O&mdash;Si-hydrocarbyl groups, where Srf represents the matrix surface, and by lateral Si&mdash;O&mdash;Si bonds. Hydration of the surface promotes the formation of these lateral bonds. The result is a horizontally polymerized matrix surface, covalently bound to the surface by Si&mdash;O bonds and cross-linked by Si&mdash;O&mdash;Si bonds with essentially few or no &mdash;OH groups left unreacted on the matrix&apos;s surface. The short hydrocarbyl chains extend from the laterally polymerized silyl groups and not from the matrix surface, and are not themselves cross-linked. As a consequence, of this form of silanization, the hydrocarbylated matrix surface becomes hydrolytically stable in both high and low pH solutions. Polyamine addition to the cross-linked, silanized surface anchors, results in the substitution of amino groups onto the ends of short hydrocarbyl chains without destabilizing either the matrix surface or the covalent bonds with the hydrocarbyl substituent. In the context of a preferred process, employing a short chain trifunctional alkyl silane containing 1-6 carbon atoms, the result is a densely alkylated extraction material surface, that is optimal for bonding amino groups and for addition of functionalizing groups or ligands. </paragraph>
+<paragraph id="P-0025" lvl="0"><number>&lsqb;0025&rsqb;</number> Selectivity for certain transition metal ions in the presence of ferric iron is achieved by the addition of a pyridine functional group to the matrix-polyamine base material. These pyridine functional groups can be a pyridine ring containing an alkyl chain with 1-4 carbons with a terminal halogen tosylate, mesylate, brosylate and triflate or a pyridine ring containing an alkyl chain with 1-4 carbons with a terminal aldehyde. Synthesis of matrix-polyamine/amino or imino pyridine extraction material is accomplished in two ways. The first way (Method A) converts the pyridine nitrogen of the picolylchloride hydrochloride salt from the acid form to the free base form using a strong base. In a preferred embodiment, potassium hydroxide is used as the base. The free base pyridine moiety of picolylchloride is then separated from the resulting salt before adding it to the matrix-polyamine base. In the second step the solution containing the free base pyridine moiety is added to the matrix-polyamine/methanol slurry. In a second embodiment triethylamine is used as the base. The triethylamine, the pyridine containing ligand and the matrix-polyamine material are all combined in a single reaction. In this embodiment the base is used to convert the pyridine containing ligand to the free base form and scavenge the acid formed during the reaction. The resulting 2-picolylamine polyamine is shown in Formula 1. The second way (Method B) involves the addition of pyridine 2-carboxaldehyde directly to silica-polyamine. A slurry of the silica polyamine and an organic solvent is heated for several hours at 60-90&deg; C. Method B yields 2-pyrindine carboximine polyamine shown in Formula 2.  
+<chemistry-cwu id="CHEM-US-00001">
+<number>1</number>
+<image id="EMI-C00001" he="296.2008" wi="216.027" file="US20020139753A1-20021003-C00001.TIF"/>
+<chemistry-chemdraw-file id="CHEMCDX-00001" file="US20020139753A1-20021003-C00001.CDX"/>
+<chemistry-mol-file id="CHEMMOL-00001" file="US20020139753A1-20021003-C00001.MOL"/>
+</chemistry-cwu>
+</paragraph>
+<paragraph id="P-0026" lvl="0"><number>&lsqb;0026&rsqb;</number> Properties afforded the extraction material of the subject invention through this synthetic route include long material lifetime, high capacities for many heavy metal ions, selectivity for heavy metal ions with no interference from alkali or alkaline earth metals, the ability to extract these metal ions at high flow rates to very low levels, the ability to release these captured metals in highly concentrated solutions and most importantly selectivity for copper ions in the presence of other transition metals ions including ferric ions. </paragraph>
+<paragraph id="P-0027" lvl="0"><number>&lsqb;0027&rsqb;</number> The advantageous properties of the subject material are revealed by performance defining tests. These tests can be divided into two broad categories, batch tests and flow tests. Batch tests are conducted b subjecting a predetermined amount of extraction material to a predetermined amount of feed solution for a set amount of time. Batch tests are used to determine capture kinetics, absorption isotherms, and pH profiles. Flow tests are conducted by flowing the feed solution through the extractant. Flow tests elucidate how the materials will perform under process conditions. </paragraph>
+<paragraph id="P-0028" lvl="0"><number>&lsqb;0028&rsqb;</number> The gel containing the picolyl group was tested under flow conditions to determine its ability to separate copper from ferric iron. The feed solution, a simulated or leach solution, contained a 1:3 weight ratio of copper (II) to iron (III). The copper was added as copper (II) sulfate and the iron as iron (III) chloride, this formulation produced a chloride ion element in the solution as well as the heavy metals to further simulate leach solutions. The solution was used at its intrinsic pH of &tilde;1.2. The feed solution was applied to a column containing silica-polyvinylamine/picolyl gel. The feed solution was allowed to flow through the column. A strip solution of sulfuric acid was used to release metal captured and held on the gel surface. The results of these preliminary flow tests revealed that the strip solution contained a ratio of approximately 100:1 copper to iron. </paragraph>
+<paragraph id="P-0029" lvl="0"><number>&lsqb;0029&rsqb;</number> Early trials however revealed a significant chloride ion concentration in the strip solution. The gel has a very high binding affinity for copper, for the material made by Method A concentrated sulfuric acid or 4N acid heated to 70&deg; C. is required to completely strip the copper from the gel. The material made by Method B can be stripped with 4N acid. A second series of trials was carried out with the objective of reducing the chloride ion content of the eluant or strip solution. To accomplish this saturated sodium sulfate solution was pumped through the column after it was loaded with copper from the simulated leach solution. The gel was then stripped with concentrated sulfuric acid and the strip solution was analyzed. The chloride ion content in the strip solution was below detection using ion chromatography. The sodium sulfate solution was analyzed for copper and was found to contain only low concentrations of the metal, for example, 23 ppm. </paragraph>
+<paragraph id="P-0030" lvl="0"><number>&lsqb;0030&rsqb;</number> The matrix-polyamine/picolyl extraction material of the subject invention provides a basis on which to build an environmentally friendly, efficient system, to extract copper from acidic low copper concentration leach solutions and produce a highly concentrated high purity copper solution suitable for electrowinning. A three step high throughput system provides high purity copper from low concentration leach solutions. The first step of the process selectively extracts copper from leach solutions containing high concentrations of ferric ions with no added solution modifiers. The second step purges the extracted copper of chloride ions using a saturated solution of sodium sulfate or dilute sulfuric acid solution. Thirdly, the copper is stripped from the extraction material with sulfuric acid to yield a concentrated copper solution suitable for electrowinning. The column is ready to be reloaded after rinsing with water. </paragraph>
+<paragraph id="P-0031" lvl="0"><number>&lsqb;0031&rsqb;</number> The economic benefits realized from this process are elimination of cost associated with solvent and ligand loss, predicted decreased energy consumption and predicted decreased processing time relative to the solvent extraction systems currently in use. Major environmental benefits are realized with the elimination of organic solvents from the process. Major economic advantages over currently available chelator resins are lower material cost and longer usable lifetimes. </paragraph>
+<paragraph id="P-0032" lvl="0"><number>&lsqb;0032&rsqb;</number> Although the above discussion and the following examples focus upon a preferred embodiment of the extraction material of the subject invention, it is noted that the subject invention can be used to separate other transition metal ions from iron (III) ions. For example, ions, including but not limited to, cobalt (II), nickel (II) and zinc (II) can be selectively extracted in the presence of iron (III) ions using the extraction material of the subject invention. </paragraph>
+<paragraph id="P-0033" lvl="0"><number>&lsqb;0033&rsqb;</number> The following examples are offered to further illustrate but not limit both the composition and the methods of the present invention. All percentages are by weight and all solvent mixture proportions are by volume unless otherwise noted. </paragraph>
+</section>
+<section>
+<heading lvl="1">EXAMPLE 1 </heading>
+<paragraph id="P-0034" lvl="7"><number>&lsqb;0034&rsqb;</number> Preparation of silica-polyvinylamine/2-picolylchloride (D2P-PVA) (Method A) </paragraph>
+<paragraph id="P-0035" lvl="0"><number>&lsqb;0035&rsqb;</number> 1. Amorphous silica gel (such as Crosfield, 90-105 microns (&mgr;m), 150 &angst; pore size with 375 meters<highlight><superscript>2</superscript></highlight>/grams (g) surface area) (200 g) was mixed with 1N nitric acid (800 milliliters (mL)) in a 2 liter (L) three-necked round bottom flask. The contents were degassed for two minutes (min). After degassing, the flask was put into a heating well and a reflux condenser, a thermometer and a mechanical stirrer were attached to the flask. The contents of the flask were stirred and heated at 100&deg; F. for 6 hours (hr). At the end of the 6 hr heating, the contents were cooled to room temperature and dumped into a 3 L sintered glass funnel. The gel was washed three times, 800 mL each, with deionized (DI) water. The gel was further washed with methanol three times (800 mL each). After most of the methanol was removed, the gel was spread in an open pan and air dried over night. The air-dried gel in the pan was placed in an oven and dried at 120&deg; F. for 2-4 hr until constant weight was reached. Typical weight lost during this acid wash is about 6.4-7.1%. </paragraph>
+<paragraph id="P-0036" lvl="0"><number>&lsqb;0036&rsqb;</number> 2. The oven-dried gel (200 g) was placed in a 3 L sintered glass funnel. Moisturized air from a saturated solution of sodium bromide was passed through the gel from the outlet of the funnel. The flow rate of the moisturized air was regulated so that a fountain-like motion of the gel was observed. During this step, the weight of gel was checked every two hr until constant weight was obtained. Typical time required is about 12-16 hr and the average weight gain is 4.2-4.6%. </paragraph>
+<paragraph id="P-0037" lvl="0"><number>&lsqb;0037&rsqb;</number> 3. The hydrated gel (200 g) was then placed in a 2 L single-necked round bottomed flask. Heptane (704.9 mL, dried over molecular sieves) and bromopropyltrichloro silane (951 mL, freshly distilled) were well mixed in a 1 L Erlenmeyer flask and slowly poured into the round bottom flask via a funnel. Hydrochloric gas formed vigorously and the contents were gently swirled to let more hydrochloric gas evolve. After most of the gas evolution subsided, the flask was attached to a mechanical vacuum pump and degassed for 5 min. At the end of the 5 min, the flask was attached to a mechanical motor and spun slowly for 16 hr. After 16 hr of spinning, the contents were poured into a 3 L sintered glass funnel and the gel was washed successively with heptane, three times, methanol, three times, water, three times, and finally methanol, three times, (800 mL each). The gel was air dried in an open pan and then in the oven at 110&deg; C. for 2 hr. Typical weight gain is about 16-30%. </paragraph>
+<paragraph id="P-0038" lvl="0"><number>&lsqb;0038&rsqb;</number> 4. Free base poly(vinyl amine) (PVA) (M.W. 5,000) (pH&equals;13) in a 20.8% solution (400.00 g), and methanol (400 mL) were mixed in a 3 L round bottom flask. The bromopropyl gel (200.00 g) from step 3 was added to the flask. The flask was swirled to wet all of the bromopropyl gel and to form a slurry. The contents were degassed using an aspirator until the foaming stopped. After the degassing process the flask was attached to a motor and spun for a period of between 2 hr and 3 days at room temperature. At the end of the stirring process the contents was poured into a 3 L sintered glass funnel and washed with DI water three times, washed once with 4N sulfuric acid, three times with DI water, once with 4N ammonium hydroxide, three times with DI water and three times with methanol. The resulting PVA gel was air dried in an open pan. Typical weight gains are between 12 and 18 percent. </paragraph>
+<paragraph id="P-0039" lvl="0"><number>&lsqb;0039&rsqb;</number> 5. 2-picolylchloride hydrochloride (24.61 g) was dissolved in methanol (60 mL) in a 150 mL beaker. Powdered potassium hydroxide was dissolved in the 2-picolylchloride hydrochloride solution. The resulting precipitate was filtered using a Buchner funnel with filter paper. The filtrate was collected and transferred to a 500 mL 3-neck round bottom flask. Sixty mL of tetrahydrofurran (TBF) was added to the solution in the round bottom flask and swirled until it was well-mixed. The air-dried PVA gel (30.00 g) from the previous step was added to the flask. The flask was swirled to wet all of the PVA gel and form a slurry. The contents were degassed using an aspirator until the foaming stopped. After degassing, the flask was put into a heating well. A TEFLON paddle glass rod mechanical stirrer was fitted into the center neck. The pH was checked and adjusted to between 9-13 pH units, preferably 13, by manually adding, dropwise, 2N potassium hydroxide in methanol. While stirring the contents were heated to reflux. The pH was checked every hour and manually adjusted with 2 N potassium hydroxide in methanol as needed to maintain a pH of 9-13 while refluxing. After 9 hr of refluxing the contents were cooled to room temperature and poured into a 500 mL sintered glass funnel and washed with 120 mL each of methanol, three times, DI water, three times, concentrated sulfuric acid, once, DI water, three times, and methanol, three times. The resulting gel (D2P-PVA) was air dried in an open pan. </paragraph>
+</section>
+<section>
+<heading lvl="1">EXAMPLE 2 </heading>
+<paragraph id="P-0040" lvl="7"><number>&lsqb;0040&rsqb;</number> Preparation of silica-polyethyleneimine/2-picolylchloride (D2P-PEI)(Method B) </paragraph>
+<paragraph id="P-0041" lvl="0"><number>&lsqb;0041&rsqb;</number> 1. Complete steps 1-3 of Example 1. </paragraph>
+<paragraph id="P-0042" lvl="0"><number>&lsqb;0042&rsqb;</number> <highlight><bold>2</bold></highlight>. Free base poly(ethyleneimine) (PEI) (M.W. 1,200) (pH&equals;13) in a 50 % solution (300.00 g), distilled water (100 mnL) and methanol (300 mL) were mixed in a 3 L round bottom flask. The bromopropyl gel (200.00 g) from step 3 was added to the flask. The flask was swirled to wet all of the bromopropyl gel and to form a slurry. The contents were degassed using an aspirator until the foaming stopped. After the degassing process the flask was attached to a motor and spun for a period of between 2 hr and 3 days at room temperature. At the end of the stirring process the contents was poured into a 3 L sintered glass funnel and washed with DI water three times, washed once with 4N sulfuric acid, three times with DI water, once with 4N ammonium hydroxide, three times with DI water and three times with methanol. The resulting PEI gel was air dried in an open pan. Typical weight gains are between 12 and 18 percent. </paragraph>
+<paragraph id="P-0043" lvl="0"><number>&lsqb;0043&rsqb;</number> 3. 2-picolylchloride hydrochloride (24.61 g) was dissolved in methanol (60 mL) in a 150 mnL beaker. Powdered potassium hydroxide was dissolved in the 2-picolylchloride hydrochloride solution. The resulting precipitate was filtered using a Buchner funnel with filter paper. The filtrate was collected and transferred to a 500 mL 3-neck round bottom flask. Sixty mL of tetrahydrofurran (THF) was added to the solution in the round bottom flask and swirled until it was well-mixed. The air-dried PEI gel (30.00 g) from the previous step was added to the flask. The flask was swirled to wet all of the PEI gel and form a slurry. The contents were degassed using an aspirator until the foaming stopped. After degassing, the flask was put into a heating well. A TEFLON paddle glass rod mechanical stirrer was fitted into the center neck. The pH was checked and adjusted to between 9-13 pH units, preferably 13, by manually adding, dropwise, 2N potassium hydroxide in methanol. While stirring the contents were heated to reflux. The pH was checked every hr and manually adjusted with 2 N potassium hydroxide in methanol as needed to maintain a pH of 9-13 while refluxing. After 9 hr of refluxing the contents were cooled to room temperature and poured into a 500 mL sintered glass funnel and washed with 120 mL each of methanol, three times, DI water, three times, concentrated sulfuric acid, once, DI water, three times, and methanol, three times. The resulting gel (D2P-PEI) was air dried in an open pan. Typical weight gains are between 10 and 35%. </paragraph>
+</section>
+<section>
+<heading lvl="1">Example 3 </heading>
+<paragraph id="P-0044" lvl="7"><number>&lsqb;0044&rsqb;</number> Preparation of silica-polyallylamine/2-picolylchloride (D2P-PAA)(Method C) </paragraph>
+<paragraph id="P-0045" lvl="0"><number>&lsqb;0045&rsqb;</number> 1. Complete steps 1 and 2 of Example 1. </paragraph>
+<paragraph id="P-0046" lvl="0"><number>&lsqb;0046&rsqb;</number> 2. The hydrated gel (100 g) was then placed in a 1 L single-necked round bottomed flask. Heptane (&tilde;353 mL, dried over molecular sieves) was added to chloropropyltrichloro silane (47 mL) in a 500 mL graduated cylinder to bring the total solution volume up to 400 mL . The graduated cylinder was agitated frequently to ensure mixing of the reagents. The contents of the graduated cylinder were slowly poured into the round bottomed flask via a funnel. Hydrogen chloride gas formed vigorously and the contents were gently swirled to allow more hydrogen chloride gas to evolve. After most of the gas evolution subsided, the flask was attached to a vacuum aspirator and degassed for 5 min. At the end of the 5 min the flask was attached to a mechanical stirrer and spun slowly (60 rpm) for 16 hr. After 16 hr of spinning, the contents were placed on a rotovap in a 100&deg; C. water bath until the gel was dry. The gel was then poured into a 3 L sintered glass funnel and the gel was washed successively three times with methanol, three times with DI water, and three times methanol (400 mL each). The gel was air dried in an open pan overnight and then in an oven at 110&deg; C. for 2 hr. The weight gain is typically 14-20%. </paragraph>
+<paragraph id="P-0047" lvl="0"><number>&lsqb;0047&rsqb;</number> 3. Free base poly(allyl amine) (PAA) (M.W. 11,400) (pH&equals;11.5) in a 15.4% solution (131 mL), and methanol (69 mL) were mixed in a 500 mL round bottomed flask and swirled until well mixed. The chloropropyl gel (50.00 g), from the previous step, was added to the flask. The contents were swirled to wet all of the chloropropyl gel and to form a slurry. The contents were degassed using a vacuum aspirator until the foaming stopped. After degassing, the flask was attached to a rotary stirrer, placed in a 50&deg; C. oil bath, and stirred for 3 days. At the end of the stirring process the contents were poured into a 500 mL sintered glass funnel and washed three times with DI water, once with 4N sulfuric acid, three times with DI water, once with 4N ammonium hydroxide, three times with DI water, and two times with methanol (200 mL each). The resulting PAA gel was air dried in an open pan overnight. Typical weight gains are between 11-18%. </paragraph>
+<paragraph id="P-0048" lvl="0"><number>&lsqb;0048&rsqb;</number> 4. 2-picolylchloride hydrochloride (5.27 g) was dissolved in methanol (9 mL) in a 100 mL round bottomed flask. Triethylamine (11 mL) was added to the flask and the contents were swirled to mix. PAA gel (5.00 g) from the previous step was added to the flask and gently swirled to wet the gel and form a slurry. The contents were degassed using a vacuum aspirator until the evolution of small bubbles stopped. After degassing, the flask was attached to a rotary stirrer, placed in a 50&deg; C. oil bath, and stirred for 4 hr. After 4 hr the pH of the solution was checked and adjusted to 10.1 with 8 N sodium hydroxide. The slurry was replaced on the stirrer in the oil bath and stirring continued for a total of 3 days. At the end of the stirring process the contents were poured into a 100 mL sintered glass funnel and washed three times with methanol, three times with DI water, once with conc. sulfuric acid, three times with DI water, and two times with methanol (200 mL each). The resulting D2P-PAA gel was air dried in an open pan overnight. Typical weight gains are between 10-20%. </paragraph>
+</section>
+<section>
+<heading lvl="1">EXAMPLE 4 </heading>
+<paragraph id="P-0049" lvl="7"><number>&lsqb;0049&rsqb;</number> Preparation of silica polyvinylamine/2-pyridine carboxaldehyde (2DPI-PVA). </paragraph>
+<paragraph id="P-0050" lvl="0"><number>&lsqb;0050&rsqb;</number> In a 3-neck round bottom flask 10 g of PVA gel from step 4 of Example 1 was mixed with 40 mnL of methanol. The contents were swirled until all of the gel was wetted and a slurry was formed. The resulting slurry was degassed for 2 min under vacuum aspiration (until the release of small bubbles ceased). The round bottom flask was then fitted to a reflux condenser, a glass rod stirred fitted with TEFLON paddle and a nitrogen source. The headspace of the flask was purged with nitrogen gas and nitrogen was passed through the reaction vessel throughout the reaction. The heating mantle and condenser cooling water were started and the temperature of the reactants brought up to the reflux temperature. 4.3 mL of pyridine carboxaldehyde was added to the contents of the flask and the reaction carried out at reflux for 2 hours. After cooling the resultant slurry was drained by vacuum filtration using a fritted glass funnel. Using the same vacuum filtration set-up the gel was rinsed 3 times with 40 mL of methanol; 3 times with 40 mL of DI water, 1 time with 40 mL of 4 N sulfuric acid, three times with 40 mL of DI water, and 2 times with 40 mL of methanol. The resulting buff colored gel (2PCI-PVA) was then air dried overnight. Typical weight gains 4 were between 9 and 12%. </paragraph>
+</section>
+<section>
+<heading lvl="1">EXAMPLE 5 </heading>
+<paragraph id="P-0051" lvl="7"><number>&lsqb;0051&rsqb;</number> Separation of copper (II) from iron (III). </paragraph>
+<paragraph id="P-0052" lvl="0"><number>&lsqb;0052&rsqb;</number> Gel (2.25 g) as prepared in Example 1 was packed into a plastic column (1.1 centimeter (cm) (diameter) &times;4 cm (length)). A challenge solution of 3.93 g of copper sulfate and 14.52 g of ferric chloride dissolved in 1 L of deionized water was pumped through the column at a flow rate of 2 column volumes/min. The challenge solution (70 mL) was pumped through the column followed by DI water (30 mL) and the flowthrough (100 mL) was collected for analysis. Sequestered metal was eluted from the column by pumping concentrated sulfuric acid (5 mL) through the column at a flow rate of 2 column volumes/min followed by DI water (15 mL) and the eluant (20 mL) was collected for analysis. </paragraph>
+<paragraph id="P-0053" lvl="0"><number>&lsqb;0053&rsqb;</number> Iron (III) flows through the column while copper (II) is captured by the column and released into the eluant. <cross-reference target="DRAWINGS">FIG. 1</cross-reference> shows the flowthrough contains the bulk of the iron (III) while <cross-reference target="DRAWINGS">FIG. 2</cross-reference> shows most of the copper appears in the eluant. Typical separation factors are 400-1,100 depending upon conditions. The separation factor was derived from the following equation D<highlight><subscript>cu</subscript></highlight>/D<highlight><subscript>Fe </subscript></highlight>where D<highlight><subscript>cu</subscript></highlight>&equals;Cu adsorbed/Cu remaining in solution and D<highlight><subscript>Fe</subscript></highlight>&equals;Fe adsorbed/Fe remaining in solution. </paragraph>
+<paragraph id="P-0054" lvl="0"><number>&lsqb;0054&rsqb;</number> The simulated mine leachate solution contained approximately 1000 parts per million (ppm) Cu<highlight><superscript>&plus;&plus;</superscript></highlight> and approximately 3000 ppm Fe<highlight><superscript>&plus;&minus;&plus;</superscript></highlight>. Because the column was rinsed with deionized water which was added to the flowthrough prior to analysis, the maximum concentration of ions in the flowthrough was approximately 2100 ppm Fe<highlight><superscript>&plus;&plus;&plus;</superscript></highlight> and approximately 700 ppm Cu<highlight><superscript>&plus;&plus;</superscript></highlight>. </paragraph>
+</section>
+<section>
+<heading lvl="1">EXAMPLE 6 </heading>
+<paragraph id="P-0055" lvl="7"><number>&lsqb;0055&rsqb;</number> Separation of copper (II) from iron (III) at low concentrations. </paragraph>
+<paragraph id="P-0056" lvl="0"><number>&lsqb;0056&rsqb;</number> The subject matrix-polyamine based material was compared to a commercially available resin (Dowex XFS-43084) and is more effective at low copper ion concentrations. The gel of Example 1 having a particle size of 90-150 &mgr;m (90-150 &mgr;m D2P-PVA), gel made using the method of Example 1 and having a particle size of 250-500 &mgr;m (250-500 &mgr;m D2P-PVA) and XFS 43084 (XFS) a Dowex resin made expressly for the selective extraction of copper (II) were compared in batch tests. Bulk XFS contains a large range of particle sizes with the bulk being above 500 &mgr;m. For the purpose of uniformity the bulk resin was mechanically sieved and the fraction of particles between 250 &mgr;m and 500 &mgr;m were extracted. The XFS was weighed out for these experiments in the moist dry state in which it was received. The subject extraction material was also weighed in the air-dried state. 250-500 &mgr;m XFS, 90-105 &mgr;m subject gel and 250-500 &mgr;m subject gel (0.2000 g (&plusmn;0.0002 g)) were weighed out into glass screw top vials. 20 mL of a solution containing various concentrations of iron (III) only, copper (II) only, and of iron (III) copper (II) mix pH adjusted to 2.0 were added using a volumetric pipette. Table 1 contains the metal ion concentrations in the test solutions.  
+<table-cwu id="TABLE-US-00001">
+<number>1</number>
+<table frame="none" colsep="0" rowsep="0">
+<tgroup align="left" colsep="0" rowsep="0" cols="4">
+<colspec colname="1" colwidth="70PT" align="left"/>
+<colspec colname="2" colwidth="63PT" align="left"/>
+<colspec colname="3" colwidth="42PT" align="left"/>
+<colspec colname="4" colwidth="42PT" align="left"/>
+<thead>
+<row>
+<entry namest="1" nameend="4" align="center">TABLE 1</entry>
+</row>
+<row>
+<entry></entry>
+</row>
+<row><entry namest="1" nameend="4" align="center" rowsep="1"></entry>
+</row>
+<row>
+<entry>Cu in Cu:Fe Mix</entry>
+<entry>Fe in Cu:Fe Mix</entry>
+<entry>Cu Only</entry>
+<entry>Fe Only</entry>
+</row>
+<row><entry namest="1" nameend="4" align="center" rowsep="1"></entry>
+</row>
+</thead>
+<tbody valign="top">
+<row>
+<entry>0.05 M</entry>
+<entry>0.15 M</entry>
+<entry>0.20 M</entry>
+<entry>0.20 M</entry>
+</row>
+<row>
+<entry>0.025 M</entry>
+<entry>0.075 M</entry>
+<entry>0.10 M</entry>
+<entry>0.10 M</entry>
+</row>
+<row>
+<entry>0.013 M</entry>
+<entry>0.038 M</entry>
+<entry>0.050 M</entry>
+<entry>0.050 M</entry>
+</row>
+<row>
+<entry>0.0063 M</entry>
+<entry>0.019 M</entry>
+<entry>0.025 M</entry>
+<entry>0.025 M</entry>
+</row>
+<row>
+<entry>0.0031 M</entry>
+<entry>0.0094 M</entry>
+<entry>0.013 M</entry>
+<entry>0.013 M</entry>
+</row>
+<row>
+<entry>0.0016 M</entry>
+<entry>0.0047 M</entry>
+<entry>0.0063 M</entry>
+<entry>0.0063 M</entry>
+</row>
+<row>
+<entry>0.00078 M</entry>
+<entry>0.0023 M</entry>
+<entry>0.0031 M</entry>
+<entry>0.0031 M</entry>
+</row>
+<row><entry namest="1" nameend="4" align="center" rowsep="1"></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</table-cwu>
+</paragraph>
+<paragraph id="P-0057" lvl="0"><number>&lsqb;0057&rsqb;</number> The vials were placed on a shaker for 24 hr to ensure constant agitation. At that time an aliquot of the metal ion solution was removed for analysis and preserved with trace metal grade nitric acid. This test was carried out in triplicate to ensure reliability of the data. The collected samples were then diluted to bring the metal concentrations into a range which could be analyzed by FAA spectroscopy. After standing 24 hr at an elevated pH (2.0) the high iron (III) concentration solutions began to form iron (III) precipitates. Negative values appear because, at the higher iron (III) concentrations, more iron (III) precipitated out from the control solutions than from the samples containing the extraction materials. </paragraph>
+<paragraph id="P-0058" lvl="0"><number>&lsqb;0058&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 3</cross-reference> shows that XFS is efficient at high copper concentrations but its effectiveness drops off as the copper concentration decreases. The matrix-based polyamine material of the subject invention however effectively removes copper from mixed metal solutions at both high and low concentrations. </paragraph>
+</section>
+<section>
+<heading lvl="1">EXAMPLE 7 </heading>
+<paragraph id="P-0059" lvl="7"><number>&lsqb;0059&rsqb;</number> Separation of copper (II) from Fe (III) at low pHs. </paragraph>
+<paragraph id="P-0060" lvl="0"><number>&lsqb;0060&rsqb;</number> 0.2000 g (&plusmn;0.0002 g) quantities of the extraction material of Example 1 having a particle size of 90-150 &mgr;m (90-150 &mgr;m D2P-PVA), extraction material made by the method of Example 1 and having a particle size of 250-500 &mgr;m (250-500 &mgr;m D2P-PVA) and XFS resin (Dowex) (XFS) were placed in glass screw top vials. 20 mL aliquots of a 0.0031 M Cu<highlight><superscript>&plus;&plus;</superscript></highlight> and 0.00934 M Fe<highlight><superscript>&plus;&plus;&plus;</superscript></highlight> solution were added to the vials using a volumetric pipette. The pHs of the solutions were adjusted to 0.0, 0.5, 1.0, 1.5, 2.0 and 2.5 using concentrated sulfuric acid or 8N sodium hydroxide prior to being placed into the vials. The vials were placed on a shaker to ensure constant agitation. An aliquot of the metal ion solution was removed for analysis and preserved with trace metal grade nitric acid after 24 hr. Samples were run in triplicate to ensure reliability of the data. Collected samples were diluted to bring the metal concentration into a range which could be analyzed by FAA spectroscopy. pH 2.5 samples was discounted because after 4 hr the iron (III) had significantly precipitated from solution. <cross-reference target="DRAWINGS">FIG. 4</cross-reference> shows that at low pH the extraction material of the subject invention is effective in separating Cu<highlight><superscript>&plus;&plus;</superscript></highlight> from Fe<highlight><superscript>&plus;&plus;&plus;</superscript></highlight> and at pH 0.5 the 90-150 &mgr;m gel is superior to the Dowex resin. This is important not only in mining process but also in industry where waste streams can be very acidic. If valuable metals such as copper can be extracted before the pH is adjusted they will not have to be recovered from the heavy metal sludge which can form on pH adjustment making recovery easier. </paragraph>
+</section>
+<section>
+<heading lvl="1">EXAMPLE 8 </heading>
+<paragraph id="P-0061" lvl="7"><number>&lsqb;0061&rsqb;</number> Useable gel lifetime. </paragraph>
+<paragraph id="P-0062" lvl="0"><number>&lsqb;0062&rsqb;</number> Longevity tests were carried out in the following manner. 5 cubic centimeter column were loaded with the gel prepared in Example 1 (D2P-PVA) or Dowex XFS resin (XFS). 100 mL of DI water was pumped through each column to wet the material. Then, 70 mnL of a 1000 ppm Cu<highlight><superscript>&plus;&plus;</superscript></highlight>: 3000 ppm Fe<highlight><superscript>&plus;&plus;&plus;</superscript></highlight>, from copper sulfate and ferric chloride, solution was pumped through the column at a flow rate of 2 column volumes/min and the flowthrough was collected. 30 mL of DI water was then pumped through each column to rinse the column. The rinse water was collected along the flowthrough. The collected solutions were preserved with trace metal grade nitric acid and diluted to enable FAA spectroscopic analysis for Cu<highlight><superscript>&plus;&plus;</superscript></highlight> and Fe<highlight><superscript>&plus;&plus;&plus;</superscript></highlight>. The columns were then stripped of metal by pumping 4 mnL of sulfuric acid through the column. The XFS column was stripped with 8N H<highlight><subscript>2</subscript></highlight>SO<highlight><subscript>4 </subscript></highlight>while the D2P-PVA column was stripped with concentrated acid. The strip solution as well as 16 mL of DI water were collected and later diluted for analysis for Fe<highlight><superscript>&plus;&plus;</superscript></highlight> and Cu<highlight><superscript>&plus;&plus;&plus;</superscript></highlight> by FAA spectroscopy. The columns were then rinsed with 100 mL of DI water. The rinse water was discarded. </paragraph>
+<paragraph id="P-0063" lvl="0"><number>&lsqb;0063&rsqb;</number> When not collecting capacity samples, the columns were attached to a six-way manifold equipped with solenoid valves wired to a computer containing software to carry out the following cycle. The pump was adjusted to produce a flow rate of 10 column volumes/min. The challenge solution was pumped through for 6 seconds (sec) followed by DI water for 10 sec. Concentrated sulfuric acid was pumped through the columns for 5 sec. A 36 sec rinse with DI water completed the cycle. </paragraph>
+<paragraph id="P-0064" lvl="0"><number>&lsqb;0064&rsqb;</number> The metal ion capacity was checked after 25, 75, 150, 300, 450, 700, 1000, and 1500 cycles. The absorbence data from the FAA was converted to millimoles of metal ion per g of extractive material and plotted. <cross-reference target="DRAWINGS">FIG. 5</cross-reference> shows that at 1500 cycles both materials seem to have retained their capacity for copper (II) and rejection for iron (III). It is also clear from <cross-reference target="DRAWINGS">FIG. 5</cross-reference> that at a flow rate of 2 column volumes/min 90-105 micron D2P-PVA has a higher copper (II) capacity than XFS. D2P-PVA also has a greater separation power demonstrated by the distance between the copper (II) and iron (III) lines of the graph. </paragraph>
+</section>
+<section>
+<heading lvl="1">EXAMPLE 9 </heading>
+<paragraph id="P-0065" lvl="7"><number>&lsqb;0065&rsqb;</number> Flow capacity. </paragraph>
+<paragraph id="P-0066" lvl="0"><number>&lsqb;0066&rsqb;</number> Flow capacity tests indicate how a material may perform in a process setting. Flow capacity tests were conducted with the procedure outlined in paragraph one of Example 7. The results of these test for five materials are presented in Table 2.  
+<table-cwu id="TABLE-US-00002">
+<number>2</number>
+<table frame="none" colsep="0" rowsep="0">
+<tgroup align="left" colsep="0" rowsep="0" cols="4">
+<colspec colname="1" colwidth="84PT" align="left"/>
+<colspec colname="2" colwidth="49PT" align="center"/>
+<colspec colname="3" colwidth="49PT" align="center"/>
+<colspec colname="4" colwidth="35PT" align="center"/>
+<thead>
+<row>
+<entry namest="1" nameend="4" align="center">TABLE 2</entry>
+</row>
+<row>
+<entry></entry>
+</row>
+<row><entry namest="1" nameend="4" align="center" rowsep="1"></entry>
+</row>
+<row>
+<entry></entry>
+<entry>Cu<highlight><superscript>&plus;&plus;</superscript></highlight> Capacity</entry>
+<entry>Fe<highlight><superscript>&plus;&plus;&plus;</superscript></highlight> Capacity</entry>
+<entry>Separation</entry>
+</row>
+<row>
+<entry>Material</entry>
+<entry>(mmol/g)</entry>
+<entry>(mmol/g)</entry>
+<entry>Factor</entry>
+</row>
+<row><entry namest="1" nameend="4" align="center" rowsep="1"></entry>
+</row>
+</thead>
+<tbody valign="top">
+<row>
+<entry></entry>
+</row>
+</tbody>
+</tgroup>
+<tgroup align="left" colsep="0" rowsep="0" cols="4">
+<colspec colname="1" colwidth="84PT" align="left"/>
+<colspec colname="2" colwidth="49PT" align="center"/>
+<colspec colname="3" colwidth="49PT" align="center"/>
+<colspec colname="4" colwidth="35PT" align="char"/>
+<tbody valign="top">
+<row>
+<entry>&ensp;90-105 &mgr;M D2P-PVA</entry>
+<entry>0.369</entry>
+<entry>0.006</entry>
+<entry>1046.8</entry>
+</row>
+<row>
+<entry>250-500 &mgr;m XFS</entry>
+<entry>0.187</entry>
+<entry>0.021</entry>
+<entry>60.0</entry>
+</row>
+<row>
+<entry>&ensp;90-105 &mgr;m D2P-PEI</entry>
+<entry>0.182</entry>
+<entry>0.008</entry>
+<entry>130</entry>
+</row>
+<row>
+<entry>&ensp;90-105 &mgr;m 2PCI-PVA</entry>
+<entry>0.253</entry>
+<entry>0.006</entry>
+<entry>429.3</entry>
+</row>
+<row>
+<entry>250-500 D2P-PVA</entry>
+<entry>0.109</entry>
+<entry>0.015</entry>
+<entry>32.9</entry>
+</row>
+<row><entry namest="1" nameend="4" align="center" rowsep="1"></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</table-cwu>
+</paragraph>
+<paragraph id="P-0067" lvl="0"><number>&lsqb;0067&rsqb;</number> The separation factor was defined as Separation Factor&equals;q<highlight><subscript>e </subscript></highlight><highlight><superscript>Cu</superscript></highlight>/C<highlight><subscript>e </subscript></highlight><highlight><superscript>Cu</superscript></highlight>/q<highlight><subscript>e </subscript></highlight><highlight><superscript>Fe</superscript></highlight>/C<highlight><subscript>e</subscript></highlight><highlight><superscript>Fe </superscript></highlight>where q<highlight><subscript>e</subscript></highlight><highlight><superscript>Cu</superscript></highlight>, q<highlight><subscript>C</subscript></highlight><highlight><superscript>Fe </superscript></highlight>are the amount of copper and iron adsorbed onto the extractant at equilibrium respectively and C<highlight><subscript>e</subscript></highlight><highlight><superscript>Cu</superscript></highlight>, C<highlight><subscript>e</subscript></highlight><highlight><superscript>Fe </superscript></highlight>are the amount of copper and iron in solution at equilibrium respectively. </paragraph>
+<paragraph id="P-0068" lvl="0"><number>&lsqb;0068&rsqb;</number> It is understood that the foregoing examples are merely illustrative of the present invention. Certain modifications of the compositions and/or methods employed may be made and still achieve the objectives of the invention. Such modification are contemplated as within the scope of the claimed invention. </paragraph>
+</section>
+</detailed-description>
+</subdoc-description>
+<subdoc-claims>
+<claim id="CLM-00001">
+<claim-text><highlight><bold>1</bold></highlight>. An extraction material for separating at least one transition metal ion species from iron (III) in a solution, said extraction material comprising a matrix-polyamine base and a pyridine functional group, said matrix-polyamine base comprising the reaction product of a polyamine with a short chain hydrocarbylsilyl formed from first silanizing a matrix surface by hydrating said surface and reacting said hydrated surface with a short chain trifunctional silane having (a) hydrocarbon substituents containing 1-6 carbon atoms, (b) trifunctional leaving groups providing sites for covalently bonding said hydrocarbylsilyl to said matrix surface through Si&mdash;O bonds, and (c) terminal leaving groups providing sites for covalently bonding said polyamine to said hydrocarbylsilyl through N-hydrocarbyl bonds; and secondly reacting said polyamine with said hydrocarbylsilyl formed from the silanization of said hydrated surface so as to form an aminohydrocarbyl polymer covalently bound to said matrix surface, said aminohydrocarbyl polymer having non-crosslinked amino groups multisite bound to said hydrocarbylsilyl. </claim-text>
+</claim>
+<claim id="CLM-00002">
+<claim-text><highlight><bold>2</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said silane has trifunctional substituents selected from the group consisting of trichloro, trimethoxy and triethoxy substituents. </claim-text>
+</claim>
+<claim id="CLM-00003">
+<claim-text><highlight><bold>3</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said silane has terminal leaving group substituents selected from the group consisting of halogens, tosylate, mesylate, brosylate and triflate. </claim-text>
+</claim>
+<claim id="CLM-00004">
+<claim-text><highlight><bold>4</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said hydrocarbon substituents are short chain aliphatic hydrocarbons having 1-6 carbon atoms. </claim-text>
+</claim>
+<claim id="CLM-00005">
+<claim-text><highlight><bold>5</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said silane has trifunctional substituents selected from the group consisting of trichloro, trimethoxy and triethoxy substituents; said silane has terminal leaving group substituents selected from the group consisting of halogens, tosylate, mesylate, brosylate and triflate; and said hydrocarbon substituents are short chain aliphatic hydrocarbons having 1-6 carbon atoms. </claim-text>
+</claim>
+<claim id="CLM-00006">
+<claim-text><highlight><bold>6</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00005">claim 5</dependent-claim-reference>, wherein said silane is bromopropyltrichloro silane. </claim-text>
+</claim>
+<claim id="CLM-00007">
+<claim-text><highlight><bold>7</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00005">claim 5</dependent-claim-reference>, wherein said silane is chlorpropyltrichloro silane. </claim-text>
+</claim>
+<claim id="CLM-00008">
+<claim-text><highlight><bold>8</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein polyamine is polyvinylamine. </claim-text>
+</claim>
+<claim id="CLM-00009">
+<claim-text><highlight><bold>9</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said polyamine is polyethyleneimine. </claim-text>
+</claim>
+<claim id="CLM-00010">
+<claim-text><highlight><bold>10</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said polyamine is polyallylamine. </claim-text>
+</claim>
+<claim id="CLM-00011">
+<claim-text><highlight><bold>11</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said pyridine functional group is a pyridine alkylamine with an alkyl chain of about 1-4 carbons. </claim-text>
+</claim>
+<claim id="CLM-00012">
+<claim-text><highlight><bold>12</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said pyridine functional group is a pyridine alkyl aldehyde with an alkyl chain about 1-4 carbons. </claim-text>
+</claim>
+<claim id="CLM-00013">
+<claim-text><highlight><bold>13</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said pyridine functional group is 2-picolylamine. </claim-text>
+</claim>
+<claim id="CLM-00014">
+<claim-text><highlight><bold>14</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said pyridine functional group is 2-pyridine carboximene. </claim-text>
+</claim>
+<claim id="CLM-00015">
+<claim-text><highlight><bold>15</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00008">claim 8</dependent-claim-reference>, wherein said pyridine functional group is 2-picolylamine. </claim-text>
+</claim>
+<claim id="CLM-00016">
+<claim-text><highlight><bold>16</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00008">claim 8</dependent-claim-reference>, wherein said pyridine functional group is 2-pyridine carboxmine. </claim-text>
+</claim>
+<claim id="CLM-00017">
+<claim-text><highlight><bold>17</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00009">claim 9</dependent-claim-reference>, wherein said pyridine functional group is 2-picolyamine. </claim-text>
+</claim>
+<claim id="CLM-00018">
+<claim-text><highlight><bold>18</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00009">claim 9</dependent-claim-reference>, wherein said pyridine functional group is 2-pyridine carboximiine. </claim-text>
+</claim>
+<claim id="CLM-00019">
+<claim-text><highlight><bold>19</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00011">claim 10</dependent-claim-reference>, wherein said pyridine functional group is 2-picolyamine. </claim-text>
+</claim>
+<claim id="CLM-00020">
+<claim-text><highlight><bold>20</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00011">claim 10</dependent-claim-reference>, wherein said pyridine functional group is 2-pyridine carboximine. </claim-text>
+</claim>
+<claim id="CLM-00021">
+<claim-text><highlight><bold>21</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said silane is bromopropyltrichloro silane, said polyamine is polyvinylamine and said pyridine functional group is 2-picolyamine. </claim-text>
+</claim>
+<claim id="CLM-00022">
+<claim-text><highlight><bold>22</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said silane is chloropropyltrichloro silane, said polyamine is polyvinylamine and said pyridine functional group is 2-picolyamine. </claim-text>
+</claim>
+<claim id="CLM-00023">
+<claim-text><highlight><bold>23</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said silane is bromopropyltrichloro silane, said polyamine is polyvinylamine and said pyridine functional group is 2-pyridine carboxmine. </claim-text>
+</claim>
+<claim id="CLM-00024">
+<claim-text><highlight><bold>24</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said silane is chloropropyltrichloro silane, said polyamine is polyvinylamine and said pyridine functional group is 2-pyridine carboximine. </claim-text>
+</claim>
+<claim id="CLM-00025">
+<claim-text><highlight><bold>25</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said silane is bromopropyltrichloro silane, said polyamine is polyethyleneimine and said pyridine functional group is 2-picolyamine. </claim-text>
+</claim>
+<claim id="CLM-00026">
+<claim-text><highlight><bold>26</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said silane is chloropropyltrichloro silane, said polyamine is polyethyleneimine and said pyridine functional group is 2-picolyamine. </claim-text>
+</claim>
+<claim id="CLM-00027">
+<claim-text><highlight><bold>27</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said silane is bromopropyltrichloro silane, said polyamine is polyethyleneimine and said pyridine functional group is 2-pyridine carboximine. </claim-text>
+</claim>
+<claim id="CLM-00029">
+<claim-text><highlight><bold>29</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said silane is bromopropyltrichloro silane, said polyamine is polyallylamine and said pyridine functional group is 2-picolyamine. </claim-text>
+</claim>
+<claim id="CLM-00030">
+<claim-text><highlight><bold>30</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said silane is chloropropyltrichloro silane, said polyamine is polyallylamine and said pyridine functional group is 2-picolyamine. </claim-text>
+</claim>
+<claim id="CLM-00031">
+<claim-text><highlight><bold>31</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said silane is bromopropyltrichloro silane, said polyamine is polyallylamine and said pyridine functional group is 2-pyridine carboximine. </claim-text>
+</claim>
+<claim id="CLM-00032">
+<claim-text><highlight><bold>32</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said silane is chloropropyltrichloro silane, said polyamine is polyallylamine and said pyridine functional group is 2-pyridine carboximine. </claim-text>
+</claim>
+<claim id="CLM-00033">
+<claim-text><highlight><bold>33</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00001">claim 1</dependent-claim-reference>, wherein said at least one transition metal ion species is copper (II). </claim-text>
+</claim>
+<claim id="CLM-00034">
+<claim-text><highlight><bold>34</bold></highlight>. A method of making an extraction material for separating at least one transition metal ion species from iron (III) ions in a solution comprising the steps of: 
+<claim-text>a) providing a matrix having a surface that is silanizable; </claim-text>
+<claim-text>b) hydrating said surface of said matrix with a monolayer of water; </claim-text>
+<claim-text>c) silanizing said hydrated surface of said matrix with a silane having short chain hydrocarbyl substituents containing 1-6 carbon atoms and terminal leaving groups so as to hydrocarbylate said matrix surface, said terminal leaving groups providing sites for covalently bonding a polyamine to the hydrocarbylsilyil through N--hydrocarbyl bonds; </claim-text>
+<claim-text>d) reacting said polyamine with said hydrocarbylated matrix surface after silanization is complete to form an aminohydrocarbyl polymer covalently bound to the hydrocarbylated extraction material surface with said aminohydrocarbyl polymer having non-crosslinked amino groups multisite bound to said hydrocarbylsilyl; and </claim-text>
+<claim-text>e) reacting a pyridine functional group with said aminohydrocarbyl polymer. </claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00035">
+<claim-text><highlight><bold>35</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00033">claim 34</dependent-claim-reference>, wherein said silane has trifunctional substituents selected from the group consisting of trichloro, trimethoxy and triethoxy substituents. </claim-text>
+</claim>
+<claim id="CLM-00036">
+<claim-text><highlight><bold>36</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00033">claim 34</dependent-claim-reference>, wherein said silane has terminal leaving group substituents selected from the group consisting of halogens, tosylate, mesylate, brosylate and triflate. </claim-text>
+</claim>
+<claim id="CLM-00037">
+<claim-text><highlight><bold>37</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00033">claim 34</dependent-claim-reference>, wherein said hydrocarbon substituents are short chain aliphatic hydrocarbons having 1-6 carbon atoms. </claim-text>
+</claim>
+<claim id="CLM-00038">
+<claim-text><highlight><bold>38</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00003">claim 3</dependent-claim-reference> <highlight><bold>4</bold></highlight>, wherein said silane has trifunctional substituents selected from the group consisting of trichloro, trimethoxy and triethoxy substituents; said silane has terminal leaving group substituents selected from the group consisting of halogens, tosylate, mesylate, brosylate and triflate; and said hydrocarbon substituents are short chain aliphatic hydrocarbons having 1-6 carbon atoms. </claim-text>
+</claim>
+<claim id="CLM-00039">
+<claim-text><highlight><bold>39</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00033">claim 34</dependent-claim-reference>, wherein said silane is bromopropyltrichioro silane. </claim-text>
+</claim>
+<claim id="CLM-00040">
+<claim-text><highlight><bold>40</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00033">claim 34</dependent-claim-reference>, wherein said silane is chloropropyltrichloro silane. </claim-text>
+</claim>
+<claim id="CLM-00041">
+<claim-text><highlight><bold>41</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00033">claim 34</dependent-claim-reference>, wherein said polyamine is polyvinylamine. </claim-text>
+</claim>
+<claim id="CLM-00042">
+<claim-text><highlight><bold>42</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00033">claim 34</dependent-claim-reference>, wherein said polyamine is polyethyleneimine. </claim-text>
+</claim>
+<claim id="CLM-00043">
+<claim-text><highlight><bold>43</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00033">claim 34</dependent-claim-reference>, wherein said polyamine is polyallylamine. </claim-text>
+</claim>
+<claim id="CLM-00044">
+<claim-text><highlight><bold>44</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00003">claim 3</dependent-claim-reference> <highlight><bold>4</bold></highlight>, wherein said pyridine functional group is a pyridine ring, with an alkl chain of about 1-4 carbons with a terminal halogen selected from the group consisting of tosylate, mesylate, brosylate and tritlate. </claim-text>
+</claim>
+<claim id="CLM-00045">
+<claim-text><highlight><bold>45</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00033">claim 34</dependent-claim-reference>, wherein said pyridine functional group is a pyridine ling with an alkyl chain of about 1-4 carbons with a terminal aidehyde. </claim-text>
+</claim>
+<claim id="CLM-00046">
+<claim-text><highlight><bold>46</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00033">claim 34</dependent-claim-reference>, wherein said pyridine functional group is picolyichloride hydrochloride. </claim-text>
+</claim>
+<claim id="CLM-00047">
+<claim-text><highlight><bold>47</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00033">claim 34</dependent-claim-reference>, wherein said pyridine functional group is pyridine 2-carboxaldehyde. </claim-text>
+</claim>
+<claim id="CLM-00048">
+<claim-text><highlight><bold>48</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00044">claim 41</dependent-claim-reference>, wherein said pyridine functional group is picolylchloride hydrochloride. </claim-text>
+</claim>
+<claim id="CLM-00049">
+<claim-text><highlight><bold>49</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00044">claim 41</dependent-claim-reference>, wherein said pyridine functional group is pyridine 2-carboxaldehyde. </claim-text>
+</claim>
+<claim id="CLM-00050">
+<claim-text><highlight><bold>50</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00044">claim 42</dependent-claim-reference>, wherein said pyridine functional group is picolylchioride hydrochloride. </claim-text>
+</claim>
+<claim id="CLM-00051">
+<claim-text><highlight><bold>51</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00044">claim 42</dependent-claim-reference>, wherein said pyridine functional group is pyridine 2-carboximine. </claim-text>
+</claim>
+<claim id="CLM-00052">
+<claim-text><highlight><bold>52</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00044">claim 43</dependent-claim-reference>, wherein said pyridine functional group is picolychloride hydrochloride. </claim-text>
+</claim>
+<claim id="CLM-00053">
+<claim-text><highlight><bold>53</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00044">claim 43</dependent-claim-reference>, wherein said pyridine functional group is pyridine 2-carboxaldehyde. </claim-text>
+</claim>
+<claim id="CLM-00054">
+<claim-text><highlight><bold>54</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00033">claim 34</dependent-claim-reference>, wherein said at least one transition metal ion species is copper (II). </claim-text>
+</claim>
+<claim id="CLM-00055">
+<claim-text><highlight><bold>55</bold></highlight>. A process for separating at least one transition metal ion species from iron (III) ions in a solution comprising at least one transition metal ion species, iron (III) ions and chloride ions said process comprising the steps of: 
+<claim-text>a) applying said solution to an extraction material comprising a matrix-polyamine base and a pyridine functional group, said matrix-polyamine base comprising the reaction product of a polyamine with a short chain hydrocarbylsilyl formed from first silanizing a matrix surface by hydrating said surface and reacting said hydrated surface with a short chain trifunctional silane having (a) hydrocarbon substituents containing 1-6 carbon atoms, (b) trifunctional leaving groups providing sites for covalently bonding said hydrocarbylsilyl to the extraction material surface through Si&mdash;O bonds, and (c) terminal leaving groups providing sites for covalently bonding said polyamine to said hydrocarbylsilyl through-hydrocarbyl bonds; and secondly reacting said polyamine with said hydrocarbylsilyl formed from the silanization of said hydrated surface so as to form an aminohydrocarbyl polymer covalently bound to said matrix surface, said aminohydrocarbyl polymer having non-crosslinked amine groups multisite bound to said hydrocarbylsilyl, wherein said amino/imino pyridine functional group binds and selectively extracts said transition metal ions from said solution; </claim-text>
+<claim-text>b) purging said transition metal ions bound to said extraction material of cholide ions; and </claim-text>
+<claim-text>c) stripping said bound transition metal ions from said extraction material. </claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00056">
+<claim-text><highlight><bold>56</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00055">claim 55</dependent-claim-reference>, wherein said silane has trifunctional substituents selected from the group consisting of trichloro, trimethoxy and triethoxy substituents. </claim-text>
+</claim>
+<claim id="CLM-00057">
+<claim-text><highlight><bold>57</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00055">claim 55</dependent-claim-reference>, wherein said silane has terminal leaving group substituents selected from the group consisting of halogens, tosylate, mesylate, brosylate and triflate. </claim-text>
+</claim>
+<claim id="CLM-00058">
+<claim-text><highlight><bold>58</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00055">claim 55</dependent-claim-reference>, wherein said hydrocarbon substituents are short chain aliphatic hydrocarbons having 1-6 carbon atoms. </claim-text>
+</claim>
+<claim id="CLM-00059">
+<claim-text><highlight><bold>59</bold></highlight>. The extraction material of <dependent-claim-reference depends_on="CLM-00055">claim 55</dependent-claim-reference>, wherein said silane has trifunctional substituents selected from the group consisting of trichloro, trimethoxy and triethoxy substituents; said silane has terminal leaving group substituents selected from the group consisting of halogens, tosylate, mesylate, brosylate and trifiate; and said hydrocarbon substituents are short chain aliphatic hydrocarbons having 1-6 carbon atoms. </claim-text>
+</claim>
+<claim id="CLM-00060">
+<claim-text><highlight><bold>60</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00055">claim 55</dependent-claim-reference>, wherein said silane is bromopropyltrichloro silane. </claim-text>
+</claim>
+<claim id="CLM-00061">
+<claim-text><highlight><bold>61</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00055">claim 55</dependent-claim-reference>, wherein said silane is chloropropyltricholoro silane. </claim-text>
+</claim>
+<claim id="CLM-00062">
+<claim-text><highlight><bold>62</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00055">claim 55</dependent-claim-reference>, wherein said polyamine is polyvinylamine. </claim-text>
+</claim>
+<claim id="CLM-00063">
+<claim-text><highlight><bold>63</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00055">claim 55</dependent-claim-reference>, wherein said polyamine is polyethyleneimine. </claim-text>
+</claim>
+<claim id="CLM-00064">
+<claim-text><highlight><bold>64</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00055">claim 55</dependent-claim-reference>, wherein said polyamine is polyallylamine. </claim-text>
+</claim>
+<claim id="CLM-00065">
+<claim-text><highlight><bold>65</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00055">claim 55</dependent-claim-reference>, wherein said pyridine functional group is a pyridine alkylamine with an alkyl chain of about 1-4 carbons. </claim-text>
+</claim>
+<claim id="CLM-00066">
+<claim-text><highlight><bold>66</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00055">claim 55</dependent-claim-reference>, wherein said pyridine functional group is a pyridine alkyl aldehyde with an alkyl chain about 1-4 carbons. </claim-text>
+</claim>
+<claim id="CLM-00067">
+<claim-text><highlight><bold>67</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00055">claim 55</dependent-claim-reference>, wherein said pyridine functional group is 2-picolylamine. </claim-text>
+</claim>
+<claim id="CLM-00068">
+<claim-text><highlight><bold>68</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00055">claim 55</dependent-claim-reference>, wherein said pyridine functional group is 2-pyridine carboximene. </claim-text>
+</claim>
+<claim id="CLM-00069">
+<claim-text><highlight><bold>69</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00066">claim 62</dependent-claim-reference>, wherein said pyridine functional group is 2-picolylamine. </claim-text>
+</claim>
+<claim id="CLM-00070">
+<claim-text><highlight><bold>70</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00066">claim 62</dependent-claim-reference>, wherein said pyridine functional group is 2-pyridine carboxmine. </claim-text>
+</claim>
+<claim id="CLM-00071">
+<claim-text><highlight><bold>71</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00066">claim 63</dependent-claim-reference>, wherein said pyridine functional group is 2-picolylamine. </claim-text>
+</claim>
+<claim id="CLM-00072">
+<claim-text><highlight><bold>72</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00066">claim 63</dependent-claim-reference>, wherein said pyridine functional group is 2-pyridine carboximine. </claim-text>
+</claim>
+<claim id="CLM-00073">
+<claim-text><highlight><bold>73</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00066">claim 64</dependent-claim-reference>, wherein said pyridine functional group is 2-picolylamine. </claim-text>
+</claim>
+<claim id="CLM-00074">
+<claim-text><highlight><bold>74</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00066">claim 64</dependent-claim-reference>, wherein said pyridine functional group is 2-pyridine carboximine. </claim-text>
+</claim>
+<claim id="CLM-00075">
+<claim-text><highlight><bold>75</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00055">claim 55</dependent-claim-reference>, wherein said chloride ions are purged with a solution selected from the group consisting of saturated sodium sulfate and dilute sulfuric acid. </claim-text>
+</claim>
+<claim id="CLM-00076">
+<claim-text><highlight><bold>76</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00055">claim 55</dependent-claim-reference>, wherein said copper (II) ions are stripped from said extraction material with sulfuric acid. </claim-text>
+</claim>
+<claim id="CLM-00077">
+<claim-text><highlight><bold>77</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00055">claim 55</dependent-claim-reference>, wherein said extraction material is in a column. </claim-text>
+</claim>
+<claim id="CLM-00078">
+<claim-text><highlight><bold>78</bold></highlight>. The process of <dependent-claim-reference depends_on="CLM-00055">claim 55</dependent-claim-reference>, wherein said at least one transition metal ion species is copper (II).</claim-text>
+</claim>
+</subdoc-claims>
+<subdoc-drawings id="DRAWINGS">
+<heading lvl="0" align="CENTER">Drawings</heading>
+<representative-figure>3</representative-figure>
+<figure id="figure-D00000">
+<image id="EMI-D00000" file="US20020139753A1-20021003-D00000.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00001">
+<image id="EMI-D00001" file="US20020139753A1-20021003-D00001.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00002">
+<image id="EMI-D00002" file="US20020139753A1-20021003-D00002.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00003">
+<image id="EMI-D00003" file="US20020139753A1-20021003-D00003.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00004">
+<image id="EMI-D00004" file="US20020139753A1-20021003-D00004.TIF" imf="TIFF" ti="DR"/>
+</figure>
+</subdoc-drawings>
+</patent-application-publication>
+
+

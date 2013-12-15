@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE PATDOC SYSTEM "ST32-US-Grant-025xml.dtd" [
+<!ENTITY US06457538-20021001-D00000.TIF SYSTEM "US06457538-20021001-D00000.TIF" NDATA TIF>
+<!ENTITY US06457538-20021001-D00001.TIF SYSTEM "US06457538-20021001-D00001.TIF" NDATA TIF>
+<!ENTITY US06457538-20021001-D00002.TIF SYSTEM "US06457538-20021001-D00002.TIF" NDATA TIF>
+<!ENTITY US06457538-20021001-D00003.TIF SYSTEM "US06457538-20021001-D00003.TIF" NDATA TIF>
+<!ENTITY US06457538-20021001-D00004.TIF SYSTEM "US06457538-20021001-D00004.TIF" NDATA TIF>
+<!ENTITY US06457538-20021001-D00005.TIF SYSTEM "US06457538-20021001-D00005.TIF" NDATA TIF>
+]>
+<PATDOC DTD="2.5" STATUS="Build 20020101">
+<SDOBI>
+<B100>
+<B110><DNUM><PDAT>06457538</PDAT></DNUM></B110>
+<B130><PDAT>B1</PDAT></B130>
+<B140><DATE><PDAT>20021001</PDAT></DATE></B140>
+<B190><PDAT>US</PDAT></B190>
+</B100>
+<B200>
+<B210><DNUM><PDAT>09789309</PDAT></DNUM></B210>
+<B211US><PDAT>09</PDAT></B211US>
+<B220><DATE><PDAT>20010220</PDAT></DATE></B220>
+</B200>
+<B400>
+<B472>
+<B474US><PDAT>18</PDAT></B474US>
+</B472>
+</B400>
+<B500>
+<B510>
+<B511><PDAT>E21B 2510</PDAT></B511>
+<B512><PDAT>E21B 4718</PDAT></B512>
+<B516><PDAT>7</PDAT></B516>
+</B510>
+<B520>
+<B521><PDAT>175 46</PDAT></B521>
+<B522><PDAT>175244</PDAT></B522>
+</B520>
+<B540><STEXT><PDAT>Advanced coring apparatus and method</PDAT></STEXT></B540>
+<B560>
+<B561>
+<PCIT>
+<DOC><DNUM><PDAT>4735269</PDAT></DNUM>
+<DATE><PDAT>19880400</PDAT></DATE>
+<KIND><PDAT>A</PDAT></KIND>
+</DOC>
+<PARTY-US>
+<NAM><SNM><STEXT><PDAT>Park et al.</PDAT></STEXT></SNM></NAM>
+</PARTY-US>
+<PNC><PDAT>175244</PDAT></PNC></PCIT><CITED-BY-EXAMINER/>
+</B561>
+<B561>
+<PCIT>
+<DOC><DNUM><PDAT>4955438</PDAT></DNUM>
+<DATE><PDAT>19900900</PDAT></DATE>
+<KIND><PDAT>A</PDAT></KIND>
+</DOC>
+<PARTY-US>
+<NAM><SNM><STEXT><PDAT>Juergens et al.</PDAT></STEXT></SNM></NAM>
+</PARTY-US>
+<PNC><PDAT>166 64</PDAT></PNC></PCIT><CITED-BY-EXAMINER/>
+</B561>
+<B561>
+<PCIT>
+<DOC><DNUM><PDAT>5010765</PDAT></DNUM>
+<DATE><PDAT>19910400</PDAT></DATE>
+<KIND><PDAT>A</PDAT></KIND>
+</DOC>
+<PARTY-US>
+<NAM><SNM><STEXT><PDAT>Duckworth et al.</PDAT></STEXT></SNM></NAM>
+</PARTY-US>
+<PNC><PDAT>175 40</PDAT></PNC></PCIT><CITED-BY-EXAMINER/>
+</B561>
+<B561>
+<PCIT>
+<DOC><DNUM><PDAT>6006844</PDAT></DNUM>
+<DATE><PDAT>19991200</PDAT></DATE>
+<KIND><PDAT>A</PDAT></KIND>
+</DOC>
+<PARTY-US>
+<NAM><SNM><STEXT><PDAT>Van Puymbroeck et al.</PDAT></STEXT></SNM></NAM>
+</PARTY-US>
+<PNC><PDAT>175246</PDAT></PNC></PCIT><CITED-BY-EXAMINER/>
+</B561>
+<B561>
+<PCIT>
+<DOC><DNUM><PDAT>6009960</PDAT></DNUM>
+<DATE><PDAT>20000100</PDAT></DATE>
+<KIND><PDAT>A</PDAT></KIND>
+</DOC>
+<PARTY-US>
+<NAM><SNM><STEXT><PDAT>Leitko, Jr. et al.</PDAT></STEXT></SNM></NAM>
+</PARTY-US>
+</PCIT><CITED-BY-OTHER/>
+</B561>
+</B560>
+<B570>
+<B577><PDAT>25</PDAT></B577>
+<B578US><PDAT>1</PDAT></B578US>
+</B570>
+<B580>
+<B582><PDAT>175 40</PDAT></B582>
+<B582><PDAT>175 44</PDAT></B582>
+<B582><PDAT>175 46</PDAT></B582>
+<B582><PDAT>175 58</PDAT></B582>
+<B582><PDAT>175250</PDAT></B582>
+<B582><PDAT>175252</PDAT></B582>
+<B582><PDAT>175253</PDAT></B582>
+<B582><PDAT>175254</PDAT></B582>
+<B582><PDAT>175256</PDAT></B582>
+<B582><PDAT>3408531</PDAT></B582>
+<B582><PDAT>3408533</PDAT></B582>
+<B582><PDAT>3408535</PDAT></B582>
+<B582><PDAT>3408544</PDAT></B582>
+<B582><PDAT>3408546</PDAT></B582>
+<B582><PDAT> 7386444</PDAT></B582>
+<B582><PDAT> 7386445</PDAT></B582>
+<B582><PDAT> 7315243</PDAT></B582>
+<B582><PDAT> 7315203</PDAT></B582>
+<B582><PDAT> 7315228</PDAT></B582>
+<B582><PDAT> 7315246</PDAT></B582>
+<B582><PDAT> 7315249</PDAT></B582>
+<B582><PDAT> 73153</PDAT></B582>
+</B580>
+<B590><B595><PDAT>5</PDAT></B595><B596><PDAT>11</PDAT></B596><B597US/>
+</B590>
+</B500>
+<B600>
+<B680US><DOC><DNUM><PDAT>60/185636</PDAT></DNUM><DATE><PDAT>20000229</PDAT></DATE><KIND><PDAT>00</PDAT></KIND></DOC></B680US>
+</B600>
+<B700>
+<B720>
+<B721>
+<PARTY-US>
+<NAM><FNM><PDAT>Gerard T.</PDAT></FNM><SNM><STEXT><PDAT>Pittard</PDAT></STEXT></SNM></NAM>
+<ADR>
+<CITY><PDAT>Houston</PDAT></CITY>
+<STATE><PDAT>TX</PDAT></STATE>
+</ADR>
+</PARTY-US>
+</B721>
+<B721>
+<PARTY-US>
+<NAM><FNM><PDAT>J. Christopher</PDAT></FNM><SNM><STEXT><PDAT>Hetmaniak</PDAT></STEXT></SNM></NAM>
+<ADR>
+<CITY><PDAT>Houston</PDAT></CITY>
+<STATE><PDAT>TX</PDAT></STATE>
+</ADR>
+</PARTY-US>
+</B721>
+<B721>
+<PARTY-US>
+<NAM><FNM><PDAT>Curtis</PDAT></FNM><SNM><STEXT><PDAT>Leitko</PDAT></STEXT></SNM></NAM>
+<ADR>
+<CITY><PDAT>Houston</PDAT></CITY>
+<STATE><PDAT>TX</PDAT></STATE>
+</ADR>
+</PARTY-US>
+</B721>
+<B721>
+<PARTY-US>
+<NAM><FNM><PDAT>William J.</PDAT></FNM><SNM><STEXT><PDAT>Mcdonald</PDAT></STEXT></SNM></NAM>
+<ADR>
+<CITY><PDAT>Houston</PDAT></CITY>
+<STATE><PDAT>TX</PDAT></STATE>
+</ADR>
+</PARTY-US>
+</B721>
+</B720>
+<B730>
+<B731>
+<PARTY-US>
+<NAM><ONM><STEXT><PDAT>Maurer Engineering, Inc.</PDAT></STEXT></ONM></NAM>
+<ADR><CITY><PDAT>Houston</PDAT></CITY><STATE><PDAT>TX</PDAT></STATE></ADR>
+</PARTY-US>
+</B731>
+<B732US>
+<PDAT>02</PDAT>
+</B732US>
+</B730>
+<B740>
+<B741>
+<PARTY-US>
+<NAM><FNM><PDAT>Kenneth A.</PDAT></FNM><SNM><STEXT><PDAT>Roddy</PDAT></STEXT></SNM></NAM>
+</PARTY-US>
+</B741>
+</B740>
+<B745>
+<B746>
+<PARTY-US>
+<NAM><FNM><PDAT>David</PDAT></FNM><SNM><STEXT><PDAT>Bagnell</PDAT></STEXT></SNM></NAM>
+</PARTY-US>
+</B746>
+<B747>
+<PARTY-US>
+<NAM><FNM><PDAT>T. Shane</PDAT></FNM><SNM><STEXT><PDAT>Bomar</PDAT></STEXT></SNM></NAM>
+</PARTY-US>
+</B747>
+<B748US><PDAT>3672</PDAT></B748US>
+</B745>
+</B700>
+</SDOBI>
+<SDOAB>
+<BTEXT>
+<PARA ID="P-00001" LVL="0"><PTEXT><PDAT>A system of apparatus for use in a coring tool measures the height of a core sample being recovered and transmits data relative thereto to the surface of a formation concurrently during the coring operation. A transmitter of an electromagnetic ranging system rides atop a core sample being formed in the barrel chamber and a receiver member of the electromagnetic ranging system is fixed at a top end of the barrel it known distance above the transmitter. During the coring operation the transmitter transmits a fixed frequency signal to the receiver through drilling fluid disposed therebetween. The distance between the transmitter and receiver decreases and the amplitude of the transmitted signal changes as a function of the separation distance between the transmitter and receiver as the core sample enters the inner barrel and the height of the core sample within the barrel is determined as a function of time and depth. The pressure of the drilling fluid is modulated to transmit a series of pressure pulses from the barrel to the surface encoded to produce a binary digital or pulse-width modulation signal. The electromagnetic ranging system may be incorporated into a coring tool having a core bit disposed at a lower end and a full closure ball valve and core retention assembly movable to a closed position to close the bottom end of the inner barrel and prevent the loss of core collected in the inner barrel chamber.</PDAT></PTEXT></PARA>
+</BTEXT>
+</SDOAB>
+<SDODE>
+<RELAPP>
+<BTEXT>
+<H LVL="1"><STEXT><PDAT>CROSS-REFERENCE TO RELATED APPLICATION</PDAT></STEXT></H>
+<PARA ID="P-00002" LVL="0"><PTEXT><PDAT>This application claims priority of U.S. Provisional Patent Application Ser. No. 60/185,636, filed Feb. 29, 2000.</PDAT></PTEXT></PARA>
+</BTEXT>
+</RELAPP>
+<GOVINT>
+<BTEXT>
+<H LVL="1"><STEXT><PDAT>STATEMENT AS TO FEDERALLY SPONSORED RESEARCH</PDAT></STEXT></H>
+<PARA ID="P-00003" LVL="0"><PTEXT><PDAT>The invention described herein was made in the performance of work funded in part by Phase II of Small Business Innovation Research Grant No. DMI-9900706 sponsored by The National Science Foundation. The government may have certain rights in this invention.</PDAT></PTEXT></PARA>
+</BTEXT>
+</GOVINT>
+<BRFSUM>
+<BTEXT>
+<H LVL="1"><STEXT><PDAT>BACKGROUND OF THE INVENTION</PDAT></STEXT></H>
+<PARA ID="P-00004" LVL="0"><PTEXT><PDAT>1. Field of the Invention</PDAT></PTEXT></PARA>
+<PARA ID="P-00005" LVL="0"><PTEXT><PDAT>This invention relates generally to wellbore core sampling apparatus and methods, and more particularly to an advanced coring system and method utilizing a core height measurement module that accurately measures the amount of core captured as a function of time and depth, a data telemetry-module that conveys this information to the surface in real time, and a full closure valve assembly that completely closes the bottom of the core barrel under surface control to prevent loss of unconsolidated and highly fractured cores.</PDAT></PTEXT></PARA>
+<PARA ID="P-00006" LVL="0"><PTEXT><PDAT>2. Brief Description of the Prior Art</PDAT></PTEXT></PARA>
+<PARA ID="P-00007" LVL="0"><PTEXT><PDAT>The taking of core samples is the most accurate means to evaluate rock properties for hydrocarbon and ore body development, scientific investigation and environmental clean up activities. Conventional coring methods and apparatus have two major shortcomings: (1) the absence of real-time monitoring of the core length (recovery) in the core barrel, and (2) the lack of complete closure of the core barrel opening to prevent core loss. While partial or complete core loss is generally not a problem in competent formations, it is an important problem in unconsolidated and highly fractured ones. A review of U.S. and Canadian coring activities showed that partial core loss is experienced in approximately 20% of the wells cored. This lost core translates into considerable costs&mdash;particularly in offshore drilling operations where rig rates can run in excess of $10,000 per hour. Of even greater potential importance is the loss of geologic information.</PDAT></PTEXT></PARA>
+<PARA ID="P-00008" LVL="0"><PTEXT><PDAT>It is extremely important to recover the entire interval where the rock is being cored. If any core is not recovered, valuable information is lost. Coring operations are performed under a wide range of operating conditions. These include: (1) variation in wellbore inclination angle from zero (vertical) to ninety degrees (horizontal), (2) use of wide range of drilling fluids such as water and oil-based mixtures, nitrooelltited muds, and air/foam mists, (3) encountering zones of lost circulation and (4) rapid changes in lithology. The net result of these conditions in the standard coring process introduces uncertainties which occur because standpipe pressure, pump speed, mud weight and drill cutting returns (among other things) at the surface are used to &ldquo;assess&rdquo; the progress of the coring operation. None of these parameters are direct measures of the amount of core actually being recovered in the barrel. The present invention eliminates these uncertainties by providing a real-time monitoring device.</PDAT></PTEXT></PARA>
+<PARA ID="P-00009" LVL="0"><PTEXT><PDAT>The monitoring feature of the present system accurately measures the amount of core captured as a function of time and depth, and conveys this information to the surface in real combined with the ability to completely close the bottom of the core barrel under surface control and prevent loss of unconsolidated and highly fractured cores, the present system will improve coring success and reduce overall coring costs.</PDAT></PTEXT></PARA>
+<PARA ID="P-00010" LVL="0"><PTEXT><PDAT>The present invention provides new hardware modules for core height measurement and core barrel closure that are compatible with conventional and wireline-retrievable coring systems. This present system also does not require any changes to the standard inner and outer core barrel assemblies and it operates with both sealed oil-lubricated and mud-lubricated bearing packs.</PDAT></PTEXT></PARA>
+<PARA ID="P-00011" LVL="0"><PTEXT><PDAT>A suitable ball valve assembly for use with the present invention is disclosed in U.S. Pat. No. 6,009,960 titled Coring Tool, issued Jan. 4, 2000 and assigned to Diamond Products International, Inc., of Houston, Tex., which is hereby incorporated by reference to the same extent as if fully set forth herein. U.S. Pat. No. 6,009,960 does not disclose the present electromagnetic ranging system for core height measurement as a function of time and depth, or the present data telemetry system that conveys this information to the surface in real time, however, preliminary testing of the combination utilizing such a valve assembly has proven satisfactory.</PDAT></PTEXT></PARA>
+<PARA ID="P-00012" LVL="0"><PTEXT><PDAT>The present invention is distinguished over the prior art in general by an advanced coring system and method utilizing a core height measurement module that accurately measures the amount of core captured as a function of time and depth, a data telemetry module that conveys this information to the surface in real time, and a full closure valve assembly that completely closes the bottom of the core barrel under surface control to prevent loss of unconsolidated and highly fractured cores. The transmitter of the electromagnetic ranging system rides atop a core sample being formed in the barrel chamber and a receiver member of the electromagnetic ranging system is fixed at a top end of the barrel a known distance above the transmitter. During the coring operation the transmitter transmits a fixed frequency signal to the receiver through drilling fluid disposed therebetween. The distance between the transmitter and receiver decreases and the amplitude of the transmitted signal changes as a function of the separation distance between the transmitter and receiver as the core sample enters the inner barrel and the height of the core sample within the barrel is determined as a function of time and depth. The pressure of the drilling fluid is modulated to transmit a series of pressure pulses from the barrel to the surface encoded to produce a binary digital or pulse-width modulation signal. The electromagnetic ranging system may be incorporated into a coring tool having a core bit disposed at a lower end and a full closure ball valve and core retention assembly movable to a closed position to close the bottom end of the inner barrel and prevent the loss of core collected in the inner barrel chamber.</PDAT></PTEXT></PARA>
+<H LVL="1"><STEXT><PDAT>SUMMARY OF THE INVENTION</PDAT></STEXT></H>
+<PARA ID="P-00013" LVL="0"><PTEXT><PDAT>It is therefore an object of the present invention to provide an advanced coring system and method which will eliminate uncertainties that may occur due to variations in standpipe pressure, pump speed, mud weight and drill cutting returns, among other things.</PDAT></PTEXT></PARA>
+<PARA ID="P-00014" LVL="0"><PTEXT><PDAT>It is another object of this invention to provide an advanced coring system and method utilizing a core height measurement module that produces direct accurate measurement of the amount of core actually being recovered in the barrel of the coring tool.</PDAT></PTEXT></PARA>
+<PARA ID="P-00015" LVL="0"><PTEXT><PDAT>Another object of this invention is to provide an advanced coring system and method that conveys accurate core height data of the core being recovered in the barrel of the coring tool to the surface in real time.</PDAT></PTEXT></PARA>
+<PARA ID="P-00016" LVL="0"><PTEXT><PDAT>Another object of this invention is to provide an advanced coring system and method that will prevent loss of unconsolidated and highly fractured cores.</PDAT></PTEXT></PARA>
+<PARA ID="P-00017" LVL="0"><PTEXT><PDAT>Another object of this invention is to provide an advanced coring system and method utilizing core height measurement modules and core barrel closure modules that are compatible with conventional and wireline-retrievable coring systems.</PDAT></PTEXT></PARA>
+<PARA ID="P-00018" LVL="0"><PTEXT><PDAT>A further object of this invention is to provide an advanced coring system and method utilizing core height measurement modules and core barrel closure modules that does not require any significant changes to standard inner and outer core barrel assemblies and will operate with both sealed oil-lubricated and mud-lubricated bearing packs.</PDAT></PTEXT></PARA>
+<PARA ID="P-00019" LVL="0"><PTEXT><PDAT>A still further object of this invention is to provide an advanced coring system and method which will improve coring success and reduce overall coring costs.</PDAT></PTEXT></PARA>
+<PARA ID="P-00020" LVL="0"><PTEXT><PDAT>Other objects of the invention will become apparent from time to time throughout the specification as hereinafter related.</PDAT></PTEXT></PARA>
+<PARA ID="P-00021" LVL="0"><PTEXT><PDAT>The above noted objects and other objects of the invention are accomplished by an advanced coring system and method utilizing a core height measurement module that accurately measures the amount of core captured as a function of time and depth, a data telemetry module that conveys this information to the surface in real time, and a full closure valve assembly that completely closes the bottom of the core barrel under surface control to prevent loss of unconsolidated and highly fractured cores.</PDAT></PTEXT></PARA>
+</BTEXT>
+</BRFSUM>
+<DRWDESC>
+<BTEXT>
+<H LVL="1"><STEXT><PDAT>BRIEF DESCRIPTION OF THE DRAWINGS</PDAT></STEXT></H>
+<PARA ID="P-00022" LVL="0"><PTEXT><FGREF ID="DRAWINGS"><PDAT>FIG. 1</PDAT></FGREF><PDAT> is a schematic illustration of the electromagnetic core height measurement module.</PDAT></PTEXT></PARA>
+<PARA ID="P-00023" LVL="0"><PTEXT><FGREF ID="DRAWINGS"><PDAT>FIG. 2A</PDAT></FGREF><PDAT> is a schematic illustration of the weighted fluted transmitter housing that rides on the top of the core and contains the battery-powered data transmitter.</PDAT></PTEXT></PARA>
+<PARA ID="P-00024" LVL="0"><PTEXT><FGREF ID="DRAWINGS"><PDAT>FIG. 2B</PDAT></FGREF><PDAT> is a schematic top plan view of the weighted fluted transmitter housing.</PDAT></PTEXT></PARA>
+<PARA ID="P-00025" LVL="0"><PTEXT><FGREF ID="DRAWINGS"><PDAT>FIG. 3</PDAT></FGREF><PDAT> is a graph showing the signal-to-noise ratio as a function the separation distance obtained in a typical coring operation.</PDAT></PTEXT></PARA>
+<PARA ID="P-00026" LVL="0"><PTEXT><FGREF ID="DRAWINGS"><PDAT>FIG. 4</PDAT></FGREF><PDAT> is a top plan view of the orifice plate of the mud pulser unit employed in the present invention.</PDAT></PTEXT></PARA>
+<PARA ID="P-00027" LVL="0"><PTEXT><FGREF ID="DRAWINGS"><PDAT>FIG. 5</PDAT></FGREF><PDAT> is a schematic block diagram illustrating the signal transmitting process.</PDAT></PTEXT></PARA>
+<PARA ID="P-00028" LVL="0"><PTEXT><FGREF ID="DRAWINGS"><PDAT>FIG. 6</PDAT></FGREF><PDAT> is a graph showing raw pressure data taken directly at the output of a triplex pump with the pulser set in an extended &ldquo;On&rdquo; position prior to processing the left side of the graph representing the pressure before the positive pressure pulse is initiated, and the right side representing the pressure change with some of the orifices closed.</PDAT></PTEXT></PARA>
+<PARA ID="P-00029" LVL="0"><PTEXT><FGREF ID="DRAWINGS"><PDAT>FIG. 7</PDAT></FGREF><PDAT> is a graph showing the raw pressure data processed with a 50 point moving average applied.</PDAT></PTEXT></PARA>
+<PARA ID="P-00030" LVL="0"><PTEXT><FGREF ID="DRAWINGS"><PDAT>FIG. 8</PDAT></FGREF><PDAT> is a graph illustrating the binary byte pressure patterns of encoded core heights in core barrels of 5, 10, 20 and 60 and feet; respectively.</PDAT></PTEXT></PARA>
+<PARA ID="P-00031" LVL="0"><PTEXT><FGREF ID="DRAWINGS"><PDAT>FIGS. 9A and 9B</PDAT></FGREF><PDAT> are longitudinal cross sections of the coring tool showing the spring-armed ball valve in a closed position and in an opened position, respectively.</PDAT></PTEXT></PARA>
+</BTEXT>
+</DRWDESC>
+<DETDESC>
+<BTEXT>
+<H LVL="1"><STEXT><PDAT>DESCRIPTION OF THE PREFERRED EMBODIMENT</PDAT></STEXT></H>
+<PARA ID="P-00032" LVL="0"><PTEXT><PDAT>In the advanced coring system of the present invention core height measurement is made using an electromagnetic ranging system </PDAT><HIL><BOLD><PDAT>10</PDAT></BOLD></HIL><PDAT> comprising a matched transmitter </PDAT><HIL><BOLD><PDAT>11</PDAT></BOLD></HIL><PDAT> and receiver </PDAT><HIL><BOLD><PDAT>12</PDAT></BOLD></HIL><PDAT> pair, as schematically illustrated in </PDAT><FGREF ID="DRAWINGS"><PDAT>FIGS. 1</PDAT></FGREF><PDAT>, </PDAT><HIL><BOLD><PDAT>2</PDAT></BOLD></HIL><PDAT>A and </PDAT><HIL><BOLD><PDAT>2</PDAT></BOLD></HIL><PDAT>B. The transmitter </PDAT><HIL><BOLD><PDAT>11</PDAT></BOLD></HIL><PDAT> with its associated electronics and oscillator circuitry and on-board battery power supply resides inside of a weighted fluted housing </PDAT><HIL><BOLD><PDAT>13</PDAT></BOLD></HIL><PDAT> (</PDAT><FGREF ID="DRAWINGS"><PDAT>FIGS. 2A</PDAT></FGREF><PDAT>, </PDAT><HIL><BOLD><PDAT>2</PDAT></BOLD></HIL><PDAT>B) which rides on the top of the core C as it moves upward through the inner core barrel </PDAT><HIL><BOLD><PDAT>14</PDAT></BOLD></HIL><PDAT> of a coring tool. The transmitter </PDAT><HIL><BOLD><PDAT>11</PDAT></BOLD></HIL><PDAT> outputs a fixed frequency signal whose operating parameters can be set prior to running into the hole. The matched receiver </PDAT><HIL><BOLD><PDAT>12</PDAT></BOLD></HIL><PDAT> is installed in a pup sub directly above the top of the core barrel. The matched receiver </PDAT><HIL><BOLD><PDAT>12</PDAT></BOLD></HIL><PDAT> has a filter and level detection circuit capable of measuring the received amplitude of the transmitted signal. The signal amplitude changes in a well-defined manner, with the separation distance between the receiver </PDAT><HIL><BOLD><PDAT>12</PDAT></BOLD></HIL><PDAT> and transmitter </PDAT><HIL><BOLD><PDAT>11</PDAT></BOLD></HIL><PDAT> providing a direct measurement of the core height.</PDAT></PTEXT></PARA>
+<PARA ID="P-00033" LVL="0"><PTEXT><FGREF ID="DRAWINGS"><PDAT>FIG. 3</PDAT></FGREF><PDAT> shows the signal-to-noise ratio as a function the separation distance obtained in a typical coring operation. The change in signal strength versus separation distance is quite steep over the first 150 feet. This behavior allows accurate core height measurements to he made since small changes in distance produce relatively large changes in signal strength. A beneficial aspect of this approach is that the core height measurement can be self calibrated for use in different drilling fluids or muds by taking a short series of readings directly below the rotary table in the fluid filled hole.</PDAT></PTEXT></PARA>
+<PARA ID="P-00034" LVL="0"><PTEXT><PDAT>The receiver </PDAT><HIL><BOLD><PDAT>12</PDAT></BOLD></HIL><PDAT> includes an on-board analog-to-digital (A/D) converter connected with the level detection circuit and a micro-controller or microprocessor. The signal strength reading is taken from the A/D converter and processed by the on-board microprocessor. The micro-controller converts the signal level into core height data and sends this information to the surface by controlling the operation of a mud pulse telemetry system.</PDAT></PTEXT></PARA>
+<PARA ID="P-00035" LVL="0"><PTEXT><PDAT>Unlike conventional mud pulse telemetry of downhole sensor data to the surface employed in many modern measurement-while-drilling and logging-while-drilling instrumentation systems, the present system provides real-time core height monitoring in a simple, low cost, highly reliable unit.</PDAT></PTEXT></PARA>
+<PARA ID="P-00036" LVL="0"><PTEXT><PDAT>Three options are available for modulating the pressure of the drilling fluid to encode and transmit data from the well bottom to the surface. These are the creation of positive, negative or variable frequency pressure pulses. The first two approaches selectively vary the cross sectional flow area available for the drilling fluid to momentarily change pressure and, by creating a series of these events, produce a binary digital or pulse-width modulation encoding scheme. The third system consist of a spinning vane or disc assembly whose rate of rotation can be selectively retarded to support frequency shift keying (FSK) encoding.</PDAT></PTEXT></PARA>
+<PARA ID="P-00037" LVL="0"><PTEXT><PDAT>The preferred mud pulse unit </PDAT><HIL><BOLD><PDAT>15</PDAT></BOLD></HIL><PDAT> employed in the advanced coring system is a multi-orifice positive-pressure pulse design, as seen in </PDAT><FGREF ID="DRAWINGS"><PDAT>FIG. 4</PDAT></FGREF><PDAT>, disposed in the drilling fluid path. The drilling fluid entering the pup sub located directly above the core barrel assembly is forced to flow through a six nozzle orifice plate </PDAT><HIL><BOLD><PDAT>15</PDAT></BOLD></HIL><PDAT>. The nozzles or orifices </PDAT><HIL><BOLD><PDAT>16</PDAT></BOLD></HIL><PDAT> in this plate can be individually sized to support a wide range of flow rates and produce a given pressure drop. One or more of the nozzles </PDAT><HIL><BOLD><PDAT>16</PDAT></BOLD></HIL><PDAT> can be selectively opened and closed to modulate the pressure of the drilling fluid. Opening and closing of the nozzles is controlled by the microprocessor in the receiver </PDAT><HIL><BOLD><PDAT>12</PDAT></BOLD></HIL><PDAT> to reduce the flow area therethrough and create a series of positive-pressure pulses corresponding to the amplitude of the transmitted signal changes. For example, two of the six nozzles can be momentarily closed to increase pressure from 50 to 250 psi above normal standpipe pressure. Table 2 below, shows the flow rates for various core barrel sizes.</PDAT></PTEXT></PARA>
+<PARA ID="P-00038" LVL="0"><PTEXT><PDAT>Tests have been carried out using a 6&frac34;&Prime;&times;4&Prime;&times;90&prime; coring tool rated at 10.000 psi capable of collecting 4 inch diameter cores up to 90 feet in length (accuracy &plusmn;&frac12; feet) and using conventional coring hardware with conventional oil and water based drilling fluids and operating at a maximum depth of 18,000 feet. The tool was equipped with the core height measurement module, the data telemetry module, and the full closure valve assembly described hereinafter. The tool had a temperature rating of 150&deg; C. and at minimum battery life of 50 hours. Tests were conducted using positive-pressure mud pulse data telemetry with transmission triggers wherein information was sent on first satisfied time or distance criteria. The coring tool was sized to support the normal range of mud flows used to cut 4 inch diameter cores which is 200 to 340 gallons per minute (gpmii) as shown in Table 2.</PDAT></PTEXT></PARA>
+<CWU>
+<TABLE-US ID="TABLE-US-00001">
+<TABLE-CALS>
+<table frame="none" colsep="0" rowsep="0">
+<tgroup align="left" colsep="0" rowsep="0" cols="1">
+<colspec colname="1" colwidth="217pt" align="center"/>
+<thead>
+<row>
+<entry namest="1" nameend="1" rowsep="1"><PTEXT><PDAT>TABLE 2</PDAT></PTEXT></entry>
+</row>
+</thead>
+<tbody valign="top">
+<row>
+<entry namest="1" nameend="1" align="center" rowsep="1"></entry>
+</row>
+<row>
+<entry><PTEXT><PDAT>Flow Rates For Various Core Barrel Sizes</PDAT></PTEXT></entry>
+</row>
+</tbody>
+</tgroup>
+<tgroup align="left" colsep="0" rowsep="0" cols="3">
+<colspec colname="1" colwidth="84pt" align="center"/>
+<colspec colname="2" colwidth="42pt" align="center"/>
+<colspec colname="3" colwidth="91pt" align="center"/>
+<tbody valign="top">
+<row>
+<entry><PTEXT><PDAT>Hole Size</PDAT></PTEXT></entry>
+<entry><PTEXT><PDAT>Barrel Size</PDAT></PTEXT></entry>
+<entry><PTEXT><PDAT>Flow Rate</PDAT></PTEXT></entry>
+</row>
+<row>
+<entry><PTEXT><PDAT>(Inches)</PDAT></PTEXT></entry>
+<entry><PTEXT><PDAT>(Inches)</PDAT></PTEXT></entry>
+<entry><PTEXT><PDAT>(GPM)</PDAT></PTEXT></entry>
+</row>
+<row>
+<entry namest="1" nameend="3" align="center" rowsep="1"></entry>
+</row>
+<row>
+<entry><PTEXT><PDAT>4&frac34;</PDAT></PTEXT></entry>
+<entry><PTEXT><PDAT>3&frac12; &times; 1&frac34;</PDAT></PTEXT></entry>
+<entry><PTEXT><PDAT>50-90</PDAT></PTEXT></entry>
+</row>
+<row>
+<entry><PTEXT><PDAT>5&frac12;-6&frac12;</PDAT></PTEXT></entry>
+<entry><PTEXT><PDAT>4 &times; 2</PDAT></PTEXT></entry>
+<entry><PTEXT><PDAT>&ensp;90-160</PDAT></PTEXT></entry>
+</row>
+<row>
+<entry><PTEXT><PDAT>5&frac34;-6&frac34;</PDAT></PTEXT></entry>
+<entry><PTEXT><PDAT>4&frac34; &times; 2</PDAT><HIL><SP><PDAT>&emsp;</PDAT></SP></HIL></PTEXT></entry>
+<entry><PTEXT><PDAT>100-180</PDAT></PTEXT></entry>
+</row>
+<row>
+<entry><PTEXT><HIL><SP><PDAT>&emsp;</PDAT></SP></HIL><PDAT>6-6&frac34;</PDAT></PTEXT></entry>
+<entry><PTEXT><PDAT>5&frac34; &times; 3&frac12;</PDAT></PTEXT></entry>
+<entry><PTEXT><PDAT>150-250</PDAT></PTEXT></entry>
+</row>
+<row>
+<entry><PTEXT><PDAT>7&frac12;-7</PDAT><HIL><SP><PDAT>&emsp;</PDAT></SP></HIL></PTEXT></entry>
+<entry><PTEXT><PDAT>6&frac14; &times; 4</PDAT><HIL><SP><PDAT>&emsp;</PDAT></SP></HIL></PTEXT></entry>
+<entry><PTEXT><PDAT>180-300</PDAT></PTEXT></entry>
+</row>
+<row>
+<entry><PTEXT><PDAT>8-9</PDAT></PTEXT></entry>
+<entry><PTEXT><PDAT>6&frac34; &times; 4</PDAT><HIL><SP><PDAT>&emsp;</PDAT></SP></HIL></PTEXT></entry>
+<entry><PTEXT><PDAT>200-340</PDAT></PTEXT></entry>
+</row>
+<row>
+<entry><PTEXT><PDAT>8&frac12;-9</PDAT><HIL><SP><PDAT>&emsp;</PDAT></SP></HIL></PTEXT></entry>
+<entry><PTEXT><PDAT>7 &times; 4</PDAT></PTEXT></entry>
+<entry><PTEXT><PDAT>220-370</PDAT></PTEXT></entry>
+</row>
+<row>
+<entry><PTEXT><PDAT>9&frac12;-12&frac14;</PDAT></PTEXT></entry>
+<entry><PTEXT><PDAT>8&frac14;&times; 5&frac14;</PDAT></PTEXT></entry>
+<entry><PTEXT><PDAT>225-450</PDAT></PTEXT></entry>
+</row>
+<row>
+<entry namest="1" nameend="3" align="center" rowsep="1"></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</TABLE-CALS>
+</TABLE-US>
+</CWU>
+<PARA ID="P-00039" LVL="0"><PTEXT><PDAT>As shown schematically in </PDAT><FGREF ID="DRAWINGS"><PDAT>FIG. 5</PDAT></FGREF><PDAT>, the pressure pulses move up the drill string sued are read using a 0-5000 psi, 4-20 mA pressure transducer </PDAT><HIL><BOLD><PDAT>17</PDAT></BOLD></HIL><PDAT> connected to the standpipe using a 1502 hammer union. The pressure transducer </PDAT><HIL><BOLD><PDAT>17</PDAT></BOLD></HIL><PDAT> is connected by way of a cable to a signal conditioning/power supply circuit </PDAT><HIL><BOLD><PDAT>18</PDAT></BOLD></HIL><PDAT> and a laptop computer </PDAT><HIL><BOLD><PDAT>19</PDAT></BOLD></HIL><PDAT>. The computer </PDAT><HIL><BOLD><PDAT>19</PDAT></BOLD></HIL><PDAT> contains a 16-channel, high-speed data acquisition card, appropriate processing software, and a display for displaying core height in real time. The signal conditioner </PDAT><HIL><BOLD><PDAT>18</PDAT></BOLD></HIL><PDAT> modifies the output of the pressure transducer </PDAT><HIL><BOLD><PDAT>17</PDAT></BOLD></HIL><PDAT> to a form suitable for acquisition and processing by the computer </PDAT><HIL><BOLD><PDAT>19</PDAT></BOLD></HIL><PDAT>.</PDAT></PTEXT></PARA>
+<PARA ID="P-00040" LVL="0"><PTEXT><PDAT>One of the key features of the present mud pulse telemetry system is that it does not use pulsation dampers (accumulators), but instead takes event data directly out of the pump plunger noise through simple mathematical processing routines. </PDAT><FGREF ID="DRAWINGS"><PDAT>FIG. 6</PDAT></FGREF><PDAT> shows raw pressure data taken directly at the output of a triplex pump with the mud pulser set in an extended &ldquo;On&rdquo; position prior to processing. Tile left side of the graph shows the pressure before the positive pressure pulse is initiated, and the right side shows the pressure chance with some of the orifices closed. The pressure variations caused by the individual plunger strokes is nearly the same magnitude as the pressure change caused by the orifice closure. </PDAT><FGREF ID="DRAWINGS"><PDAT>FIG. 7</PDAT></FGREF><PDAT> shows the same raw data processed with a 50 point moving average applied. The transition from a low (binary value 0) to high state (binary value&equals;1) is clear without the need for accumulators. The data were collected at a sample rate of 50 Hz.</PDAT></PTEXT></PARA>
+<PARA ID="P-00041" LVL="0"><PTEXT><PDAT>Thus, the present mud pulser 15 is capable of creating pulses that ale repeatable in magnitude, duration and shape and therefore capable of supporting digital encoding. The digital,encoding scheme is relatively straightforward. </PDAT><FGREF ID="DRAWINGS"><PDAT>FIG. 8</PDAT></FGREF><PDAT> illustrates the binary byte pressure patterns of encoded core heights in core barrels of 5, 10, 20 and 60 feet, respectively.</PDAT></PTEXT></PARA>
+<PARA ID="P-00042" LVL="0"><PTEXT><PDAT>The electrical circuitry of the transmitter and oscillator, the receiver, the signal filter and level detection circuit, the analog-to-digital converter, microprocessor the mud-pulse telemetry, and mud pulse transmitter and transducer is conventional in nature and readily apparent to those skilled in the art, and therefore not shown and described in detail.</PDAT></PTEXT></PARA>
+<PARA ID="P-00043" LVL="0"><PTEXT><PDAT>Referring now to </PDAT><FGREF ID="DRAWINGS"><PDAT>FIGS. 9A and 9B</PDAT></FGREF><PDAT>, a spring-armed ball valve assembly </PDAT><HIL><BOLD><PDAT>20</PDAT></BOLD></HIL><PDAT> is disposed between the core bit </PDAT><HIL><BOLD><PDAT>21</PDAT></BOLD></HIL><PDAT> and the lower end of the core barrel </PDAT><HIL><BOLD><PDAT>14</PDAT></BOLD></HIL><PDAT> which closes the bottom of the core barrel after the maximum length of core has been captured. The ball valve assembly </PDAT><HIL><BOLD><PDAT>20</PDAT></BOLD></HIL><PDAT> shown somewhat schematically in </PDAT><FGREF ID="DRAWINGS"><PDAT>FIGS. 9A</PDAT></FGREF><PDAT>, </PDAT><HIL><BOLD><PDAT>9</PDAT></BOLD></HIL><PDAT>B. A suitable ball valve assembly for use is disclosed in U.S. Pat. No. 6,009,960 titled Coring Tool, issued Jan. 4, 2000 and assigned to Diamond Products International, Inc., of Houston, Tex., which is hereby incorporated by reference to the same extent as if fully set forth herein. U.S. Pat. No. 6,009,960 does not disclose the present electromagnetic ranging system for core height measurement as a function of time and depth, or the present data telemetry system that conveys this information to the surface in real time, however, preliminary testing of the combination utilizing such a valve assembly has proven satisfactory. This incorporation-by-reference is for the purpose of simplifying the drawings and descriptions of the preferred full closure valve assembly and providing a more comprehensive detailed description thereof. The reader may refer to the above patent for a more detailed description of particular structural components and operation of the full closure ball valve assembly.</PDAT></PTEXT></PARA>
+<PARA ID="P-00044" LVL="0"><PTEXT><PDAT>The full closure ball valve and core retention assembly </PDAT><HIL><BOLD><PDAT>20</PDAT></BOLD></HIL><PDAT> has a tubular housing </PDAT><HIL><BOLD><PDAT>22</PDAT></BOLD></HIL><PDAT> securable to the inner tubular barrel </PDAT><HIL><BOLD><PDAT>14</PDAT></BOLD></HIL><PDAT> and has an inner bore disposed therethrough. A ball valve </PDAT><HIL><BOLD><PDAT>23</PDAT></BOLD></HIL><PDAT> is rotatably disposed in the housing </PDAT><HIL><BOLD><PDAT>22</PDAT></BOLD></HIL><PDAT> adjacent to the bottom end of the inner barrel </PDAT><HIL><BOLD><PDAT>14</PDAT></BOLD></HIL><PDAT> and is rotatable between a closed (</PDAT><FGREF ID="DRAWINGS"><PDAT>FIG. 9A</PDAT></FGREF><PDAT>) and an open position (FIG. </PDAT><HIL><BOLD><PDAT>9</PDAT></BOLD></HIL><PDAT>B). An actuator sleeve </PDAT><HIL><BOLD><PDAT>24</PDAT></BOLD></HIL><PDAT> keyed to the valve ball is slidably disposed on the housing to move between an upper (valve closed) and a lower position (valve open), and is normally biased in the upper (closed) position by a plurality of disc springs (Belleville springs) </PDAT><HIL><BOLD><PDAT>25</PDAT></BOLD></HIL><PDAT> longitudinally disposed about the tubular housing and operably engaged with the actuator sleeve </PDAT><HIL><BOLD><PDAT>24</PDAT></BOLD></HIL><PDAT>. The bore of the valve ball </PDAT><HIL><BOLD><PDAT>23</PDAT></BOLD></HIL><PDAT>, in the open (sleeve lower) position is aligned in communication with the inner barrel longitudinal chamber. The actuator sleeve </PDAT><HIL><BOLD><PDAT>24</PDAT></BOLD></HIL><PDAT>, in its lower position, engages a stop shoulder </PDAT><HIL><BOLD><PDAT>26</PDAT></BOLD></HIL><PDAT> and alignment of a spring retainer ring </PDAT><HIL><BOLD><PDAT>27</PDAT></BOLD></HIL><PDAT> with a clearance groove releases the compression on the Belleville springs </PDAT><HIL><BOLD><PDAT>25</PDAT></BOLD></HIL><PDAT>. The assembly includes means for locking the actuator sleeve </PDAT><HIL><BOLD><PDAT>24</PDAT></BOLD></HIL><PDAT> in the lower (valve open) position, and fluid actuated means to release the locking means so as to enable the actuator sleeve to move to the upper (valve closed) position, thereby moving the ball valve to a closed position whereby the inner barrel bottom end is closed to prevent the loss of core collected in the inner barrel chamber. A flow restriction is created when the actuator sleeve </PDAT><HIL><BOLD><PDAT>24</PDAT></BOLD></HIL><PDAT> is disposed in the upper (closed) position wherein fluid flow through the flow restriction is substantially increased when the sleeve is moved to the lower (open) position which is detectable by the operator and serves as a &ldquo;telltale&rdquo; for determining when the ball valve </PDAT><HIL><BOLD><PDAT>23</PDAT></BOLD></HIL><PDAT> is in a closed position.</PDAT></PTEXT></PARA>
+<PARA ID="P-00045" LVL="0"><PTEXT><PDAT>The ball valve </PDAT><HIL><BOLD><PDAT>23</PDAT></BOLD></HIL><PDAT> (sleeve </PDAT><HIL><BOLD><PDAT>24</PDAT></BOLD></HIL><PDAT>) is actuated under surface operator control such that the closure trigger is substantially away from normal operating conditions to prevent it from being tripped inadvertently. Once the ball valve has been tripped, it provides a clear indication or &ldquo;tattletale&rdquo; that it has closed properly.</PDAT></PTEXT></PARA>
+<PARA ID="P-00046" LVL="0"><PTEXT><PDAT>In a preferred embodiment, the spring-armed ball valve </PDAT><HIL><BOLD><PDAT>23</PDAT></BOLD></HIL><PDAT> is caused to close by first momentarily increasing the drilling fluid flow rate above a pre-set operating level and then reducing the flow back to normal flow ranges. This provides ail absolute pressure indication when the ball valve has closed due to the significant difference in cross sectional flow areas between the open and closed states.</PDAT></PTEXT></PARA>
+<PARA ID="P-00047" LVL="0"><PTEXT><PDAT>The actuation force required to rotate the ball valve closed is provided by the stacked series of Belleville springs </PDAT><HIL><BOLD><PDAT>25</PDAT></BOLD></HIL><PDAT> which have been compressed (&ldquo;armed&rdquo;) at the surface prior to running into the hole using appropriate conventional tooling. The ball valve is in its full open position in the armed state. In the open state the ball valve has the same internal diameter as the drift diameter of the inner core barrel.</PDAT></PTEXT></PARA>
+<PARA ID="P-00048" LVL="0"><PTEXT><PDAT>With the tool armed, the coring assembly is run into the hole, the bottom tagged, and coring operations commenced. For mud flow rates below the pre-set trigger point, the fluid pressure drop acting across a restriction inside the ball valve assembly </PDAT><HIL><BOLD><PDAT>20</PDAT></BOLD></HIL><PDAT> causes the actuator sleeve </PDAT><HIL><BOLD><PDAT>24</PDAT></BOLD></HIL><PDAT> to be pumped down towards, but not all the way to, the lower stop shoulder </PDAT><HIL><BOLD><PDAT>26</PDAT></BOLD></HIL><PDAT>. For flows below the trigger flow, the movement is not enough to bring the spring retaining ring </PDAT><HIL><BOLD><PDAT>27</PDAT></BOLD></HIL><PDAT> into alignment with the clearance groove cut into the actuator nut. Thus, the ball valve </PDAT><HIL><BOLD><PDAT>23</PDAT></BOLD></HIL><PDAT> remains fully open at all flow rates below the trigger level.</PDAT></PTEXT></PARA>
+<PARA ID="P-00049" LVL="0"><PTEXT><PDAT>When the desired length of core has been taken, the flow rate is brought to at level above the trigger flow for a period of about 30-60 seconds. In this case, the movement of the actuator sleeve </PDAT><HIL><BOLD><PDAT>24</PDAT></BOLD></HIL><PDAT> is now sufficient to pump the sleeve down to the stop shoulder </PDAT><HIL><BOLD><PDAT>26</PDAT></BOLD></HIL><PDAT> and align the spring retaining ring </PDAT><HIL><BOLD><PDAT>27</PDAT></BOLD></HIL><PDAT> with the clearance groove. This allows the spring retaining ring </PDAT><HIL><BOLD><PDAT>27</PDAT></BOLD></HIL><PDAT> to expand outward into the actuator housing. Then, by stopping the flow, the Belleville spring assembly </PDAT><HIL><BOLD><PDAT>25</PDAT></BOLD></HIL><PDAT> forces the actuator sleeve </PDAT><HIL><BOLD><PDAT>24</PDAT></BOLD></HIL><PDAT> away from the stop shoulder </PDAT><HIL><BOLD><PDAT>26</PDAT></BOLD></HIL><PDAT>. Because the actuator sleeve </PDAT><HIL><BOLD><PDAT>24</PDAT></BOLD></HIL><PDAT> is mechanically keyed to the ball valve </PDAT><HIL><BOLD><PDAT>293</PDAT></BOLD></HIL><PDAT>. this movement causes the ball valve to be rotated closed. The Belleville spring stack </PDAT><HIL><BOLD><PDAT>25</PDAT></BOLD></HIL><PDAT> generates a large closure force capable of shearing off the core and closing the inner barrel.</PDAT></PTEXT></PARA>
+<PARA ID="P-00050" LVL="0"><PTEXT><PDAT>While this invention has been described fully and completely with special emphasis upon preferred embodiments, it should be understood that within the scope of the appended claims the invention may be practiced otherwise than as specifically described herein.</PDAT></PTEXT></PARA>
+</BTEXT>
+</DETDESC>
+</SDODE>
+<SDOCL>
+<H LVL="1"><STEXT><PDAT>We claim: </PDAT></STEXT></H>
+<CL>
+<CLM ID="CLM-00001">
+<PARA ID="P-00051" LVL="0"><PTEXT><PDAT>1. A method for measuring the height of a core sample being recovered in a barrel of a coring tool and transmitting data relative thereto to the surface of a formation concurrently during a coring operation, comprising the steps of:</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>providing in the coring tool at least an inner barrel having an internal longitudinal chamber for accommodating a core sample; </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>providing a transmitter of an electromagnetic ranging system within a lower end of the barrel to ride atop a core sample being formed in the barrel chamber, and fixing a receiver member of the electromagnetic ranging system at a top end of the barrel a known distance above the transmitter; </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>introducing drilling fluid from the surface into the inner barrel between said transmitter and said receiver; and </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>during the coring operation, transmitting a fixed frequency signal from said transmitter to said receiver through the drilling fluid therebetween; wherein </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>the distance between said transmitter and said receiver decreases and the amplitude of the transmitted signal changes as a function of the separation distance between said transmitter and said receiver as the core sample enters the inner barrel and the height of the core sample within the barrel is determined as a function of time and depth; and </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>transmitting a signal representing the core height depth to the surface of the formation. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00002">
+<PARA ID="P-00052" LVL="0"><PTEXT><PDAT>2. The method according to </PDAT><CLREF ID="CLM-00001"><PDAT>claim 1</PDAT></CLREF><PDAT>, wherein</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>said step of transmitting a fixed frequency signal from said transmitter to said receiver comprises: </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="3"><PTEXT><PDAT>detecting the amplitude of the transmitted signal changes with a level detection circuit; </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="3"><PTEXT><PDAT>converting the detected amplitude of the transmitted signal changes from an analog signal to a digital signal; and </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="3"><PTEXT><PDAT>processing the digital signal into a data signal representing the core height. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00003">
+<PARA ID="P-00053" LVL="0"><PTEXT><PDAT>3. The method according to </PDAT><CLREF ID="CLM-00002"><PDAT>claim 2</PDAT></CLREF><PDAT>, including the step of</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>filtering the transmitted signal with a signal filter prior to detecting the amplitude of the transmitted signal changes. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00004">
+<PARA ID="P-00054" LVL="0"><PTEXT><PDAT>4. The method according to </PDAT><CLREF ID="CLM-00001"><PDAT>claim 1</PDAT></CLREF><PDAT>, wherein</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>said step of transmitting a signal representing the core height depth to the surface of the formation comprises: </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="3"><PTEXT><PDAT>modulating the pressure of the drilling fluid using mud-pulse telemetry to transmit a series of pressure pulses from the barrel to the surface encoded to produce a binary digital or pulse-width modulation signal. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00005">
+<PARA ID="P-00055" LVL="0"><PTEXT><PDAT>5. The method according to </PDAT><CLREF ID="CLM-00004"><PDAT>claim 4</PDAT></CLREF><PDAT>, wherein</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>said step of modulating the pressure of the drilling fluid using mud-pulse telemetry comprises: </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="3"><PTEXT><PDAT>forcing the drilling fluid through a multiple nozzle orifice plate, at least one of which nozzles is selectively opened and closed to reduce the flow area therethrough and create a series of positive-pressure pulses. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00006">
+<PARA ID="P-00056" LVL="0"><PTEXT><PDAT>6. The method according to </PDAT><CLREF ID="CLM-00005"><PDAT>claim 5</PDAT></CLREF><PDAT>, wherein</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>the opening and closing of at least one of said nozzles of said multiple nozzle orifice plate is controlled by a microprocessor in said receiver corresponding to the amplitude of the transmitted signal changes. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00007">
+<PARA ID="P-00057" LVL="0"><PTEXT><PDAT>7. The method according to </PDAT><CLREF ID="CLM-00001"><PDAT>claim 1</PDAT></CLREF><PDAT>, comprising the step of</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>calibrating the signal strength of the electromagnetic ranging system relative to the separation distance between said transmitter and said receiver for use with the particular drilling fluid being used by taking several readings of the change in signal strength when said barrel, said transmitter and said receiver are disposed at an upper end of a borehole of the formation filled with the drilling fluid. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00008">
+<PARA ID="P-00058" LVL="0"><PTEXT><PDAT>8. The method according to </PDAT><CLREF ID="CLM-00001"><PDAT>claim 1</PDAT></CLREF><PDAT>, comprising the step of</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>selecting a frequency for use as the frequency of the fixed frequency signal that will minimize electromagnetic attenuation and shielding effects of said inner barrel when formed of metallic material and is disposed in an outer core barrel formed of metallic material. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00009">
+<PARA ID="P-00059" LVL="0"><PTEXT><PDAT>9. A system of apparatus for use in a coring tool to measure the height of a core sample being recovered and transmitting data relative thereto to the surface of a formation concurrently during a coring operation, comprising:</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>an inner barrel adapted to be received in the coring tool and having, an internal longitudinal chamber for accommodating a core sample; </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>a transmitter of an electromagnetic ranging system movably disposed within a lower end of the barrel to ride atop a core sample being formed in said barrel chamber, and a receiver member of the electromagnetic ranging system fixed it a top end of said barrel a known distance above said transmitter wherein a quantity of drilling fluid introduced from the surface into said inner barrel is disposed between said transmitter and said received </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>said transmitter during the coring operation, transmitting a fixed frequency signal from said transmitter to said receiver during the coring operation through said drilling fluid therebetween; and wherein </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>the distance between said transmitter and said receiver decreases and the amplitude of the transmitted signal changes as a function of the separation distance between said transmitter and said receiver as the core sample enters said inner barrel and the height of the core sample within the barrel is determined as a function of time and depth. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00010">
+<PARA ID="P-00060" LVL="0"><PTEXT><PDAT>10. The system of apparatus according to </PDAT><CLREF ID="CLM-00009"><PDAT>claim 9</PDAT></CLREF><PDAT>, wherein</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>said receiver includes a signal level detection circuit for detecting the amplitude of said transmitted signal changes; </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>an analog-to-digital converter connected with said level detection circuit for converting the detected amplitude of said transmitted signal changes from an analog signal to a digital signal; and </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>a microprocessor connected with said analog-to-digital circuit for processing the digital signal into a data signal representing the core height. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00011">
+<PARA ID="P-00061" LVL="0"><PTEXT><PDAT>11. The system of apparatus according to </PDAT><CLREF ID="CLM-00010"><PDAT>claim 10</PDAT></CLREF><PDAT>, wherein</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>said receiver includes a signal filter connected with said signal level detection circuit for filtering the signal transmitted by said transmitter. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00012">
+<PARA ID="P-00062" LVL="0"><PTEXT><PDAT>12. The system of apparatus according to </PDAT><CLREF ID="CLM-00010"><PDAT>claim 10</PDAT></CLREF><PDAT>, further comprising:</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>signal transmitting means connected with said microprocessor for transmitting a signal representing the core height depth to the surface of the formation. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00013">
+<PARA ID="P-00063" LVL="0"><PTEXT><PDAT>13. The system of apparatus according to </PDAT><CLREF ID="CLM-00012"><PDAT>claim 12</PDAT></CLREF><PDAT>, wherein</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>said signal transmitting means comprises means for modulating the pressure of the drilling fluid using mud-pulse telemetry to transmit a series of pressure pulses from said barrel to the surface that are encoded to produce a binary digital or pulse-width modulation signal. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00014">
+<PARA ID="P-00064" LVL="0"><PTEXT><PDAT>14. The system of apparatus according to </PDAT><CLREF ID="CLM-00013"><PDAT>claim 13</PDAT></CLREF><PDAT>, further comprising:</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>a pressure transducer disposed in the drilling fluid path above said barrel for detecting said pressure pulses, said pressure transducer producing a pressure measurement in response to said pressure pulses; </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>a computer at the surface of the formation including data acquisition means processing software, and display means for displaying core height data in real time; and </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>a signal conditioner and power supply circuit interposed between said pressure transducer and said computer, said signal conditioner modifying the output of said pressure transducer to a form suitable for acquisition and processing by said computer. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00015">
+<PARA ID="P-00065" LVL="0"><PTEXT><PDAT>15. The system of apparatus according to </PDAT><CLREF ID="CLM-00013"><PDAT>claim 13</PDAT></CLREF><PDAT>, wherein</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>said means for modulating the pressure of the drilling fluid comprises a multiple nozzle orifice plate disposed in the drilling fluid path, and having at least one nozzle controlled by said microprocessor to be selectively opened and closed to reduce the flow area therethrough and create a series of positive-pressure pulses corresponding to the amplitude of the transmitted signal changes. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00016">
+<PARA ID="P-00066" LVL="0"><PTEXT><PDAT>16. A subterranean formation coring apparatus, comprising:</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>a tubular outer barrel including structure at an upper end thereof for connection to a drill string, and defining a longitudinal bore; </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>a core bit disposed at a lower end of the tubular barrel; </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>an inner barrel housed in said outer barrel and having an internal longitudinal chamber for accommodating a core sample; and </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>electromagnetic ranging instrumentation operable to obtain data relating to at least the height of a core sample being recovered and transmit data relative thereto to the surface of a formation concurrently during a coring operation, wherein the electromagnetic ranging instrumentation includes a transmitter movably disposed within a lower end of said inner barrel to ride atop a core sample being formed in said barrel chamber and a receiver fixed at a top end of said inner barrel a known distance above said transmitter wherein a quantity of drilling fluid introduced from the surface into said inner barrel is disposed between said transmitter and said receiver; </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>said transmitter transmitting a fixed frequency signal from said transmitter to said receiver during the coring operation through said drilling fluid therebetween wherein the amplitude of the transmitted signal changes as a function of the separation distance between said transmitter and said receiver as the core sample enters said inner barrel and the height of the core sample within the barrel is determined as a function of time and depth. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00017">
+<PARA ID="P-00067" LVL="0"><PTEXT><PDAT>17. The coring apparatus according to </PDAT><CLREF ID="CLM-00016"><PDAT>claim 16</PDAT></CLREF><PDAT>, wherein</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>said receiver includes a signal level detection circuit for detecting the amplitude of said transmitted signal changes; </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>an analog-to-digital converter connected with said level detection circuit for converting the detected amplitude of said transmitted signal changes from an analog signal to a digital signal; and </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>a microprocessor connected with said analog-to-digital circuit for processing the digital signal into a data signal representing the core height. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00018">
+<PARA ID="P-00068" LVL="0"><PTEXT><PDAT>18. The coring apparatus according to </PDAT><CLREF ID="CLM-00017"><PDAT>claim 17</PDAT></CLREF><PDAT>, wherein</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>said receiver includes a signal filter connected with said signal level detection circuit for filtering the signal transmitted by said transmitter. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00019">
+<PARA ID="P-00069" LVL="0"><PTEXT><PDAT>19. The coring apparatus according to </PDAT><CLREF ID="CLM-00017"><PDAT>claim 17</PDAT></CLREF><PDAT>, further comprising:</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>signal transmitting means connected with said microprocessor for transmitting a signal representing the core height depth to the surface of the formation. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00020">
+<PARA ID="P-00070" LVL="0"><PTEXT><PDAT>20. The system of apparatus according to </PDAT><CLREF ID="CLM-00019"><PDAT>claim 19</PDAT></CLREF><PDAT>, wherein</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>said signal transmitting means comprises means for modulating the pressure of the drilling fluid using mud-pulse telemetry to transmit a series of pressure pulses from said barrel to the surface that are encoded to produce a binary digital or pulse-width modulation signal. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00021">
+<PARA ID="P-00071" LVL="0"><PTEXT><PDAT>21. The coring apparatus according to </PDAT><CLREF ID="CLM-00020"><PDAT>claim 20</PDAT></CLREF><PDAT>, further comprising:</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>a pressure transducer disposed in the drilling fluid path above said inner barrel for detecting said pressure pulses, said pressure transducer producing a pressure measurement in response to said pressure pulses; </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>a computer at the surface of the formation including data acquisition means processing software, and display means for displaying core height data in real time; and </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>a signal conditioner and power supply circuit interposed between said pressure transducer and said computer, said signal conditioner modifying the output of said pressure transducer to a form suitable for acquisition and processing by said computer. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00022">
+<PARA ID="P-00072" LVL="0"><PTEXT><PDAT>22. The coring apparatus according to </PDAT><CLREF ID="CLM-00020"><PDAT>claim 20</PDAT></CLREF><PDAT>, wherein</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>said means for modulating the pressure of the drilling fluid comprises a multiple nozzle orifice plate disposed in the drilling fluid path, and having at least one nozzle controlled by said microprocessor to be selectively opened and closed to reduce the flow area therethrough and create a series of positive-pressure pulses corresponding to the amplitude of the transmitted signal changes. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00023">
+<PARA ID="P-00073" LVL="0"><PTEXT><PDAT>23. The coring apparatus according to </PDAT><CLREF ID="CLM-00016"><PDAT>claim 16</PDAT></CLREF><PDAT>, further comprising:</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>a full closure ball valve and core retention assembly including a tubular body securable to said inner tube at its upper end and having an inner bore disposed therethrough, said body defining a housing for receiving a ball closure valve; </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>an actuator sleeve slidably disposed on said body between an upper and a lower position, said sleeve operably engaged with said ball closure valve and being normally biased in said upper position by biasing means; </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>a ball valve rotatably disposed in said housing adjacent to a bottom end of said inner barrel and rotatable between an open and a closed position said ball having a bore disposed therethrough which, in the open position corresponding to said lower position of said sleeve, is in communication with said inner barrel longitudinal chamber; </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>means for locking said actuator sleeve in said lower position; and </PDAT></PTEXT></CLMSTEP>
+<CLMSTEP LVL="2"><PTEXT><PDAT>fluid actuated means to release said locking means so as to enable said actuator sleeve to move to said upper position, thereby moving said ball valve to a closed position whereby said inner barrel bottom end is closed to prevent the loss of core collected in said inner barrel chamber, and means to vary the force necessary to unlock said actuator sleeve. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00024">
+<PARA ID="P-00074" LVL="0"><PTEXT><PDAT>24. The coring apparatus according to </PDAT><CLREF ID="CLM-00023"><PDAT>claim 23</PDAT></CLREF><PDAT>, wherein</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>said biasing means includes a plurality of disc springs longitudinally disposed about said tubular body and operably disposed with said actuator sleeve. </PDAT></PTEXT></CLMSTEP>
+</CLM>
+<CLM ID="CLM-00025">
+<PARA ID="P-00075" LVL="0"><PTEXT><PDAT>25. The coring apparatus according to </PDAT><CLREF ID="CLM-00016"><PDAT>claim 16</PDAT></CLREF><PDAT>, further comprising:</PDAT></PTEXT></PARA>
+<CLMSTEP LVL="2"><PTEXT><PDAT>means detectable by an operator for determining when the ball valve is in a closed position, including a flow restriction created when said actuator sleeve is disposed in in upper position wherein fluid flow through said flow restriction is substantially increased when said sleeve is moved to said lower position.</PDAT></PTEXT></CLMSTEP>
+</CLM>
+</CL>
+</SDOCL>
+<SDODR ID="DRAWINGS">
+<EMI ID="EMI-D00000" ALT="embedded image" FILE="US06457538-20021001-D00000.TIF"/>
+<EMI ID="EMI-D00001" ALT="embedded image" FILE="US06457538-20021001-D00001.TIF"/>
+<EMI ID="EMI-D00002" ALT="embedded image" FILE="US06457538-20021001-D00002.TIF"/>
+<EMI ID="EMI-D00003" ALT="embedded image" FILE="US06457538-20021001-D00003.TIF"/>
+<EMI ID="EMI-D00004" ALT="embedded image" FILE="US06457538-20021001-D00004.TIF"/>
+<EMI ID="EMI-D00005" ALT="embedded image" FILE="US06457538-20021001-D00005.TIF"/>
+</SDODR>
+</PATDOC>
+
