@@ -61,8 +61,8 @@ testdate = Date.new(2003,10,01)
     if datelooperissued.day < 10
       daystrpat = "0" + datelooperissued.day.to_s
     end
-    patentappfile = prefixapps + "pa" + (datelooper.year).to_s[2..3] + monthstrapp + daystrapp + ".zip"
-    patentissuefile = prefix + "pg" + (datelooper.year).to_s[2..3] + monthstrpat + daystrpat + ".zip"
+    patentappfile = prefixapps + "pa" + (datelooperapps.year).to_s[2..3] + monthstrapp + daystrapp + ".zip"
+    patentissuefile = prefix + "pg" + (datelooperissued.year).to_s[2..3] + monthstrpat + daystrpat + ".zip"
     
     Net::HTTP.start("patents.reedtech.com") do |http|
       begin
