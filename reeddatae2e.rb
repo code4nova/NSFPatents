@@ -229,9 +229,9 @@ if (action == "full" or action == "csv")
       case fileyear.to_i
         when 2012..2014
           assignee_loop = ""
-          papp.xpath('.//assignees').each do |assig|
+          papp.xpath('.//assignees/assignee').each do |assig|
             # concatenate all the assignees together (first last) and separate with square brackets
-            assignee_loop = assignee_loop + "[" + assig.xpath('./assignee/addressbook/orgname/text()').to_s + "]"
+            assignee_loop = assignee_loop + "[" + assig.xpath('./addressbook/orgname/text()').to_s + "]"
           end
           puts "Assignee: " + assignee_loop
           new_patentapp(csv, appno_loop, pubdate_loop, pubnum_loop, title_loop, abstract_loop, invs_loop, assignee_loop, xref_loop, filedate_loop,
