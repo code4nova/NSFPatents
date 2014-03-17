@@ -247,7 +247,7 @@ if (action == "full" or action == "csv")
     when 2005..2011
       #code
     when 2012..2014
-      FIELDS = %w{patentno, patpubdate title appno priorpub priorpubdate abstract invs assignee xref filedate govint parentcase childcase date371 pctpubno}
+      FIELDS = %w{patentno patpubdate title appno priorpub priorpubdate abstract invs assignee xref filedate govint parentcase childcase date371 pctpubno}
       def new_patent(csv, patentno, patpubdate, title, appno, priorpub, priorpubdate, abstract, invs, assignee, xref, filedate, govint, parentcase, childcase, date371, pctpubno)
         patent = []
         patent << patentno
