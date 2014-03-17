@@ -3,8 +3,9 @@
 ## USAGE:
 ##   test.rb {filename|action} ...
 ## WHERE:
-##   filename   = "ipg140311.zip" or similar (anything which isn't a known action)
-##   action     = one of "download", "extract"
+##   filename   = "ipg140311" or similar (anything which isn't a known action)
+##   action     = one of "download", "extract", "unzip", "report", "cleanup"
+##                (if not action, all actions are assumed)
 
 require 'pathname'
 require 'net/http'
@@ -55,15 +56,28 @@ def text_contains_nsf_term(line)
   /\bN\W*S\W*F\b|National Science Foundation/m.match(line)
 end
 
-def extract_govt_interest(text)
+def extract_govt_interest_from_app(text)
   processinstr1 = '<?federal-research-statement description="Federal Research Statement" end="lead"?>'
   processinstr2 = '<?federal-research-statement description="Federal Research Statement" end="tail"?>'
   matches = text.match(/#{Regexp.escape(processinstr1)}(.*)#{Regexp.escape(processinstr2)}/m)
   matches[1].strip if matches
 end
 
-def block_has_nsf_govt_interest(lines)
-  gov_int = extract_govt_interest(lines.join)
+def extract_govt_interest_from_grant(text)
+  processinstr1 = '<?GOVINT description="Government Interest" end="lead"?>'
+  processinstr2 = '<?GOVINT description="Government Interest" end="tail"?>'
+  matches = text.match(/#{Regexp.escape(processinstr1)}(.*)#{Regexp.escape(processinstr2)}/m)
+  matches[1].strip if matches
+end
+
+def block_has_nsf_govt_interest(lines, filename)
+  if filename =~ /ipa/
+    gov_int = extract_govt_interest_from_app(lines.join)
+  elsif filename =~ /ipg/
+    gov_int = extract_govt_interest_from_grant(lines.join)
+  else
+    raise "unknown file type (#{filename})"
+  end
   text_contains_nsf_term(gov_int)
 end
 
@@ -71,7 +85,7 @@ def extract_file(xml_filename, extract_filename)
   File.open(extract_filename, "w") do |fout|
     ## write some boilerplates
     fout << %q{<?xml version="1.0" encoding="UTF-8"?>} << "\n"
-    fout << %q{<!DOCTYPE us-patent-application SYSTEM "us-patent-application-v43-2012-12-04.dtd" [ ]>} << "\n"
+    fout << %q{<!DOCTYPE us-patent-dummy SYSTEM "dummy.dtd" [ ]>} << "\n"
     fout << %q{<root>} << "\n"
 
     ## extract the relavent data
@@ -92,16 +106,16 @@ def extract_file(xml_filename, extract_filename)
         if inside_block
           current_block_lines << current_line
 
-          if current_line =~ %r{</us-patent-application>} # leaving the block
+          if current_line =~ %r{</us-patent-(application|grant)>} # leaving the block
             #puts "line #{line_count}: leaving block"
-            if block_has_nsf_govt_interest(current_block_lines)
+            if block_has_nsf_govt_interest(current_block_lines, extract_filename)
               #puts "block #{block_count} contains NSF-related term"
               current_block_lines.each{|line| fout.write line}
             end
             current_block_lines = []
             inside_block = false
           end
-        elsif current_line =~ %r{<us-patent-application.*>} # entering a block
+        elsif current_line =~ %r{<us-patent-(application|grant).*>} # entering a block
           #puts "line #{line_count}: entering block"
           current_block_lines << current_line
 
@@ -117,7 +131,7 @@ def extract_file(xml_filename, extract_filename)
 end
 
 ## To use this class, pass it a block which takes Nokogiri::XML node (or whatever it's called)
-## and return something which can be converted to a string
+## and a filename and returns something which can be converted to a string
 class Extractor
   def initialize(field_name, &extractor)
     @field_name = field_name
@@ -133,32 +147,33 @@ class Extractor
   end
 end
 
+## Like Extractor, but assumes a simple xpath block
+class SimpleExtractor < Extractor
+  def initialize(field_name, target_xpath)
+    super(field_name) do |xml, filename|
+      xml.xpath(target_xpath).to_s
+    end
+  end
+end
+
 def produce_applications_report(extract_filename, report_filename)
   return unless extract_filename =~ /ipa/
+
+  full_year, month, day = get_date_fields(extract_filename)
+  raise "cannot process file with year #{full_year}" if full_year.to_i < 2012
 
   ##
   ## Create a list of Extractors
   ##
 
-  #FIELDS = %w{appno pubdate pubnum title abstract invs assignee xref filedate govint parentcase childcase date371 pctpubno}
-
   extractors = []
 
-  extractors << Extractor.new("appno") do |app, filename|
-    app.xpath(".//application-reference/document-id/doc-number/text()").to_s
-  end
-  extractors << Extractor.new("pubdate") do |app, filename|
-    app.xpath(".//publication-reference/document-id/date/text()").to_s
-  end
-  extractors << Extractor.new("pubnum") do |app, filename|
-    app.xpath("./us-bibliographic-data-application/publication-reference/document-id/doc-number/text()").to_s
-  end
-  extractors << Extractor.new("title") do |app, filename|
-    app.xpath('.//invention-title/text()').to_s
-  end
-  extractors << Extractor.new("abstract") do |app, filename|
-    app.xpath(".//abstract/p/text()").to_s
-  end
+  extractors << SimpleExtractor.new("appno", ".//application-reference/document-id/doc-number/text()")
+  extractors << SimpleExtractor.new("pubdate", ".//publication-reference/document-id/date/text()")
+  extractors << SimpleExtractor.new("pubnum", "./us-bibliographic-data-application/publication-reference/document-id/doc-number/text()")
+  extractors << SimpleExtractor.new("title", './/invention-title/text()')
+  extractors << SimpleExtractor.new("abstract", ".//abstract/p/text()")
+
   extractors << Extractor.new("invs") do |app, filename|
     full_year, month, day = get_date_fields(filename)
     inventor_xpath = (full_year.to_i < 2007) ? './/applicant' : './/inventor/addressbook'
@@ -167,6 +182,7 @@ def produce_applications_report(extract_filename, report_filename)
     end
     inventors.map{|i| "[#{i}]"}.join
   end
+
   extractors << Extractor.new("assignee") do |app, filename|
     full_year, month, day = get_date_fields(filename)
     case full_year.to_i
@@ -177,6 +193,7 @@ def produce_applications_report(extract_filename, report_filename)
       assignees.map{|a| "[#{a}]"}.join
     end
   end
+
   extractors << Extractor.new("xref") do |app, filename|
     if app.at_xpath('//processing-instruction("cross-reference-to-related-applications")')
       processxref1 = '<?cross-reference-to-related-applications description="Cross Reference To Related Applications" end="lead"?>'
@@ -189,24 +206,23 @@ def produce_applications_report(extract_filename, report_filename)
       app.xpath(".//description/heading[contains(.,'CROSS-REFERENCE') or contains(.,'CROSSREF') or contains(.,'CROSS REFERENCE')]").to_s
     end
   end
-  extractors << Extractor.new("filedate") do |app, filename|
-    app.xpath(".//application-reference/document-id/date/text()").to_s
-  end
+
+  extractors << SimpleExtractor.new("filedate", ".//application-reference/document-id/date/text()")
+
   extractors << Extractor.new("govint") do |app, filename|
-    Nokogiri::XML.fragment(extract_govt_interest(app.to_s)).xpath("./p/text()").to_s
+    Nokogiri::XML.fragment(extract_govt_interest_from_app(app.to_s)).xpath("./p/text()").to_s
   end
+
   extractors << Extractor.new("parentcase") do |app, filename|
     app.xpath(".//us-related-documents//parent-doc/document-id/doc-number/text()").first.to_s
   end
+
   extractors << Extractor.new("childcase") do |app, filename|
     app.xpath(".//us-related-documents//child-doc/document-id/doc-number/text()").first.to_s
   end
-  extractors << Extractor.new("date371") do |app, filename|
-    app.xpath(".//us-371c124-date/date/text()").to_s
-  end
-  extractors << Extractor.new("pctpubno") do |app, filename|
-    app.xpath(".//pct-or-regional-filing-data/document-id/doc-number/text()").to_s
-  end
+
+  extractors << SimpleExtractor.new("date371", ".//us-371c124-date/date/text()")
+  extractors << SimpleExtractor.new("pctpubno", ".//pct-or-regional-filing-data/document-id/doc-number/text()")
 
   ##
   ## Run the Extractors against the file
@@ -238,6 +254,100 @@ end
 
 def produce_grants_report(extract_filename, report_filename)
   return unless extract_filename =~ /ipg/
+
+  full_year, month, day = get_date_fields(extract_filename)
+  raise "cannot process file with year #{full_year}" if full_year.to_i < 2012
+
+
+  ##
+  ## Create a list of Extractors
+  ##
+
+  extractors = []
+
+  extractors << SimpleExtractor.new("patentno",     './/publication-reference/document-id/doc-number/text()')
+  extractors << SimpleExtractor.new("patpubdate",   './/publication-reference/document-id/date/text()')
+  extractors << SimpleExtractor.new("title",        './/invention-title/text()')
+  extractors << SimpleExtractor.new("appno",        './/application-reference/document-id/doc-number/text()')
+  extractors << SimpleExtractor.new("priorpub",     './/related-publication/document-id/doc-number/text()')
+  extractors << SimpleExtractor.new("priorpubdate", './/related-publication/document-id/date/text()')
+  extractors << SimpleExtractor.new("abstract",     './/abstract/p/text()')
+
+  extractors << Extractor.new("invs") do |grant, filename|
+    full_year, month, day = get_date_fields(filename)
+    inventor_xpath = (full_year.to_i < 2007) ? './/applicant' : './/inventor/addressbook'
+    inventors = grant.xpath(inventor_xpath).collect do |inventor|
+      inventor.xpath('.//first-name/text()').to_s + " " + inventor.xpath('.//last-name/text()').to_s
+    end
+    inventors.map{|i| "[#{i}]"}.join
+  end
+
+  extractors << Extractor.new("assignee") do |grant, filename|
+    full_year, month, day = get_date_fields(filename)
+    case full_year.to_i
+    when 2012..2014
+      assignees = grant.xpath('.//assignees/assignee').collect do |assignee|
+        assignee.xpath('./addressbook/orgname/text()').to_s
+      end
+      assignees.map{|a| "[#{a}]"}.join
+    end
+  end
+
+  extractors << Extractor.new("xref") do |grant, filename|
+    if grant.at_xpath('//processing-instruction("RELAPP")')
+      processxref1 = '<?RELAPP description="Other Patent Relations" end="lead"?>'
+      processxref2 = '<?RELAPP description="Other Patent Relations" end="tail"?>'
+      matches = grant.to_s.match(/#{Regexp.escape(processxref1)}(.*)#{Regexp.escape(processxref2)}/m)
+      if matches
+        Nokogiri::XML.fragment(matches[1].strip).xpath("./p/text()").to_s
+      end
+    else
+      grant.xpath(".//description/heading[contains(.,'CROSS-REFERENCE') or contains(.,'CROSSREF') or contains(.,'CROSS REFERENCE')]").to_s
+    end
+  end
+
+  extractors << SimpleExtractor.new("filedate", './/application-reference/document-id/date/text()')
+
+  extractors << Extractor.new("govint") do |grant, filename|
+    Nokogiri::XML.fragment(extract_govt_interest_from_grant(grant.to_s)).xpath("./p/text()").to_s
+  end
+
+  extractors << Extractor.new("parentcase") do |app, filename|
+    app.xpath(".//us-related-documents//parent-doc/document-id/doc-number/text()").first.to_s
+  end
+
+  extractors << Extractor.new("childcase") do |app, filename|
+    app.xpath(".//us-related-documents//child-doc/document-id/doc-number/text()").first.to_s
+  end
+
+  extractors << SimpleExtractor.new("date371",    ".//us-371c124-date/date/text()")
+  extractors << SimpleExtractor.new("pctpubno",   ".//pct-or-regional-filing-data/document-id/doc-number/text()")
+
+  ##
+  ## Run the Extractors against the file
+  ##
+
+  all_extracts = []
+  File.open(extract_filename, "r") do |fin|
+    doc = Nokogiri::XML(fin)
+
+    doc.xpath('.//us-patent-grant').each do |grant|
+      # Check that there is a Government Interest.
+      next unless doc.at_xpath('//processing-instruction("GOVINT")')
+
+      grant_extracts = extractors.collect{|e| e.process(grant, extract_filename)}
+      all_extracts << grant_extracts
+    end
+  end
+
+  ##
+  ## Write the output report
+  ##
+
+  CSV.open(report_filename,"w") do |csv|
+    csv << extractors.collect{|e| e.field_name}
+    all_extracts.each{|app_extract| csv << app_extract}
+  end
 
 end
 
@@ -319,6 +429,3 @@ filenames.each do |filename|
 
   puts "end processing #{filename}"
 end
-
-
-
