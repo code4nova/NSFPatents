@@ -41,14 +41,19 @@ end
 def download_file(server, path, local_filename=nil)
   local_filename ||= Pathname.new(path).basename
 
-  Net::HTTP.start server do |http|
-    open(local_filename, "wb") do |file|
-      http.request_get path do |response|
-        response.read_body do |segment|
-          file.write segment
+  begin
+    Net::HTTP.start server do |http|
+      open(local_filename, "wb") do |file|
+        http.request_get path do |response|
+          response.read_body do |segment|
+            file.write segment
+          end
         end
       end
     end
+  rescue Exception => e
+    File::delete local_filename;
+    raise e
   end
 end
 
@@ -355,15 +360,15 @@ end
 ## Parse command-line arguments
 ##
 
-actions   = ARGV.select{|s| s =~ /^download|unzip|extract|report|cleanup$/}
-filenames = ARGV - actions
+actions   = ARGV.select{|s| s =~ /^download|unzip|extract|report|cleanup$/}.uniq
+filenames = (ARGV - actions).select{|arg| arg =~ /^ip[ag]\d{6}/ }
 filenames = filenames.map{|f| f.gsub(/\..*$/, "")}
 
 should_download = actions.empty? || (actions.include? "download")
 should_unzip    = actions.empty? || (actions.include? "unzip")
 should_extract  = actions.empty? || (actions.include? "extract")
 should_report   = actions.empty? || (actions.include? "report")
-should_cleanup  = actions.empty? || (actions.include? "cleanup")
+should_cleanup  = actions.include? "cleanup"
 
 puts "actions   = #{actions}"
 puts "filenames = #{filenames}"
