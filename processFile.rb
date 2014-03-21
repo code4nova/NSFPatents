@@ -3,7 +3,7 @@
 ## USAGE:
 ##   test.rb {filename|action} ...
 ## WHERE:
-##   filename   = "ipg140311" or similar (anything which isn't a known action)
+##   filename   = "ipg140311" or similar (anything which matches /^ip[ag]\d{6}/)
 ##   action     = one of "download", "extract", "unzip", "report", "cleanup"
 ##                (if not action, all actions are assumed)
 
@@ -41,19 +41,24 @@ end
 def download_file(server, path, local_filename=nil)
   local_filename ||= Pathname.new(path).basename
 
-  begin
-    Net::HTTP.start server do |http|
-      open(local_filename, "wb") do |file|
-        http.request_get path do |response|
-          response.read_body do |segment|
-            file.write segment
+  if File::exists? local_filename
+    puts "    (file already exists - not downloading)"
+  else
+    puts "    (file does not exist - downloading)"
+    begin
+      Net::HTTP.start server do |http|
+        open(local_filename, "wb") do |file|
+          http.request_get path do |response|
+            response.read_body do |segment|
+              file.write segment
+            end
           end
         end
       end
+    rescue Exception => e
+      File::delete local_filename;
+      raise e
     end
-  rescue Exception => e
-    File::delete local_filename;
-    raise e
   end
 end
 
