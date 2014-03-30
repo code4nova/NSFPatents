@@ -3,7 +3,7 @@
 ## USAGE:
 ##   test.rb {filename|action} ...
 ## WHERE:
-##   filename   = "ipg140311" or similar (anything which isn't a known action)
+##   filename   = "ipg140311" or similar (anything which matches /^ip[ag]\d{6}/)
 ##   action     = one of "download", "extract", "unzip", "report", "cleanup"
 ##                (if not action, all actions are assumed)
 
@@ -41,13 +41,23 @@ end
 def download_file(server, path, local_filename=nil)
   local_filename ||= Pathname.new(path).basename
 
-  Net::HTTP.start server do |http|
-    open(local_filename, "wb") do |file|
-      http.request_get path do |response|
-        response.read_body do |segment|
-          file.write segment
+  if File::exists? local_filename
+    puts "    (file already exists - not downloading)"
+  else
+    puts "    (file does not exist - downloading)"
+    begin
+      Net::HTTP.start server do |http|
+        open(local_filename, "wb") do |file|
+          http.request_get path do |response|
+            response.read_body do |segment|
+              file.write segment
+            end
+          end
         end
       end
+    rescue Exception => e
+      File::delete local_filename;
+      raise e
     end
   end
 end
@@ -60,14 +70,14 @@ def extract_govt_interest_from_app(text)
   processinstr1 = '<?federal-research-statement description="Federal Research Statement" end="lead"?>'
   processinstr2 = '<?federal-research-statement description="Federal Research Statement" end="tail"?>'
   matches = text.match(/#{Regexp.escape(processinstr1)}(.*)#{Regexp.escape(processinstr2)}/m)
-  matches[1].strip if matches
+  matches[1].strip.gsub(/\n/, "") if matches
 end
 
 def extract_govt_interest_from_grant(text)
   processinstr1 = '<?GOVINT description="Government Interest" end="lead"?>'
   processinstr2 = '<?GOVINT description="Government Interest" end="tail"?>'
   matches = text.match(/#{Regexp.escape(processinstr1)}(.*)#{Regexp.escape(processinstr2)}/m)
-  matches[1].strip if matches
+  matches[1].strip.gsub(/\n/, "") if matches
 end
 
 def block_has_nsf_govt_interest(lines, filename)
@@ -200,10 +210,10 @@ def produce_applications_report(extract_filename, report_filename)
       processxref2 = '<?cross-reference-to-related-applications description="Cross Reference To Related Applications" end="tail"?>'
       matches = app.to_s.match(/#{Regexp.escape(processxref1)}(.*)#{Regexp.escape(processxref2)}/m)
       if matches
-        Nokogiri::XML.fragment(matches[1].strip).xpath("./p/text()").to_s
+        Nokogiri::XML.fragment(matches[1].strip).xpath("./p/text()").to_s.gsub(/\n/, "")
       end
     else
-      app.xpath(".//description/heading[contains(.,'CROSS-REFERENCE') or contains(.,'CROSSREF') or contains(.,'CROSS REFERENCE')]").to_s
+      app.xpath(".//description/heading[contains(.,'CROSS-REFERENCE') or contains(.,'CROSSREF') or contains(.,'CROSS REFERENCE')]").to_s.gsub(/\n/, "")
     end
   end
 
@@ -211,6 +221,10 @@ def produce_applications_report(extract_filename, report_filename)
 
   extractors << Extractor.new("govint") do |app, filename|
     Nokogiri::XML.fragment(extract_govt_interest_from_app(app.to_s)).xpath("./p/text()").to_s
+  end
+
+  extractors << Extractor.new("ptoids") do |app, filename|
+    extract_govt_interest_from_app(app.to_s).scan(/\b\d{7}\b/).collect{|s| "[#{s}]"}.join
   end
 
   extractors << Extractor.new("parentcase") do |app, filename|
@@ -299,10 +313,10 @@ def produce_grants_report(extract_filename, report_filename)
       processxref2 = '<?RELAPP description="Other Patent Relations" end="tail"?>'
       matches = grant.to_s.match(/#{Regexp.escape(processxref1)}(.*)#{Regexp.escape(processxref2)}/m)
       if matches
-        Nokogiri::XML.fragment(matches[1].strip).xpath("./p/text()").to_s
+        Nokogiri::XML.fragment(matches[1].strip).xpath("./p/text()").to_s.gsub(/\n/, " ")
       end
     else
-      grant.xpath(".//description/heading[contains(.,'CROSS-REFERENCE') or contains(.,'CROSSREF') or contains(.,'CROSS REFERENCE')]").to_s
+      grant.xpath(".//description/heading[contains(.,'CROSS-REFERENCE') or contains(.,'CROSSREF') or contains(.,'CROSS REFERENCE')]").to_s.gsub(/\n/, " ")
     end
   end
 
@@ -310,6 +324,10 @@ def produce_grants_report(extract_filename, report_filename)
 
   extractors << Extractor.new("govint") do |grant, filename|
     Nokogiri::XML.fragment(extract_govt_interest_from_grant(grant.to_s)).xpath("./p/text()").to_s
+  end
+
+  extractors << Extractor.new("ptoids") do |grant, filename|
+    extract_govt_interest_from_grant(grant.to_s).scan(/\b\d{7}\b/).collect{|s| "[#{s}]"}.join
   end
 
   extractors << Extractor.new("parentcase") do |app, filename|
@@ -321,8 +339,8 @@ def produce_grants_report(extract_filename, report_filename)
   end
 
   extractors << SimpleExtractor.new("date371",    ".//us-371c124-date/date/text()")
-  extractors << SimpleExtractor.new("pctpubno",   ".//pct-or-regional-filing-data/document-id/doc-number/text()")
 
+  extractors << SimpleExtractor.new("pctpubno",   ".//pct-or-regional-filing-data/document-id/doc-number/text()")
   ##
   ## Run the Extractors against the file
   ##
@@ -355,15 +373,15 @@ end
 ## Parse command-line arguments
 ##
 
-actions   = ARGV.select{|s| s =~ /^download|unzip|extract|report|cleanup$/}
-filenames = ARGV - actions
+actions   = ARGV.select{|s| s =~ /^download|unzip|extract|report|cleanup$/}.uniq
+filenames = (ARGV - actions).select{|arg| arg =~ /^ip[ag]\d{6}/ }
 filenames = filenames.map{|f| f.gsub(/\..*$/, "")}
 
 should_download = actions.empty? || (actions.include? "download")
 should_unzip    = actions.empty? || (actions.include? "unzip")
 should_extract  = actions.empty? || (actions.include? "extract")
 should_report   = actions.empty? || (actions.include? "report")
-should_cleanup  = actions.empty? || (actions.include? "cleanup")
+should_cleanup  = actions.include? "cleanup"
 
 puts "actions   = #{actions}"
 puts "filenames = #{filenames}"
