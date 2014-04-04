@@ -23,14 +23,16 @@ def get_date_fields(filename)
 end
 
 def extract_download_params(filename)
-  download_server = "patents.reedtech.com"
+  # http://storage.googleapis.com/patents/appl_full_text/2014/ipa140206.zip
+  #download_server = "patents.reedtech.com"
+  download_server = "storage.googleapis.com"
 
   if filename =~ /^ipa\d{6}.zip$/  # application
     full_year, month, day = get_date_fields filename
-    server_path = "/downloads/ApplicationFullText/#{full_year}/#{filename}"
+    server_path = "/patents/appl_full_text/#{full_year}/#{filename}"
   elsif filename =~ /^ipg\d{6}.zip/ # grant
     full_year, month, day = get_date_fields filename
-    server_path = "/downloads/GrantRedBookText/#{full_year}/#{filename}"
+    server_path = "/patents/grant_full_text/#{full_year}/#{filename}"
   else
     raise "unknown file type (#{filename})"
   end
@@ -412,7 +414,10 @@ filenames.each do |filename|
       puts "  unzipping #{filename}"
 
       raise "#{zip_filename} doesn't exist" unless File.exists? zip_filename
+      # Alex changes
+      puts "Before: #{xml_filename} exists: #{File.exists? xml_filename}"
       system("unzip -o -p #{zip_filename} > #{xml_filename}")
+      puts "After: #{xml_filename} exists: #{File.exists? xml_filename}"
     end
 
     if should_extract
