@@ -7,7 +7,6 @@
 ##   action     = one of "download", "extract", "unzip", "report", "cleanup"
 ##                (if not action, all actions are assumed)
 
-
 require 'pathname'
 require 'net/http'
 require 'nokogiri'
