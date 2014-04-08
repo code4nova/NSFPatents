@@ -414,10 +414,7 @@ filenames.each do |filename|
       puts "  unzipping #{filename}"
 
       raise "#{zip_filename} doesn't exist" unless File.exists? zip_filename
-      # Alex changes
-      puts "Before: #{xml_filename} exists: #{File.exists? xml_filename}"
       system("unzip -o -p #{zip_filename} > #{xml_filename}")
-      puts "After: #{xml_filename} exists: #{File.exists? xml_filename}"
     end
 
     if should_extract
