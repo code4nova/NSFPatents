@@ -4,8 +4,10 @@
 ##   test.rb {filename|action} ...
 ## WHERE:
 ##   filename   = "ipg140311" or similar (anything which matches /^ip[ag]\d{6}/)
-##   action     = one of "download[-(reed|goog)]", "extract", "unzip", "report", "cleanup"
+##   action     = one of "download", "extract", "unzip", "report", "cleanup"
 ##                (if not action, all actions are assumed)
+##   server     = either "google" or "reedtech"
+##                (if neither, google is assumed)
 
 require 'pathname'
 require 'net/http'
@@ -23,12 +25,13 @@ def get_date_fields(filename)
 end
 
 def extract_download_params(filename, server_preference)
+  puts "Server preference: #{server_preference}"
   download_server, pa_path_template, pg_path_template = nil
-  if server_preference == "goog" # Google download preference (default)
+  if server_preference == "google" # Google download preference (default)
     download_server = "storage.googleapis.com"
     pa_path_template = "/patents/appl_full_text/%s/%s"
     pg_path_template = "/patents/grant_full_text/%s/%s"
-  elsif server_preference == "reed" # Reedtech download preference
+  elsif server_preference == "reedtech" # Reedtech download preference
     download_server = "patents.reedtech.com"
     pa_path_template = "/downloads/ApplicationFullText/%s/%s"
     pg_path_template = "/downloads/GrantRedBookText/%s/%s"
@@ -382,25 +385,20 @@ end
 ## Parse command-line arguments
 ##
 
-actions   = ARGV.select{|s| s =~ /^download(-\w*)?|unzip|extract|report|cleanup$/}.uniq
-filenames = (ARGV - actions).select{|arg| arg =~ /^ip[ag]\d{6}/ }
+actions   = ARGV.select{|s| s =~ /^(download|unzip|extract|report|cleanup)$/}.uniq
+non_actions = (ARGV - actions)
+filenames = non_actions.select{|arg| arg =~ /^ip[ag]\d{6}/ }
 filenames = filenames.map{|f| f.gsub(/\..*$/, "")}
 
-should_download = actions.empty?
-server_preference = "goog"
-
-unless actions.empty?
-  actions.each do |action|
-    should_download = !(action.match /download/).nil? # is there a better way to evaluate false to nil and true to not nil?
-
-    if should_download # break once the download option has been found
-      dl_suffix = action.match(/goog|reed/).to_s
-      server_preference = dl_suffix unless dl_suffix == "" # overwrite the previous server preference of "goog" if dl_suffix is "" (ie nil.to_s)
-      break
-    end  
+server_preference = "google"
+non_actions.each do |arg| 
+  if arg =~ /^google|reedtech$/i
+    server_preference = arg.downcase
+    break
   end
 end
 
+should_download = actions.empty? || (actions.include? "download")
 should_unzip    = actions.empty? || (actions.include? "unzip")
 should_extract  = actions.empty? || (actions.include? "extract")
 should_report   = actions.empty? || (actions.include? "report")
@@ -408,6 +406,7 @@ should_cleanup  = actions.include? "cleanup"
 
 puts "actions   = #{actions}"
 puts "filenames = #{filenames}"
+puts "server    = #{server_preference}"
 
 ##
 ## Main Loop
