@@ -270,7 +270,10 @@ def produce_applications_report(extract_filename, report_filename)
 
   CSV.open(report_filename,"w") do |csv|
     csv << extractors.collect{|e| e.field_name}
-    all_extracts.each{|app_extract| csv << app_extract}
+    
+    all_extracts.each do |app_extracts| 
+      csv << app_extract.map {|row| row.gsub /\n/, " "}
+    end
   end
 
 end
