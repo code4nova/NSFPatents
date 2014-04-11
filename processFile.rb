@@ -79,14 +79,14 @@ def extract_govt_interest_from_app(text)
   processinstr1 = '<?federal-research-statement description="Federal Research Statement" end="lead"?>'
   processinstr2 = '<?federal-research-statement description="Federal Research Statement" end="tail"?>'
   matches = text.match(/#{Regexp.escape(processinstr1)}(.*)#{Regexp.escape(processinstr2)}/m)
-  matches[1].strip.gsub(/\n/, "") if matches
+  matches[1].strip if matches
 end
 
 def extract_govt_interest_from_grant(text)
   processinstr1 = '<?GOVINT description="Government Interest" end="lead"?>'
   processinstr2 = '<?GOVINT description="Government Interest" end="tail"?>'
   matches = text.match(/#{Regexp.escape(processinstr1)}(.*)#{Regexp.escape(processinstr2)}/m)
-  matches[1].strip.gsub(/\n/, "") if matches
+  matches[1].strip if matches
 end
 
 def block_has_nsf_govt_interest(lines, filename)
@@ -219,10 +219,10 @@ def produce_applications_report(extract_filename, report_filename)
       processxref2 = '<?cross-reference-to-related-applications description="Cross Reference To Related Applications" end="tail"?>'
       matches = app.to_s.match(/#{Regexp.escape(processxref1)}(.*)#{Regexp.escape(processxref2)}/m)
       if matches
-        Nokogiri::XML.fragment(matches[1].strip).xpath("./p/text()").to_s.gsub(/\n/, "")
+        Nokogiri::XML.fragment(matches[1].strip).xpath("./p/text()").to_s
       end
     else
-      app.xpath(".//description/heading[contains(.,'CROSS-REFERENCE') or contains(.,'CROSSREF') or contains(.,'CROSS REFERENCE')]").to_s.gsub(/\n/, "")
+      app.xpath(".//description/heading[contains(.,'CROSS-REFERENCE') or contains(.,'CROSSREF') or contains(.,'CROSS REFERENCE')]").to_s
     end
   end
 
@@ -267,14 +267,7 @@ def produce_applications_report(extract_filename, report_filename)
   ##
   ## Write the output report
   ##
-
-  CSV.open(report_filename,"w") do |csv|
-    csv << extractors.collect{|e| e.field_name}
-    
-    all_extracts.each do |app_extracts| 
-      csv << app_extract.map {|row| row.gsub /\n/, " "}
-    end
-  end
+  write_csv(report_filename, all_extracts, extractors.collect{|e| e.field_name})
 
 end
 
@@ -325,10 +318,10 @@ def produce_grants_report(extract_filename, report_filename)
       processxref2 = '<?RELAPP description="Other Patent Relations" end="tail"?>'
       matches = grant.to_s.match(/#{Regexp.escape(processxref1)}(.*)#{Regexp.escape(processxref2)}/m)
       if matches
-        Nokogiri::XML.fragment(matches[1].strip).xpath("./p/text()").to_s.gsub(/\n/, " ")
+        Nokogiri::XML.fragment(matches[1].strip).xpath("./p/text()").to_s
       end
     else
-      grant.xpath(".//description/heading[contains(.,'CROSS-REFERENCE') or contains(.,'CROSSREF') or contains(.,'CROSS REFERENCE')]").to_s.gsub(/\n/, " ")
+      grant.xpath(".//description/heading[contains(.,'CROSS-REFERENCE') or contains(.,'CROSSREF') or contains(.,'CROSS REFERENCE')]").to_s
     end
   end
 
@@ -373,13 +366,19 @@ def produce_grants_report(extract_filename, report_filename)
   ##
   ## Write the output report
   ##
-
-  CSV.open(report_filename,"w") do |csv|
-    csv << extractors.collect{|e| e.field_name}
-    all_extracts.each{|app_extract| csv << app_extract}
-  end
+  write_csv(report_filename, all_extracts, extractors.collect{|e| e.field_name})
 
 end
+
+def write_csv(report_filename, all_extracts, colnames)
+  CSV.open(report_filename,"w") do |csv|
+    csv << colnames 
+    all_extracts.each do |app_extracts| 
+      csv << app_extracts.map {|row| row.gsub /\n/, " "}
+    end
+  end
+end
+
 
 ##
 ## Parse command-line arguments
@@ -387,18 +386,18 @@ end
 
 actions   = ARGV.select{|s| s =~ /^download(-\w*)?|unzip|extract|report|cleanup$/}.uniq
 filenames = (ARGV - actions).select{|arg| arg =~ /^ip[ag]\d{6}/ }
-filenames = filenames.map{|f| f.gsub(/\..*$/, "")}
+filenames = filenames.map{|f| f.gsub(/\..*$/, "")} # Removes file extension from filename
 
 should_download = actions.empty?
 server_preference = "goog"
 
 unless actions.empty?
   actions.each do |action|
-    should_download = !(action.match /download/).nil? # is there a better way to evaluate false to nil and true to not nil?
+    should_download = !(action.match /download/).nil? 
 
-    if should_download # break once the download option has been found
+    if should_download # Break once the download option has been found
       dl_suffix = action.match(/goog|reed/).to_s
-      server_preference = dl_suffix unless dl_suffix == "" # overwrite the previous server preference of "goog" if dl_suffix is "" (ie nil.to_s)
+      server_preference = dl_suffix unless dl_suffix == "" # Overwrite the previous server preference of "goog" if dl_suffix is "" (ie nil.to_s)
       break
     end  
   end
