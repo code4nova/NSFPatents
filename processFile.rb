@@ -19,7 +19,8 @@ require 'csv'
 ##
 
 def get_date_fields(filename)
-  partial_year, month, day = /^...(\d\d)(\d\d)(\d\d)\./.match(filename)[1]
+  puts %Q{"#{filename}"}
+  partial_year, month, day = /^...(\d\d)(\d\d)(\d\d)\./.match(filename).captures
   full_year = (partial_year.to_i < 50 ? "20" : "19") + partial_year
   return full_year, month, day
 end
@@ -387,10 +388,10 @@ end
 ## Parse command-line arguments
 ##
 
-actions   = ARGV.select{|s| s =~ /^(download|unzip|extract|report|cleanup)$/}.uniq
+actions     = ARGV.select{|s| s =~ /^(download|unzip|extract|report|cleanup)$/}.uniq
 non_actions = (ARGV - actions)
-filenames = non_actions.select{|arg| arg =~ /^ip[ag]\d{6}/ }
-filenames = filenames.map{|f| f.gsub(/\..*$/, "")}
+filenames   = non_actions.select{|arg| arg =~ /^ip[ag]\d{6}/ }
+filenames   = filenames.map{|f| f.gsub(/\..*$/, "")}
 
 server_preference = "google"
 non_actions.each do |arg| 
