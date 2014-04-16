@@ -19,7 +19,6 @@ require 'csv'
 ##
 
 def get_date_fields(filename)
-  puts %Q{"#{filename}"}
   partial_year, month, day = /^...(\d\d)(\d\d)(\d\d)\./.match(filename).captures
   full_year = (partial_year.to_i < 50 ? "20" : "19") + partial_year
   return full_year, month, day
