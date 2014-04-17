@@ -24,6 +24,24 @@ def get_date_fields(filename)
   return full_year, month, day
 end
 
+def get_patent_webpage(string)
+  uri = URI(string)
+  Net::HTTP.start uri.host do |http|
+    http.request_get uri.path do |response|
+      return response.body
+    end
+  end
+end
+
+def extract_filenames_from_webpage(webpage_body)
+  doc = Nokogiri::HTML(webpage_body)
+  all_links = doc.xpath '//a[@href]'
+  pat_links = all_links.map do |a|
+    a["href"] if a["href"] =~ %r{i?p(?:a|g)\d{6}.zip}
+  end
+  pat_links.select {|a| a} # Get rid of the nil values created by the map (there will probably be a lot)
+end
+
 def extract_download_params(filename, server_preference)
   puts "Server preference: #{server_preference}"
   download_server, pa_path_template, pg_path_template = nil
