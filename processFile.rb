@@ -17,6 +17,10 @@ require 'csv'
 ##
 ## Helper methods
 ##
+def get_date_int(filename)
+  match = filename.match(/(\d{6})/)
+  match[1].to_i if not match.nil?
+end
 
 def get_date_fields(filename)
   partial_year, month, day = /^...(\d\d)(\d\d)(\d\d)\./.match(filename).captures
@@ -24,22 +28,59 @@ def get_date_fields(filename)
   return full_year, month, day
 end
 
-def get_patent_webpage(string)
-  uri = URI(string)
-  Net::HTTP.start uri.host do |http|
-    http.request_get uri.path do |response|
-      return response.body
+def auto_extract_filenames_from_webpage(patent_types_arg, server_preference)
+  patent_types = ["ipa","ipg"].map {|e| e if patent_types_arg.include? e} #Normalizes the order of the arguments
+  patent_filenames = [] 
+  patent_types.each do |type|
+    if type
+      patent_filenames.push extract_filenames_from_webpage(get_webpage(get_patent_directory_url(type, server_preference)))
+    else
+      patent_filenames.push nil
     end
   end
+  patent_filenames # A two dimensional array containing all ipa patents in the 0th element and all ipg patents in the 1st
 end
 
-def extract_filenames_from_webpage(webpage_body)
-  doc = Nokogiri::HTML(webpage_body)
+# patent_type can be a filename (ipa123456.zip) or simply a prefix (ipg)
+def get_patent_directory_url(patent_type, server_preference)
+  ipa_path, ipg_path = nil
+  if server_preference == "google"
+    ipa_path = "https://www.google.com/googlebooks/uspto-patents-applications-text.html"
+    ipg_path = "https://www.google.com/googlebooks/uspto-patents-grants-text.html"
+  elsif server_preference == "reedtech"
+    ipa_path = "http://patents.reedtech.com/parbft.php"
+    ipg_path = "http://patents.reedtech.com/pgrbft.php"
+  end
+
+  normalized_ptype = patent_type.match(/(ip[ag])/)[1] 
+  if normalized_ptype == "ipa"
+    ipa_path
+  elsif normalized_ptype == "ipg"
+    ipg_path
+  else
+    nil
+  end
+end  
+
+def get_webpage(string)
+  puts "Getting webpage #{string}..." # What is the best way to make this output optional?  Does it even matter?
+  uri = URI(string)
+  response = nil
+  Net::HTTP.start uri.host do |http|
+    http.request_get uri.path do |resp|
+      response = resp
+    end
+  end
+  return response
+end
+
+def extract_filenames_from_webpage(response)
+  doc = Nokogiri::HTML(response.body)
   all_links = doc.xpath '//a[@href]'
   pat_links = all_links.map do |a|
     a["href"] if a["href"] =~ %r{i?p(?:a|g)\d{6}.zip}
   end
-  pat_links.select {|a| a} # Get rid of the nil values created by the map (there will probably be a lot)
+  pat_links.compact
 end
 
 def extract_download_params(filename, server_preference)
@@ -404,11 +445,17 @@ end
 ##
 ## Parse command-line arguments
 ##
+FileArg = Struct.new(:filename,:to_filename) do
+  def range? # If the second filename is not nil, a range is assumed
+    return !filename.nil? && !to_filename.nil?
+  end
+  def type
+    return filename.match(/ip[ag]/)[0]
+  end
+end
 
 actions     = ARGV.select{|s| s =~ /^(download|unzip|extract|report|cleanup)$/}.uniq
 non_actions = (ARGV - actions)
-filenames   = non_actions.select{|arg| arg =~ /^ip[ag]\d{6}/ }
-filenames   = filenames.map{|f| f.gsub(/\..*$/, "")}
 
 server_preference = "google"
 non_actions.each do |arg| 
@@ -418,6 +465,44 @@ non_actions.each do |arg|
   end
 end
 
+range_types = []
+fileargs    = non_actions.map do |arg| 
+  match = arg.match /^(ip[ag]\d{6})(?:\..*)?(?:-(?:ip[ag])?(\d{6}))/ # It doesn't look like you can have capture groups within a /(?:...)?/ .
+  if match 
+    fa = FileArg.new match[1], match[2]
+    range_types << fa.type unless range_types.include? fa.type
+    fa
+  elsif arg =~ /^ip[ag]\d{6}/
+    FileArg.new arg
+  end
+end
+fileargs.compact!
+
+all_ipa_filenames, all_ipg_filenames = auto_extract_filenames_from_webpage range_types, server_preference
+filenames = []
+fileargs.each do |fa|
+  if fa.range?
+    all_filenames_aliased = nil
+    if fa.type == "ipa"
+      all_filenames_aliased = all_ipa_filenames
+    elsif fa.type == "ipg"
+      all_filenames_aliased = all_ipg_filenames
+    end
+    all_filenames_aliased.each do |str|
+      date = get_date_int str
+      in_between_dates = (date >= get_date_int(fa.filename) && date <= get_date_int(fa.to_filename))
+      #puts "#{in_between_dates}: #{date} > #{get_date_int fa.filename}, < #{get_date_int fa.to_filename}" if date > 100000
+      if in_between_dates
+        filenames.push str.match(/(ip[ag]\d{6})/)[1]
+      end
+    end
+  else
+    filenames.push fa.filename
+  end
+end
+
+filenames.compact!
+
 should_download = actions.empty? || (actions.include? "download")
 should_unzip    = actions.empty? || (actions.include? "unzip")
 should_extract  = actions.empty? || (actions.include? "extract")
@@ -425,13 +510,13 @@ should_report   = actions.empty? || (actions.include? "report")
 should_cleanup  = actions.include? "cleanup"
 
 puts "actions   = #{actions}"
-puts "filenames = #{filenames}"
 puts "server    = #{server_preference}"
+puts "filenames = #{filenames}"
 
 ##
 ## Main Loop
 ##
-
+exit
 filenames.each do |filename|
   puts "begin processing #{filename}"
 
