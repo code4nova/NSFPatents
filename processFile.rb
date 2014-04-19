@@ -235,10 +235,6 @@ def produce_applications_report(extract_filename, report_filename)
     Nokogiri::XML.fragment(extract_govt_interest_from_app(app.to_s)).xpath("./p/text()").to_s
   end
 
-  extractors << Extractor.new("ptoids") do |app, filename|
-    extract_govt_interest_from_app(app.to_s).scan(/\b\d{7}\b/).collect{|s| "[#{s}]"}.join
-  end
-
   extractors << Extractor.new("parentcase") do |app, filename|
     app.xpath(".//us-related-documents//parent-doc/document-id/doc-number/text()").first.to_s
   end
@@ -332,10 +328,6 @@ def produce_grants_report(extract_filename, report_filename)
 
   extractors << Extractor.new("govint") do |grant, filename|
     Nokogiri::XML.fragment(extract_govt_interest_from_grant(grant.to_s)).xpath("./p/text()").to_s
-  end
-
-  extractors << Extractor.new("ptoids") do |grant, filename|
-    extract_govt_interest_from_grant(grant.to_s).scan(/\b\d{7}\b/).collect{|s| "[#{s}]"}.join
   end
 
   extractors << Extractor.new("parentcase") do |app, filename|
