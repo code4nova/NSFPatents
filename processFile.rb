@@ -30,15 +30,13 @@ end
 
 def auto_extract_filenames_from_webpage(patent_types_arg, server_preference)
   patent_types = ["ipa","ipg"].map {|e| e if patent_types_arg.include? e} #Normalizes the order of the arguments
-  patent_filenames = [] 
-  patent_types.each do |type|
+  patent_types.map do |type|
     if type
-      patent_filenames.push extract_filenames_from_webpage(get_webpage(get_patent_directory_url(type, server_preference)))
+      extract_filenames_from_webpage(get_webpage(get_patent_directory_url(type, server_preference)))
     else
-      patent_filenames.push nil
+      nil
     end
   end
-  patent_filenames # A two dimensional array containing all ipa patents in the 0th element and all ipg patents in the 1st
 end
 
 # patent_type can be a filename (ipa123456.zip) or simply a prefix (ipg)
@@ -78,7 +76,7 @@ def extract_filenames_from_webpage(response)
   doc = Nokogiri::HTML(response.body)
   all_links = doc.xpath '//a[@href]'
   pat_links = all_links.map do |a|
-    a["href"] if a["href"] =~ %r{i?p(?:a|g)\d{6}.zip}
+    a["href"] if a["href"] =~ %r{ip(?:a|g)\d{6}.zip}
   end
   pat_links.compact
 end
