@@ -439,18 +439,47 @@ def write_csv(report_filename, all_extracts, colnames)
   end
 end
 
+class FileArgumentsParser
+  def parse_file_argument(type, arg)
+    puts "Parsing #{arg}"
+    if arg =~ /-/ # Assumes that only ranges contain a - character
+      range = arg.split "-" # Does not currently support mm-dd-yy format
+      poss_formats = [ /^(?<type>ip[ag])(?<year>\d{2})(?<month>\d{2})(?<day>\d{2})(?:\..*)?$/, # ip[ag]yymmdd (filename) format
+                       /^(?<month>\d{2})\/(?<day>\d{2})\/(?<year>\d{2})$/, # mm/dd/yy format
+                       /^(?<month>\d{2})-(?<day>\d{2})-(?<year>\d{2})$/ # mm-dd-yy format
+                     ]
+      argument_match = nil
+      date_matches = range.map do |date|
+        poss_formats.each do |regex| 
+          md = date.match regex
+          if md
+            argument_match = md 
+            break
+          end
+        end
+        type = argument_match["type"] if argument_match.names.include? "type" # If the date is in file format, override type setting
+        argument_match
+      end
+      FileRange.new type, self.format_matchdata(date_matches[0]), self.format_matchdata(date_matches[1])
+    elsif arg =~ /^ip[ag]\d{6}/
+      return FileArg.new arg
+    end
+  end 
+  def format_matchdata(match_data)
+    "#{match_data["year"]}#{match_data["month"]}#{match_data["day"]}"
+  end
+end
 
 ##
 ## Parse command-line arguments
 ##
-FileArg = Struct.new(:filename,:to_filename) do
-  def range? # If the second filename is not nil, a range is assumed
-    return !filename.nil? && !to_filename.nil?
-  end
+FileArg = Struct.new(:filename) do
   def type
     return filename.match(/ip[ag]/)[0]
   end
 end
+
+FileRange = Struct.new(:type, :from_date, :to_date)
 
 actions     = ARGV.select{|s| s =~ /^(download|unzip|extract|report|cleanup)$/}.uniq
 non_actions = (ARGV - actions)
@@ -463,19 +492,11 @@ non_actions.each do |arg|
   end
 end
 
-range_types = []
-fileargs    = non_actions.map do |arg| 
-  match = arg.match /^(ip[ag]\d{6})(?:\..*)?(?:-(?:ip[ag])?(\d{6}))/ # It doesn't look like you can have capture groups within a /(?:...)?/ .
-  if match 
-    fa = FileArg.new match[1], match[2]
-    range_types << fa.type unless range_types.include? fa.type
-    fa
-  elsif arg =~ /^ip[ag]\d{6}/
-    FileArg.new arg
-  end
-end
+fargs_parser = FileArgumentsParser.new
+fileargs    = non_actions.map {|arg| fargs_parser.parse_file_argument nil, arg}
 fileargs.compact!
-
+puts fileargs.to_s
+exit
 all_ipa_filenames, all_ipg_filenames = auto_extract_filenames_from_webpage range_types, server_preference
 filenames = []
 fileargs.each do |fa|
