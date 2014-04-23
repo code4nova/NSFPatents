@@ -5,7 +5,8 @@
 ## WHERE:
 ##   filename   = "ipg140311" or similar (anything which matches /^ip[ag]\d{6}/)
 ##   action     = one of "download", "extract", "unzip", "report", "cleanup"
-##                (if not action, all actions are assumed)
+##                (if no actions, all actions except cleanup are assumed)
+##                (cleanup can be toggled separately from other actions)
 ##   server     = either "google" or "reedtech"
 ##                (if neither, google is assumed)
 
@@ -82,7 +83,6 @@ def extract_filenames_from_webpage(response)
 end
 
 def extract_download_params(filename, server_preference)
-  puts "Server preference: #{server_preference}"
   download_server, pa_path_template, pg_path_template = nil
   if server_preference == "google" # Google download preference (default)
     download_server = "storage.googleapis.com"
@@ -103,7 +103,6 @@ def extract_download_params(filename, server_preference)
   else
     raise "unknown file type (#{filename})"
   end
-
   return download_server, server_path
 end
 
@@ -292,10 +291,6 @@ def produce_applications_report(extract_filename, report_filename)
     Nokogiri::XML.fragment(extract_govt_interest_from_app(app.to_s)).xpath("./p/text()").to_s
   end
 
-  extractors << Extractor.new("ptoids") do |app, filename|
-    extract_govt_interest_from_app(app.to_s).scan(/\b\d{7}\b/).collect{|s| "[#{s}]"}.join
-  end
-
   extractors << Extractor.new("parentcase") do |app, filename|
     app.xpath(".//us-related-documents//parent-doc/document-id/doc-number/text()").first.to_s
   end
@@ -391,10 +386,6 @@ def produce_grants_report(extract_filename, report_filename)
     Nokogiri::XML.fragment(extract_govt_interest_from_grant(grant.to_s)).xpath("./p/text()").to_s
   end
 
-  extractors << Extractor.new("ptoids") do |grant, filename|
-    extract_govt_interest_from_grant(grant.to_s).scan(/\b\d{7}\b/).collect{|s| "[#{s}]"}.join
-  end
-
   extractors << Extractor.new("parentcase") do |app, filename|
     app.xpath(".//us-related-documents//parent-doc/document-id/doc-number/text()").first.to_s
   end
@@ -440,11 +431,47 @@ def write_csv(report_filename, all_extracts, colnames)
 end
 
 class FileArgumentsParser
+  def parse_file_arguments(args)
+    curr_keyword = nil
+    fileargs = args.map do |arg| 
+      if arg =~ /^(?:ipa|ipg|both)$/i
+        curr_keyword = arg.downcase
+        nil
+      else # Attempt to parse file args
+        keyword_alias = curr_keyword; curr_keyword = nil
+        a = parse_file_argument keyword_alias, arg
+      end
+    end
+    fileargs.compact!
+  end
+  
+  def get_ptypes_present(file_args)
+    types = []
+    found_ipa, found_ipg = false, false
+    file_args.each do |fa|
+      if fa.type == "ipa"
+        found_ipa = true
+        types.push "ipa"
+      elsif fa.type == "ipg"
+        found_ipg = true
+        types.push "ipg"
+      elsif fa.type = "both"
+        found_ipa = true
+        found_ipg = true
+        types = ["ipa", "ipg"]
+      end
+      if found_ipa and found_ipg
+        break
+      end
+    end
+    types
+  end
+
+  private
   def parse_file_argument(type, arg)
-    puts "Parsing #{arg}"
     if arg =~ /-/ # Assumes that only ranges contain a - character
       range = arg.split "-" # Does not currently support mm-dd-yy format
-      poss_formats = [ /^(?<type>ip[ag])(?<year>\d{2})(?<month>\d{2})(?<day>\d{2})(?:\..*)?$/, # ip[ag]yymmdd (filename) format
+      poss_formats = [ /^(?<type>ip[ag])?(?<year>\d{2})(?<month>\d{2})(?<day>\d{2})(?:\..*)?$/, # ip[ag]yymmdd (filename) format
                        /^(?<month>\d{2})\/(?<day>\d{2})\/(?<year>\d{2})$/, # mm/dd/yy format
                        /^(?<month>\d{2})-(?<day>\d{2})-(?<year>\d{2})$/ # mm-dd-yy format
                      ]
@@ -457,10 +484,10 @@ class FileArgumentsParser
             break
           end
         end
-        type = argument_match["type"] if argument_match.names.include? "type" # If the date is in file format, override type setting
+        type ||= argument_match["type"] if argument_match.names.include? "type" # If the date is in file format and no type is set by keyword, override type setting
         argument_match
       end
-      FileRange.new type, self.format_matchdata(date_matches[0]), self.format_matchdata(date_matches[1])
+      FileRange.new type, format_matchdata(date_matches[0]), format_matchdata(date_matches[1])
     elsif arg =~ /^ip[ag]\d{6}/
       return FileArg.new arg
     end
@@ -492,24 +519,24 @@ non_actions.each do |arg|
   end
 end
 
-fargs_parser = FileArgumentsParser.new
-fileargs    = non_actions.map {|arg| fargs_parser.parse_file_argument nil, arg}
-fileargs.compact!
-puts fileargs.to_s
-exit
-all_ipa_filenames, all_ipg_filenames = auto_extract_filenames_from_webpage range_types, server_preference
+fa_parser = FileArgumentsParser.new
+fileargs  = fa_parser.parse_file_arguments non_actions
+
+all_ipa_filenames, all_ipg_filenames = auto_extract_filenames_from_webpage fa_parser.get_ptypes_present(fileargs), server_preference
 filenames = []
 fileargs.each do |fa|
-  if fa.range?
+  if fa.class == FileRange
     all_filenames_aliased = nil
     if fa.type == "ipa"
       all_filenames_aliased = all_ipa_filenames
     elsif fa.type == "ipg"
       all_filenames_aliased = all_ipg_filenames
+    elsif fa.type == "both"
+      all_filenames_aliased = all_ipa_filenames + all_ipg_filenames
     end
     all_filenames_aliased.each do |str|
       date = get_date_int str
-      in_between_dates = (date >= get_date_int(fa.filename) && date <= get_date_int(fa.to_filename))
+      in_between_dates = (date >= get_date_int(fa.from_date) && date <= get_date_int(fa.to_date))
       #puts "#{in_between_dates}: #{date} > #{get_date_int fa.filename}, < #{get_date_int fa.to_filename}" if date > 100000
       if in_between_dates
         filenames.push str.match(/(ip[ag]\d{6})/)[1]
@@ -522,20 +549,21 @@ end
 
 filenames.compact!
 
-should_download = actions.empty? || (actions.include? "download")
-should_unzip    = actions.empty? || (actions.include? "unzip")
-should_extract  = actions.empty? || (actions.include? "extract")
-should_report   = actions.empty? || (actions.include? "report")
-should_cleanup  = actions.include? "cleanup"
+should_cleanup  = !!(actions.delete "cleanup")
+should_download = !!(actions.empty? || (actions.include? "download") )
+should_unzip    = !!(actions.empty? || (actions.include? "unzip")    )
+should_extract  = !!(actions.empty? || (actions.include? "extract")  )
+should_report   = !!(actions.empty? || (actions.include? "report")   )
 
 puts "actions   = #{actions}"
-puts "server    = #{server_preference}"
+puts "cleanup   = #{should_cleanup.to_s}"
 puts "filenames = #{filenames}"
+puts "server    = #{server_preference}"
 
 ##
 ## Main Loop
 ##
-exit
+
 filenames.each do |filename|
   puts "begin processing #{filename}"
 
