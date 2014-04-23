@@ -5,7 +5,8 @@
 ## WHERE:
 ##   filename   = "ipg140311" or similar (anything which matches /^ip[ag]\d{6}/)
 ##   action     = one of "download", "extract", "unzip", "report", "cleanup"
-##                (if not action, all actions are assumed)
+##                (if no actions, all actions except cleanup are assumed)
+##                (cleanup can be toggled separately from other actions)
 ##   server     = either "google" or "reedtech"
 ##                (if neither, google is assumed)
 
@@ -392,13 +393,14 @@ non_actions.each do |arg|
   end
 end
 
-should_download = actions.empty? || (actions.include? "download")
-should_unzip    = actions.empty? || (actions.include? "unzip")
-should_extract  = actions.empty? || (actions.include? "extract")
-should_report   = actions.empty? || (actions.include? "report")
-should_cleanup  = actions.include? "cleanup"
+should_cleanup  = !!(actions.delete "cleanup")
+should_download = !!(actions.empty? || (actions.include? "download") )
+should_unzip    = !!(actions.empty? || (actions.include? "unzip")    )
+should_extract  = !!(actions.empty? || (actions.include? "extract")  )
+should_report   = !!(actions.empty? || (actions.include? "report")   )
 
 puts "actions   = #{actions}"
+puts "cleanup   = #{should_cleanup.to_s}"
 puts "filenames = #{filenames}"
 puts "server    = #{server_preference}"
 
