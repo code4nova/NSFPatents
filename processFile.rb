@@ -18,6 +18,10 @@ require 'csv'
 ##
 ## Helper methods
 ##
+def get_date_int(filename)
+  match = filename.match(/(\d{6})/)
+  match[1].to_i if not match.nil?
+end
 
 def get_date_fields(filename)
   partial_year, month, day = /^...(\d\d)(\d\d)(\d\d)\./.match(filename).captures
@@ -25,8 +29,60 @@ def get_date_fields(filename)
   return full_year, month, day
 end
 
+def auto_extract_filenames_from_webpage(patent_types_arg, server_preference)
+  patent_types = ["ipa","ipg"].map {|e| e if patent_types_arg.include? e} #Normalizes the order of the arguments
+  patent_types.map do |type|
+    if type
+      extract_filenames_from_webpage(get_webpage(get_patent_directory_url(type, server_preference)))
+    else
+      nil
+    end
+  end
+end
+
+# patent_type can be a filename (ipa123456.zip) or simply a prefix (ipg)
+def get_patent_directory_url(patent_type, server_preference)
+  ipa_path, ipg_path = nil
+  if server_preference == "google"
+    ipa_path = "https://www.google.com/googlebooks/uspto-patents-applications-text.html"
+    ipg_path = "https://www.google.com/googlebooks/uspto-patents-grants-text.html"
+  elsif server_preference == "reedtech"
+    ipa_path = "http://patents.reedtech.com/parbft.php"
+    ipg_path = "http://patents.reedtech.com/pgrbft.php"
+  end
+
+  normalized_ptype = patent_type.match(/(ip[ag])/)[1] 
+  if normalized_ptype == "ipa"
+    ipa_path
+  elsif normalized_ptype == "ipg"
+    ipg_path
+  else
+    nil
+  end
+end  
+
+def get_webpage(string)
+  puts "Getting webpage #{string}..." # What is the best way to make this output optional?  Does it even matter?
+  uri = URI(string)
+  response = nil
+  Net::HTTP.start uri.host do |http|
+    http.request_get uri.path do |resp|
+      response = resp
+    end
+  end
+  return response
+end
+
+def extract_filenames_from_webpage(response)
+  doc = Nokogiri::HTML(response.body)
+  all_links = doc.xpath '//a[@href]'
+  pat_links = all_links.map do |a|
+    a["href"] if a["href"] =~ %r{ip(?:a|g)\d{6}.zip}
+  end
+  pat_links.compact
+end
+
 def extract_download_params(filename, server_preference)
-  puts "Server preference: #{server_preference}"
   download_server, pa_path_template, pg_path_template = nil
   if server_preference == "google" # Google download preference (default)
     download_server = "storage.googleapis.com"
@@ -47,7 +103,6 @@ def extract_download_params(filename, server_preference)
   else
     raise "unknown file type (#{filename})"
   end
-
   return download_server, server_path
 end
 
@@ -375,15 +430,86 @@ def write_csv(report_filename, all_extracts, colnames)
   end
 end
 
+class FileArgumentsParser
+  def parse_file_arguments(args)
+    curr_keyword = nil
+    fileargs = args.map do |arg| 
+      if arg =~ /^(?:ipa|ipg|both)$/i
+        curr_keyword = arg.downcase
+        nil
+      else # Attempt to parse file args
+        keyword_alias = curr_keyword; curr_keyword = nil
+        a = parse_file_argument keyword_alias, arg
+      end
+    end
+    fileargs.compact!
+  end
+  
+  def get_ptypes_present(file_args)
+    types = []
+    found_ipa, found_ipg = false, false
+    file_args.each do |fa|
+      if fa.type == "ipa"
+        found_ipa = true
+        types.push "ipa"
+      elsif fa.type == "ipg"
+        found_ipg = true
+        types.push "ipg"
+      elsif fa.type = "both"
+        found_ipa = true
+        found_ipg = true
+        types = ["ipa", "ipg"]
+      end
+      if found_ipa and found_ipg
+        break
+      end
+    end
+    types
+  end
+
+  private
+  def parse_file_argument(type, arg)
+    if arg =~ /-/ # Assumes that only ranges contain a - character
+      range = arg.split "-" # Does not currently support mm-dd-yy format
+      poss_formats = [ /^(?<type>ip[ag])?(?<year>\d{2})(?<month>\d{2})(?<day>\d{2})(?:\..*)?$/, # ip[ag]yymmdd (filename) format
+                       /^(?<month>\d{2})\/(?<day>\d{2})\/(?<year>\d{2})$/, # mm/dd/yy format
+                       /^(?<month>\d{2})-(?<day>\d{2})-(?<year>\d{2})$/ # mm-dd-yy format
+                     ]
+      argument_match = nil
+      date_matches = range.map do |date|
+        poss_formats.each do |regex| 
+          md = date.match regex
+          if md
+            argument_match = md 
+            break
+          end
+        end
+        type ||= argument_match["type"] if argument_match.names.include? "type" # If the date is in file format and no type is set by keyword, override type setting
+        argument_match
+      end
+      FileRange.new type, format_matchdata(date_matches[0]), format_matchdata(date_matches[1])
+    elsif arg =~ /^ip[ag]\d{6}/
+      return FileArg.new arg
+    end
+  end 
+  def format_matchdata(match_data)
+    "#{match_data["year"]}#{match_data["month"]}#{match_data["day"]}"
+  end
+end
 
 ##
 ## Parse command-line arguments
 ##
+FileArg = Struct.new(:filename) do
+  def type
+    return filename.match(/ip[ag]/)[0]
+  end
+end
+
+FileRange = Struct.new(:type, :from_date, :to_date)
 
 actions     = ARGV.select{|s| s =~ /^(download|unzip|extract|report|cleanup)$/}.uniq
 non_actions = (ARGV - actions)
-filenames   = non_actions.select{|arg| arg =~ /^ip[ag]\d{6}/ }
-filenames   = filenames.map{|f| f.gsub(/\..*$/, "")}
 
 server_preference = "google"
 non_actions.each do |arg| 
@@ -392,6 +518,36 @@ non_actions.each do |arg|
     break
   end
 end
+
+fa_parser = FileArgumentsParser.new
+fileargs  = fa_parser.parse_file_arguments non_actions
+
+all_ipa_filenames, all_ipg_filenames = auto_extract_filenames_from_webpage fa_parser.get_ptypes_present(fileargs), server_preference
+filenames = []
+fileargs.each do |fa|
+  if fa.class == FileRange
+    all_filenames_aliased = nil
+    if fa.type == "ipa"
+      all_filenames_aliased = all_ipa_filenames
+    elsif fa.type == "ipg"
+      all_filenames_aliased = all_ipg_filenames
+    elsif fa.type == "both"
+      all_filenames_aliased = all_ipa_filenames + all_ipg_filenames
+    end
+    all_filenames_aliased.each do |str|
+      date = get_date_int str
+      in_between_dates = (date >= get_date_int(fa.from_date) && date <= get_date_int(fa.to_date))
+      #puts "#{in_between_dates}: #{date} > #{get_date_int fa.filename}, < #{get_date_int fa.to_filename}" if date > 100000
+      if in_between_dates
+        filenames.push str.match(/(ip[ag]\d{6})/)[1]
+      end
+    end
+  else
+    filenames.push fa.filename
+  end
+end
+
+filenames.compact!
 
 should_cleanup  = !!(actions.delete "cleanup")
 should_download = !!(actions.empty? || (actions.include? "download") )
