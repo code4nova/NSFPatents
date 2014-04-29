@@ -429,9 +429,61 @@ def write_csv(report_filename, all_extracts, colnames)
   end
 end
 
+class ArgumentsHandler
+  def handle_args(args)
+    actions     = args.select{|s| s =~ /^(download|unzip|extract|report|cleanup)$/}.uniq
+    non_actions = (ARGV - actions)
+
+    server_preference = self.parse_server_preference non_actions
+    
+    ranges_handler = FileRangesHandler.new
+    ranges   = ranges_handler.handle non_actions, server_preference
+    
+    filenames_handler = FilenamesHandler.new
+    solo_filenames = filenames_handler.handle non_actions
+    
+    
+    has_ranges, has_filenames = !ranges.empty?, !solo_filenames.empty?
+    
+    if has_ranges and has_filenames 
+      throw StandardError.new "You can't use both ranges and filenames, you'll just confuse yourself! Are you smarter than that? Complain to a programmer!"
+    end
+    
+    filenames = ranges + solo_filenames # One should always be nil, and this will make it easier if we decide to allow both concurrently
+    
+    actions_hash = {
+    should_cleanup:    !!(actions.delete "cleanup"),
+    should_download:   !!(actions.empty? || (actions.include? "download") ),
+    should_unzip:      !!(actions.empty? || (actions.include? "unzip")    ),
+    should_extract:    !!(actions.empty? || (actions.include? "extract")  ),
+    should_report:     !!(actions.empty? || (actions.include? "report")   ),
+    server_preference: server_preference
+    }
+
+    return filenames, actions_hash
+  end
+
+  def parse_server_preference(args)
+    server_preference = "google"
+    args.each do |arg| 
+      if arg =~ /^google|reedtech$/i
+        server_preference = arg.downcase
+        break
+      end
+    end
+    server_preference
+  end
+end
+
 class FilenamesHandler
   def handle(args)
     filenames = args.select {|arg| arg =~ /ip[ag]\d{6}(?:\.zip)?/}
+  end
+end
+
+FileArg = Struct.new(:filename) do
+  def type
+    return filename.match(/ip[ag]/)[0]
   end
 end
 
@@ -453,7 +505,7 @@ class FileRangesHandler
         fr
       end
     end
-    fileargs.compact!
+    fileargs.compact
   end
 
   def expand_ranges(ranges, server_preference)
@@ -561,58 +613,7 @@ class FileRange
   end
 end
 
-FileArg = Struct.new(:filename) do
-  def type
-    return filename.match(/ip[ag]/)[0]
-  end
-end
 
-class ArgumentsHandler
-  def handle_args(args)
-    actions     = args.select{|s| s =~ /^(download|unzip|extract|report|cleanup)$/}.uniq
-    non_actions = (ARGV - actions)
-
-    server_preference = self.parse_server_preference non_actions
-    
-    ranges_handler = FileRangesHandler.new
-    ranges   = ranges_handler.handle non_actions, server_preference
-    
-    filenames_handler = FilenamesHandler.new
-    solo_filenames = filenames_handler.handle non_actions
-    
-    
-    has_ranges, has_filenames = !ranges.empty?, !solo_filenames.empty?
-    
-    if has_ranges and has_filenames 
-      throw StandardError.new "You can't use both ranges and filenames, you'll just confuse yourself! Are you smarter than that? Complain to a programmer!"
-    end
-    
-    filenames = ranges + solo_filenames # One should always be nil, and this will make it easier if we decide to allow both concurrently
-    
-    actions_hash = {
-    should_cleanup:    !!(actions.delete "cleanup"),
-    should_download:   !!(actions.empty? || (actions.include? "download") ),
-    should_unzip:      !!(actions.empty? || (actions.include? "unzip")    ),
-    should_extract:    !!(actions.empty? || (actions.include? "extract")  ),
-    should_report:     !!(actions.empty? || (actions.include? "report")   ),
-    server_preference: server_preference
-    }
-
-   
-    return filenames, actions_hash
-  end
-
-  def parse_server_preference(args)
-    server_preference = "google"
-    args.each do |arg| 
-      if arg =~ /^google|reedtech$/i
-        server_preference = arg.downcase
-        break
-      end
-    end
-    server_preference
-  end
-end
 ##
 ## Main Loop
 ##
