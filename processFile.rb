@@ -30,7 +30,7 @@ def get_date_fields(filename)
 end
 
 def auto_extract_filenames_from_webpage(patent_types_arg, server_preference)
-  patent_types = ["ipa","ipg"].map {|e| e if patent_types_arg.include? e} #Normalizes the order of the arguments
+  patent_types = [FileRange.app_key,FileRange.grant_key].map {|e| e if patent_types_arg.include? e} # Normalizes the get/return order of the app/grant arrays
   patent_types.map do |type|
     if type
       extract_filenames_from_webpage(get_webpage(get_patent_directory_url(type, server_preference)))
@@ -42,20 +42,19 @@ end
 
 # patent_type can be a filename (ipa123456.zip) or simply a prefix (ipg)
 def get_patent_directory_url(patent_type, server_preference)
-  ipa_path, ipg_path = nil
+  app_path, grant_path = nil
   if server_preference == "google"
-    ipa_path = "https://www.google.com/googlebooks/uspto-patents-applications-text.html"
-    ipg_path = "https://www.google.com/googlebooks/uspto-patents-grants-text.html"
+    app_path = "https://www.google.com/googlebooks/uspto-patents-applications-text.html"
+    grant_path = "https://www.google.com/googlebooks/uspto-patents-grants-text.html"
   elsif server_preference == "reedtech"
-    ipa_path = "http://patents.reedtech.com/parbft.php"
-    ipg_path = "http://patents.reedtech.com/pgrbft.php"
+    app_path = "http://patents.reedtech.com/parbft.php"
+    grant_path = "http://patents.reedtech.com/pgrbft.php"
   end
 
-  normalized_ptype = patent_type.match(/(ip[ag])/)[1] 
-  if normalized_ptype == "ipa"
-    ipa_path
-  elsif normalized_ptype == "ipg"
-    ipg_path
+  if patent_type =~ /^app$/
+    app_path
+  elsif patent_type =~ /^grant$/
+    grant_path
   else
     nil
   end
@@ -430,35 +429,129 @@ def write_csv(report_filename, all_extracts, colnames)
   end
 end
 
-class FileArgumentsParser
-  def parse_file_arguments(args)
-    curr_keyword = nil
-    fileargs = args.map do |arg| 
-      if arg =~ /^(?:ipa|ipg|both)$/i
-        curr_keyword = arg.downcase
-        nil
-      else # Attempt to parse file args
-        keyword_alias = curr_keyword; curr_keyword = nil
-        a = parse_file_argument keyword_alias, arg
+class ArgumentsHandler
+  def handle_args(args)
+    actions     = args.select{|s| s =~ /^(download|unzip|extract|report|cleanup)$/}.uniq
+
+    server_preference = self.parse_server_preference args
+    
+    ranges_handler = FileRangesHandler.new
+    ranges   = ranges_handler.handle args, server_preference
+    
+    filenames_handler = FilenamesHandler.new
+    solo_filenames = filenames_handler.handle args
+    
+    
+    has_ranges, has_filenames = !ranges.empty?, !solo_filenames.empty?
+    
+    if has_ranges and has_filenames 
+      throw StandardError.new "You can't use both ranges and filenames, you'll just confuse yourself! Are you smarter than that? Complain to a programmer!"
+    end
+    
+    filenames = ranges + solo_filenames # One should always be nil, and this will make it easier if we decide to allow both concurrently
+    
+    actions_hash = {
+    should_cleanup:    !!(actions.delete "cleanup"),
+    should_download:   !!(actions.empty? || (actions.include? "download") ),
+    should_unzip:      !!(actions.empty? || (actions.include? "unzip")    ),
+    should_extract:    !!(actions.empty? || (actions.include? "extract")  ),
+    should_report:     !!(actions.empty? || (actions.include? "report")   ),
+    server_preference: server_preference
+    }
+
+    return filenames, actions_hash
+  end
+
+  def parse_server_preference(args)
+    server_preference = "google"
+    args.each do |arg| 
+      if arg =~ /^google|reedtech$/i
+        server_preference = arg.downcase
+        break
       end
     end
-    fileargs.compact!
+    server_preference
+  end
+end
+
+class FilenamesHandler
+  def handle(args)
+    args.select {|arg| arg =~ /ip[ag]\d{6}(?:\.zip)?/}
+  end
+end
+
+class FileRangesHandler
+  def handle(args, server_preference)
+    ranges = get_ranges args
+    expand_ranges ranges, server_preference
+  end
+
+  private
+  def get_ranges(args)
+    curr_keyword = nil
+    fileargs = args.map do |arg| 
+      if curr_keyword
+        begin
+          fr = FileRange.parse arg, curr_keyword
+        puts "#{fr}, #{fr.nil?}"
+        rescue StandardError => e # If the arg could not be parsed as a range
+          throw StandardError.new "Token '#{arg}' following keyword '#{curr_keyword}' could not be parsed as a range"
+        end
+        curr_keyword = nil
+        fr
+      else      
+        case arg.downcase
+        when "grant", "ipg"
+          curr_keyword = FileRange.grant_key
+        when "app", "ipa"
+          curr_keyword = FileRange.app_key
+        when "both"
+          curr_keyword = FileRange.both_key
+        end
+        nil
+      end
+    end
+    fileargs.compact
+  end
+
+  def expand_ranges(ranges, server_preference)
+    all_app_filenames, all_grant_filenames = auto_extract_filenames_from_webpage get_ptypes_present(ranges), server_preference
+    all_filenames_aliased = nil
+    filenames = []
+    ranges.each do |range|
+      if range.type == FileRange.app_key
+        all_filenames_aliased = all_app_filenames
+      elsif range.type == FileRange.grant_key
+        all_filenames_aliased = all_grant_filenames
+      elsif range.type == FileRange.both_key
+        all_filenames_aliased = all_app_filenames + all_grant_filenames
+      end
+      all_filenames_aliased.each do |str|
+        date = get_date_int str
+        in_between_dates = (date >= get_date_int(range.from_date) && date <= get_date_int(range.to_date))
+        #puts "#{in_between_dates}: #{get_date_int range.from_date} < #{date} < #{get_date_int range.to_date}" if in_between_dates 
+        if in_between_dates
+          filenames.push str.match(/(ip[ag]\d{6})/)[1]
+        end
+      end
+    end
+    filenames
   end
   
-  def get_ptypes_present(file_args)
+  def get_ptypes_present(ranges)
     types = []
     found_ipa, found_ipg = false, false
-    file_args.each do |fa|
-      if fa.type == "ipa"
+    ranges.each do |fa|
+      if fa.type == FileRange.app_key
         found_ipa = true
-        types.push "ipa"
-      elsif fa.type == "ipg"
+        types.push "app"
+      elsif fa.type == FileRange.grant_key
         found_ipg = true
-        types.push "ipg"
-      elsif fa.type = "both"
+        types.push "grant"
+      elsif fa.type == FileRange.both_key
         found_ipa = true
         found_ipg = true
-        types = ["ipa", "ipg"]
+        types = [FileRange.app_key, FileRange.grant_key]
       end
       if found_ipa and found_ipg
         break
@@ -466,107 +559,96 @@ class FileArgumentsParser
     end
     types
   end
+end
 
-  private
-  def parse_file_argument(type, arg)
-    if arg =~ /-/ # Assumes that only ranges contain a - character
-      range = arg.split "-" # Does not currently support mm-dd-yy format
-      poss_formats = [ /^(?<type>ip[ag])?(?<year>\d{2})(?<month>\d{2})(?<day>\d{2})(?:\..*)?$/, # ip[ag]yymmdd (filename) format
-                       /^(?<month>\d{2})\/(?<day>\d{2})\/(?<year>\d{2})$/, # mm/dd/yy format
-                       /^(?<month>\d{2})-(?<day>\d{2})-(?<year>\d{2})$/ # mm-dd-yy format
-                     ]
-      argument_match = nil
-      date_matches = range.map do |date|
-        poss_formats.each do |regex| 
-          md = date.match regex
-          if md
-            argument_match = md 
-            break
-          end
-        end
-        type ||= argument_match["type"] if argument_match.names.include? "type" # If the date is in file format and no type is set by keyword, override type setting
-        argument_match
+class FileRange
+  @@grant_key, @@app_key, @@both_key = "grant", "app", "both"
+
+  def self.grant_key
+    @@grant_key
+  end
+  def self.app_key
+    @@app_key
+  end
+  def self.both_key
+    @@both_key
+  end
+
+  def self.parse(arg, type)
+    range = arg.split "-"
+    poss_formats = [ /^(?<year>\d{2,4})$/, #Year only format (yy or yyyy)
+                     /^(?<type>ip[ag])?(?<year>\d{2})(?<month>\d{2})(?<day>\d{2})(?:\..*)?$/, # ip[ag]yymmdd (filename) format
+                     /^(?<month>\d{2})\/(?<day>\d{2})\/(?<year>\d{2})$/ # mm/dd/yy format
+                   ]
+    date_matches = nil 
+    poss_formats.each do |regex| 
+      matches = range.map do |date|
+        date.match regex
       end
-      FileRange.new type, format_matchdata(date_matches[0]), format_matchdata(date_matches[1])
-    elsif arg =~ /^ip[ag]\d{6}/
-      return FileArg.new arg
+      unless matches.all? {|e| e.nil?}
+        date_matches = matches
+        break
+      end
+    end
+    if date_matches.any? {|date| date.captures.size == 1} # if only year was captured
+      return FileRange.new type, expand_year_to_formatted_date(date_matches.first["year"], "down"), expand_year_to_formatted_date(date_matches.last["year"], "up")
+    else
+      return FileRange.new type, format_matchdata_date(date_matches.first), format_matchdata_date(date_matches.last) 
     end
   end 
-  def format_matchdata(match_data)
-    "#{match_data["year"]}#{match_data["month"]}#{match_data["day"]}"
+
+  def initialize(type, from_date, to_date)
+    @type = type
+    @from_date = from_date
+    @to_date = to_date
   end
-end
+  
+  attr_reader :type, :from_date, :to_date
 
-##
-## Parse command-line arguments
-##
-FileArg = Struct.new(:filename) do
-  def type
-    return filename.match(/ip[ag]/)[0]
-  end
-end
-
-FileRange = Struct.new(:type, :from_date, :to_date)
-
-actions     = ARGV.select{|s| s =~ /^(download|unzip|extract|report|cleanup)$/}.uniq
-non_actions = (ARGV - actions)
-
-server_preference = "google"
-non_actions.each do |arg| 
-  if arg =~ /^google|reedtech$/i
-    server_preference = arg.downcase
-    break
-  end
-end
-
-fa_parser = FileArgumentsParser.new
-fileargs  = fa_parser.parse_file_arguments non_actions
-
-all_ipa_filenames, all_ipg_filenames = auto_extract_filenames_from_webpage fa_parser.get_ptypes_present(fileargs), server_preference
-filenames = []
-fileargs.each do |fa|
-  if fa.class == FileRange
-    all_filenames_aliased = nil
-    if fa.type == "ipa"
-      all_filenames_aliased = all_ipa_filenames
-    elsif fa.type == "ipg"
-      all_filenames_aliased = all_ipg_filenames
-    elsif fa.type == "both"
-      all_filenames_aliased = all_ipa_filenames + all_ipg_filenames
+  private
+  def self.expand_year_to_formatted_date(year, direction)
+    year = year[2,4] if year.size == 4
+    str_value = case direction.downcase
+      when "up"
+        "99"
+      when "down"
+        "00"
+      else
+        throw ArgumentError, "Direction must be either up or down"
     end
-    all_filenames_aliased.each do |str|
-      date = get_date_int str
-      in_between_dates = (date >= get_date_int(fa.from_date) && date <= get_date_int(fa.to_date))
-      #puts "#{in_between_dates}: #{date} > #{get_date_int fa.filename}, < #{get_date_int fa.to_filename}" if date > 100000
-      if in_between_dates
-        filenames.push str.match(/(ip[ag]\d{6})/)[1]
-      end
+    if year.size == 2 # A year in the yy format
+      format_date(year, str_value, str_value)
+    else
+      nil
     end
-  else
-    filenames.push fa.filename
+  end
+      
+  def self.format_matchdata_date(matchdata)
+    format_date matchdata["year"], matchdata["month"], matchdata["day"]
+  end
+  def self.format_date(year, month, day)
+    "#{year}#{month}#{day}"
   end
 end
 
-filenames.compact!
-
-should_cleanup  = !!(actions.delete "cleanup")
-should_download = !!(actions.empty? || (actions.include? "download") )
-should_unzip    = !!(actions.empty? || (actions.include? "unzip")    )
-should_extract  = !!(actions.empty? || (actions.include? "extract")  )
-should_report   = !!(actions.empty? || (actions.include? "report")   )
-
-puts "actions   = #{actions}"
-puts "cleanup   = #{should_cleanup.to_s}"
-puts "filenames = #{filenames}"
-puts "server    = #{server_preference}"
 
 ##
 ## Main Loop
 ##
-
+filenames, prefs = nil
+begin
+  args_handler = ArgumentsHandler.new
+  filenames, prefs = args_handler.handle_args ARGV
+rescue StandardError => e
+  puts "=== ERROR IN ARGUMENTS PARSING ==="
+  puts e.message
+  puts e.backtrace.inspect
+end
+puts "filenames   = #{filenames}"
+puts "preferences =\n#{(prefs.map {|k,v| "  #{k}: #{v}" if v}).compact.join(",\n")}"
+puts
 filenames.each do |filename|
   puts "begin processing #{filename}"
-
   begin
 
     zip_filename            = "#{filename}.zip"
@@ -575,28 +657,28 @@ filenames.each do |filename|
     report_apps_filename    = "#{filename}.apps"
     report_grants_filename  = "#{filename}.grants"
 
-    if should_download
+    if prefs[:should_download]
       puts "  downloading #{filename}"
       
-      download_server, server_path = extract_download_params zip_filename, server_preference
+      download_server, server_path = extract_download_params zip_filename, prefs[:server_preference]
       download_file download_server, server_path
     end
 
-    if should_unzip
+    if prefs[:should_unzip]
       puts "  unzipping #{filename}"
 
       raise "#{zip_filename} doesn't exist" unless File.exists? zip_filename
       system("unzip -o -p #{zip_filename} > #{xml_filename}")
     end
 
-    if should_extract
+    if prefs[:should_extract]
       puts "  extracting #{filename}"
 
       raise "#{xml_filename} doesn't exist" unless File.exists? xml_filename
       extract_file xml_filename, extract_filename
     end
 
-    if should_report
+    if prefs[:should_report]
       puts "  reporting on #{filename}"
 
       raise "#{extract_filename} doesn't exist" unless File.exists? extract_filename
@@ -604,7 +686,7 @@ filenames.each do |filename|
       produce_grants_report       extract_filename, report_grants_filename
     end
 
-    if should_cleanup
+    if prefs[:should_cleanup]
       puts "  cleaning up #{filename}"
 
       File.delete zip_filename
