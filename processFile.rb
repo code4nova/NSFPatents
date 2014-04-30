@@ -30,7 +30,7 @@ def get_date_fields(filename)
 end
 
 def auto_extract_filenames_from_webpage(patent_types_arg, server_preference)
-  patent_types = ["app","grant"].map {|e| e if patent_types_arg.include? e} # Normalizes the get/return order of the app/grant arrays
+  patent_types = [FileRange.app_key,FileRange.grant_key].map {|e| e if patent_types_arg.include? e} # Normalizes the get/return order of the app/grant arrays
   patent_types.map do |type|
     if type
       extract_filenames_from_webpage(get_webpage(get_patent_directory_url(type, server_preference)))
@@ -432,15 +432,14 @@ end
 class ArgumentsHandler
   def handle_args(args)
     actions     = args.select{|s| s =~ /^(download|unzip|extract|report|cleanup)$/}.uniq
-    non_actions = (ARGV - actions)
 
-    server_preference = self.parse_server_preference non_actions
+    server_preference = self.parse_server_preference args
     
     ranges_handler = FileRangesHandler.new
-    ranges   = ranges_handler.handle non_actions, server_preference
+    ranges   = ranges_handler.handle args, server_preference
     
     filenames_handler = FilenamesHandler.new
-    solo_filenames = filenames_handler.handle non_actions
+    solo_filenames = filenames_handler.handle args
     
     
     has_ranges, has_filenames = !ranges.empty?, !solo_filenames.empty?
@@ -477,13 +476,7 @@ end
 
 class FilenamesHandler
   def handle(args)
-    filenames = args.select {|arg| arg =~ /ip[ag]\d{6}(?:\.zip)?/}
-  end
-end
-
-FileArg = Struct.new(:filename) do
-  def type
-    return filename.match(/ip[ag]/)[0]
+    args.select {|arg| arg =~ /ip[ag]\d{6}(?:\.zip)?/}
   end
 end
 
@@ -493,16 +486,29 @@ class FileRangesHandler
     expand_ranges ranges, server_preference
   end
 
+  private
   def get_ranges(args)
     curr_keyword = nil
     fileargs = args.map do |arg| 
-      if arg =~ /^(?:grant|app|both)$/i
-        curr_keyword = arg.downcase
-        nil
-      elsif curr_keyword
-        fr = FileRange.parse arg, curr_keyword
+      if curr_keyword
+        begin
+          fr = FileRange.parse arg, curr_keyword
+        puts "#{fr}, #{fr.nil?}"
+        rescue StandardError => e # If the arg could not be parsed as a range
+          throw StandardError.new "Token '#{arg}' following keyword '#{curr_keyword}' could not be parsed as a range"
+        end
         curr_keyword = nil
         fr
+      else      
+        case arg.downcase
+        when "grant", "ipg"
+          curr_keyword = FileRange.grant_key
+        when "app", "ipa"
+          curr_keyword = FileRange.app_key
+        when "both"
+          curr_keyword = FileRange.both_key
+        end
+        nil
       end
     end
     fileargs.compact
@@ -513,11 +519,11 @@ class FileRangesHandler
     all_filenames_aliased = nil
     filenames = []
     ranges.each do |range|
-      if range.type == "app"
+      if range.type == FileRange.app_key
         all_filenames_aliased = all_app_filenames
-      elsif range.type == "grant"
+      elsif range.type == FileRange.grant_key
         all_filenames_aliased = all_grant_filenames
-      elsif range.type == "both"
+      elsif range.type == FileRange.both_key
         all_filenames_aliased = all_app_filenames + all_grant_filenames
       end
       all_filenames_aliased.each do |str|
@@ -536,16 +542,16 @@ class FileRangesHandler
     types = []
     found_ipa, found_ipg = false, false
     ranges.each do |fa|
-      if fa.type == "app"
+      if fa.type == FileRange.app_key
         found_ipa = true
         types.push "app"
-      elsif fa.type == "grant"
+      elsif fa.type == FileRange.grant_key
         found_ipg = true
         types.push "grant"
-      elsif fa.type == "both"
+      elsif fa.type == FileRange.both_key
         found_ipa = true
         found_ipg = true
-        types = ["app", "grant"]
+        types = [FileRange.app_key, FileRange.grant_key]
       end
       if found_ipa and found_ipg
         break
@@ -556,6 +562,18 @@ class FileRangesHandler
 end
 
 class FileRange
+  @@grant_key, @@app_key, @@both_key = "grant", "app", "both"
+
+  def self.grant_key
+    @@grant_key
+  end
+  def self.app_key
+    @@app_key
+  end
+  def self.both_key
+    @@both_key
+  end
+
   def self.parse(arg, type)
     range = arg.split "-"
     poss_formats = [ /^(?<year>\d{2,4})$/, #Year only format (yy or yyyy)
