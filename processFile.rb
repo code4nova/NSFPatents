@@ -26,7 +26,7 @@ end
 def get_date_fields(filename)
   partial_year, month, day = /^...(\d\d)(\d\d)(\d\d)\./.match(filename).captures
   full_year = (partial_year.to_i < 50 ? "20" : "19") + partial_year
-  return full_year, month, day
+  return full_year.to_i, month.to_i, day.to_i
 end
 
 def auto_extract_filenames_from_webpage(patent_types_arg, server_preference)
@@ -237,7 +237,6 @@ def produce_applications_report(extract_filename, report_filename)
   return unless extract_filename =~ /ipa/
 
   full_year, month, day = get_date_fields(extract_filename)
-  raise "cannot process file with year #{full_year}" if full_year.to_i < 2012
 
   ##
   ## Create a list of Extractors
@@ -253,7 +252,15 @@ def produce_applications_report(extract_filename, report_filename)
 
   extractors << Extractor.new("invs") do |app, filename|
     full_year, month, day = get_date_fields(filename)
-    inventor_xpath = (full_year.to_i < 2007) ? './/applicant' : './/inventor/addressbook'
+
+    inventor_xpath = if full_year.between?(2007, 2011)
+        './/applicant'
+      elsif full_year >= 2012
+        './/inventor/addressbook'
+      else
+        raise "cannot process data from year #{full_year}"
+    end
+
     inventors = app.xpath(inventor_xpath).collect do |inventor|
       inventor.xpath('.//first-name/text()').to_s + " " + inventor.xpath('.//last-name/text()').to_s
     end
@@ -262,13 +269,10 @@ def produce_applications_report(extract_filename, report_filename)
 
   extractors << Extractor.new("assignee") do |app, filename|
     full_year, month, day = get_date_fields(filename)
-    case full_year.to_i
-    when 2012..2014
-      assignees = app.xpath('.//assignees/assignee').collect do |assignee|
-        assignee.xpath('./addressbook/orgname/text()').to_s
-      end
-      assignees.map{|a| "[#{a}]"}.join
+    assignees = app.xpath('.//assignees/assignee').collect do |assignee|
+      assignee.xpath('./addressbook/orgname/text()').to_s
     end
+    assignees.map{|a| "[#{a}]"}.join
   end
 
   extractors << Extractor.new("xref") do |app, filename|
@@ -329,8 +333,6 @@ def produce_grants_report(extract_filename, report_filename)
   return unless extract_filename =~ /ipg/
 
   full_year, month, day = get_date_fields(extract_filename)
-  raise "cannot process file with year #{full_year}" if full_year.to_i < 2012
-
 
   ##
   ## Create a list of Extractors
@@ -348,7 +350,14 @@ def produce_grants_report(extract_filename, report_filename)
 
   extractors << Extractor.new("invs") do |grant, filename|
     full_year, month, day = get_date_fields(filename)
-    inventor_xpath = (full_year.to_i < 2007) ? './/applicant' : './/inventor/addressbook'
+    inventor_xpath = if full_year.between?(2007, 2011)
+        './/applicant'
+      elsif full_year >= 2012
+        './/inventor/addressbook'
+      else
+        raise "cannot process data from year #{full_year}"
+    end
+
     inventors = grant.xpath(inventor_xpath).collect do |inventor|
       inventor.xpath('.//first-name/text()').to_s + " " + inventor.xpath('.//last-name/text()').to_s
     end
@@ -357,13 +366,10 @@ def produce_grants_report(extract_filename, report_filename)
 
   extractors << Extractor.new("assignee") do |grant, filename|
     full_year, month, day = get_date_fields(filename)
-    case full_year.to_i
-    when 2012..2014
-      assignees = grant.xpath('.//assignees/assignee').collect do |assignee|
-        assignee.xpath('./addressbook/orgname/text()').to_s
-      end
-      assignees.map{|a| "[#{a}]"}.join
+    assignees = grant.xpath('.//assignees/assignee').collect do |assignee|
+      assignee.xpath('./addressbook/orgname/text()').to_s
     end
+    assignees.map{|a| "[#{a}]"}.join
   end
 
   extractors << Extractor.new("xref") do |grant, filename|
