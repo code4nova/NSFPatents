@@ -253,13 +253,7 @@ def produce_applications_report(extract_filename, report_filename)
   extractors << Extractor.new("invs") do |app, filename|
     full_year, month, day = get_date_fields(filename)
 
-    inventor_xpath = if full_year.between?(2007, 2011)
-        './/applicant'
-      elsif full_year >= 2012
-        './/inventor/addressbook'
-      else
-        raise "cannot process data from year #{full_year}"
-    end
+    inventor_xpath = get_inventors_tag(full_year)
 
     inventors = app.xpath(inventor_xpath).collect do |inventor|
       inventor.xpath('.//first-name/text()').to_s + " " + inventor.xpath('.//last-name/text()').to_s
@@ -350,13 +344,8 @@ def produce_grants_report(extract_filename, report_filename)
 
   extractors << Extractor.new("invs") do |grant, filename|
     full_year, month, day = get_date_fields(filename)
-    inventor_xpath = if full_year.between?(2007, 2011)
-        './/applicant'
-      elsif full_year >= 2012
-        './/inventor/addressbook'
-      else
-        raise "cannot process data from year #{full_year}"
-    end
+
+    inventor_xpath = get_inventors_tag(full_year)
 
     inventors = grant.xpath(inventor_xpath).collect do |inventor|
       inventor.xpath('.//first-name/text()').to_s + " " + inventor.xpath('.//last-name/text()').to_s
@@ -426,6 +415,16 @@ def produce_grants_report(extract_filename, report_filename)
 
 end
 
+def get_inventors_tag(full_year)
+  if full_year.between?(2007, 2011)
+    './/applicant'
+  elsif full_year >= 2012
+    './/inventor/addressbook'
+  else
+    raise "cannot process data from year #{full_year}"
+  end
+end
+
 def write_csv(report_filename, all_extracts, colnames)
   CSV.open(report_filename,"w") do |csv|
     csv << colnames 
@@ -437,15 +436,14 @@ end
 
 class ArgumentsHandler
   def handle_args(args)
-    actions     = args.select{|s| s =~ /^(download|unzip|extract|report|cleanup)$/}.uniq
-
+    actions           = args.select{|s| s =~ /^(download|unzip|extract|report|cleanup)$/}.uniq
     server_preference = self.parse_server_preference args
     
-    ranges_handler = FileRangesHandler.new
-    ranges   = ranges_handler.handle args, server_preference
+    ranges_handler    = FileRangesHandler.new
+    ranges            = ranges_handler.handle args, server_preference
     
     filenames_handler = FilenamesHandler.new
-    solo_filenames = filenames_handler.handle args
+    solo_filenames    = filenames_handler.handle args
     
     
     has_ranges, has_filenames = !ranges.empty?, !solo_filenames.empty?
@@ -454,7 +452,7 @@ class ArgumentsHandler
       throw StandardError.new "You can't use both ranges and filenames, you'll just confuse yourself! Are you smarter than that? Complain to a programmer!"
     end
     
-    filenames = ranges + solo_filenames # One should always be nil, and this will make it easier if we decide to allow both concurrently
+    filenames    = ranges + solo_filenames # One should always be nil, and this will make it easier if we decide to allow both concurrently
     
     actions_hash = {
     should_cleanup:    !!(actions.delete "cleanup"),
@@ -482,7 +480,13 @@ end
 
 class FilenamesHandler
   def handle(args)
-    args.select {|arg| arg =~ /ip[ag]\d{6}(?:\.zip)?/}
+    args.select do |arg| 
+      fname_match = arg.match /ip[ag]\d{6}(?<ext>\..*)?/
+      unless fname_match["ext"].nil? 
+        puts "Warning: file extention on '#{arg}' will be ignored"
+      end
+      fname_match
+    end
   end
 end
 
