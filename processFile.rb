@@ -480,13 +480,15 @@ end
 
 class FilenamesHandler
   def handle(args)
-    args.select do |arg| 
-      fname_match = arg.match /ip[ag]\d{6}(?<ext>\..*)?/
-      unless fname_match["ext"].nil? 
-        puts "Warning: file extention on '#{arg}' will be ignored"
+    args.map do |arg| 
+      fname_match = arg.match /(?<filename>ip[ag]\d{6})(?<ext>\..*)?/
+      if fname_match
+        if !fname_match["ext"].nil? 
+          puts "Warning: file extention on '#{arg}' will be ignored"
+        end
+        fname_match["filename"]
       end
-      fname_match
-    end
+    end.compact
   end
 end
 
